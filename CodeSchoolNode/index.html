@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body>
+	<h1 id="chat__status" class="chat__status">Connecting...</h1>
+	<ul id="chat__users" class="chat__users">
+	</ul>
+	<ul id="chat__messages" class="chat__messages">
+	</ul>
+
+	<form id="chat__form">
+		<textarea name="" id="chat__input" cols="0" rows="0" placeholder="Type your text"></textarea>
+		<input id="chat__button" type="submit" value="Submit">
+	</form>
+	<button id="flush">Flush</button>
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="common.js"></script>
+</body>
+</html>
