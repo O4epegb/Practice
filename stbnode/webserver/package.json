@@ -1,0 +1,17 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axon": "^2.0.2",
+    "express": "^3",
+    "request": "^2.67.0",
+    "socket.io": "^1.3.7"
+  }
+}
