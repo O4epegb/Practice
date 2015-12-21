@@ -1,0 +1,19 @@
+{
+  "name": "kanban",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.23.0",
+    "html-webpack-plugin": "^1.7.0",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "^1.4.2",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  }
+}
