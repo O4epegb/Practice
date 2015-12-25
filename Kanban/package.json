@@ -18,10 +18,12 @@
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.2",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
+    "webpack-dev-server": "1.12.1",
     "webpack-merge": "^0.3.2"
   },
   "dependencies": {
+    "alt": "^0.18.1",
+    "alt-utils": "^1.0.0",
     "node-uuid": "^1.4.7",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
