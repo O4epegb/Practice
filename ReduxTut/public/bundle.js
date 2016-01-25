@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -80,7 +80,51 @@ var Component = _React.Component;
 
 var nextTodoId = 0;
 
-var TodoApp = (function (_Component) {
+var FilterLink = function FilterLink(_ref) {
+  var filter = _ref.filter;
+  var currentFilter = _ref.currentFilter;
+  var children = _ref.children;
+
+  if (filter === currentFilter) {
+    return React.createElement(
+      'span',
+      null,
+      children
+    );
+  }
+  return React.createElement(
+    'a',
+    { href: '#',
+      onClick: function onClick(e) {
+        e.preventDefault();
+        store.dispatch({
+          type: 'SET_VISIBILITY_FILTER',
+          filter: filter
+        });
+      }
+    },
+    children
+  );
+};
+
+var getVisibleTodos = function getVisibleTodos(todos, filter) {
+  switch (filter) {
+    case 'SHOW_ALL':
+      return todos;
+    case 'SHOW_COMPLETED':
+      return todos.filter(function (t) {
+        return t.completed;
+      });
+    case 'SHOW_ACTIVE':
+      return todos.filter(function (t) {
+        return !t.completed;
+      });
+    default:
+      return todos;
+  }
+};
+
+var TodoApp = function (_Component) {
   _inherits(TodoApp, _Component);
 
   function TodoApp() {
@@ -94,6 +138,11 @@ var TodoApp = (function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      var _props = this.props;
+      var todos = _props.todos;
+      var visibilityFilter = _props.visibilityFilter;
+
+      var visibleTodos = getVisibleTodos(todos, visibilityFilter);
       return React.createElement(
         'div',
         null,
@@ -115,23 +164,62 @@ var TodoApp = (function (_Component) {
         React.createElement(
           'ul',
           null,
-          this.props.todos.map(function (todo) {
+          visibleTodos.map(function (todo) {
             return React.createElement(
               'li',
-              { key: todo.id },
+              { key: todo.id,
+                onClick: function onClick() {
+                  store.dispatch({
+                    type: 'TOGGLE_TODO',
+                    id: todo.id
+                  });
+                },
+                style: {
+                  textDecoration: todo.completed ? 'line-through' : 'none'
+                } },
               todo.text
             );
           })
+        ),
+        React.createElement(
+          'p',
+          null,
+          'Show:',
+          ' ',
+          React.createElement(
+            FilterLink,
+            {
+              filter: 'SHOW_ALL',
+              currentFilter: visibilityFilter
+            },
+            'All'
+          ),
+          React.createElement(
+            FilterLink,
+            {
+              filter: 'SHOW_ACTIVE',
+              currentFilter: visibilityFilter
+            },
+            'Active'
+          ),
+          React.createElement(
+            FilterLink,
+            {
+              filter: 'SHOW_COMPLETED',
+              currentFilter: visibilityFilter
+            },
+            'Completed'
+          )
         )
       );
     }
   }]);
 
   return TodoApp;
-})(Component);
+}(Component);
 
 var render = function render() {
-  ReactDOM.render(React.createElement(TodoApp, { todos: store.getState().todos }), document.getElementById('root'));
+  ReactDOM.render(React.createElement(TodoApp, store.getState()), document.getElementById('root'));
 };
 
 store.subscribe(render);

@@ -18,8 +18,12 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ['babel?stage=1'],
-        include: PATHS.app
+        loader: 'babel',
+        include: PATHS.app,
+        query: {
+          presets: ['react', 'es2015'],
+          plugins: ["syntax-object-rest-spread", "transform-object-rest-spread"]
+        }
       }
     ]
   }
