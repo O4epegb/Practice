@@ -22,7 +22,7 @@ module.exports = {
         include: PATHS.app,
         query: {
           presets: ['react', 'es2015'],
-          plugins: ["syntax-object-rest-spread", "transform-object-rest-spread"]
+          plugins: ["syntax-object-rest-spread", "transform-object-rest-spread", "transform-class-properties"]
         }
       }
     ]
