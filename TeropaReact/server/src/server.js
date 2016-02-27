@@ -10,5 +10,5 @@ export function startServer(store) {
   io.on('connection', (socket) => {
     socket.emit('state', store.getState().toJS());
   });
-  
+
 }
