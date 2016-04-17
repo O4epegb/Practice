@@ -5,7 +5,7 @@ import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 
 gulp.task('transpile', () => {
-  return browserify('src/index.js')
+  return browserify('src/index.jsx')
     .transform('babelify')
     .bundle()
     .pipe(source('bundle.js'))
@@ -13,7 +13,7 @@ gulp.task('transpile', () => {
 });
 
 gulp.task('watch', ['transpile'], () => {
-  gulp.watch('src/**/*.js', ['transpile']);
+  gulp.watch('src/**/*.jsx', ['transpile']);
 });
 
 gulp.task('default', ['transpile']);
