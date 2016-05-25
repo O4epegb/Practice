@@ -2,22 +2,27 @@ import React from 'react';
 
 
 class Comments extends React.Component {
-  renderComment(comment, i) {
+  renderComment = (comment, i) => {
     return (
       <div className="comment" key={i}>
         <strong>{comment.user}</strong>
-        {comment.text}
-        <button className="remove-comment">&times;</button>
+        {comment.comment}
+        <button
+          onClick={() => {
+            this.props.removeComment(this.props.params.postId, i);
+          }}
+          className="remove-comment">&times;</button>
       </div>
     );
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     const postId = this.props.params.postId;
     const author = this.refs.author.value;
     const comment = this.refs.comment.value;
     this.props.addComment(postId, author, comment);
+    this.refs.commentForm.reset();
   }
 
   render() {
