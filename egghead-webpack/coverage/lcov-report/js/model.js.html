@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js\model.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">js/</a> model.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.62% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>8/37</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">9.09% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">24.24% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>8/33</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default Model
+&nbsp;
+/**
+* Creates a new Model instance and hooks up the storage.
+*
+* @constructor
+* @param {object} storage A reference to the client side storage class
+*/
+function Model(storage) {
+  this.storage = storage
+}
+&nbsp;
+/**
+* Creates a new todo model
+*
+* @param {string} [title] The title of the task
+* @param {function} [callback] The callback to fire after the model is created
+*/
+Model.prototype.create = <span class="fstat-no" title="function not covered" >function(title, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  title = title || <span class="cstat-no" title="statement not covered" >''</span></span>
+<span class="cstat-no" title="statement not covered" >  callback = callback || <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function() {</span></span></span>
+  }
+&nbsp;
+  var newItem = <span class="cstat-no" title="statement not covered" >{</span>
+    title: title.trim(),
+    completed: false
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.storage.save(newItem, callback)</span>
+}
+&nbsp;
+/**
+ * Finds and returns a model in storage. If no query is given it'll simply
+ * return everything. If you pass in a string or number it'll look that up as
+ * the ID of the model to find. Lastly, you can pass it an object to match against.
+ *
+ * @param {string|number|object} [query] A query to match models against
+ * @param {function} [callback] The callback to fire after the model is found
+ *
+ * @example
+ * model.read(1, func); // Will find the model with an ID of 1
+ * model.read('1'); // Same as above
+ * //Below will find a model with foo equalling bar and hello equalling world.
+ * model.read({ foo: 'bar', hello: 'world' });
+ */
+Model.prototype.read = <span class="fstat-no" title="function not covered" >function(query, callback) {</span>
+  var queryType = <span class="cstat-no" title="statement not covered" >typeof query</span>
+<span class="cstat-no" title="statement not covered" >  callback = callback || <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function() {</span></span></span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (queryType === 'function') {</span>
+<span class="cstat-no" title="statement not covered" >    callback = query</span>
+<span class="cstat-no" title="statement not covered" >    return this.storage.findAll(callback)</span>
+  } else <span class="cstat-no" title="statement not covered" >if (queryType === 'string' || <span class="cstat-no" title="statement not covered" >queryType === 'number')</span> {</span>
+<span class="cstat-no" title="statement not covered" >    query = parseInt(query, 10)</span>
+<span class="cstat-no" title="statement not covered" >    this.storage.find({id: query}, callback)</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    this.storage.find(query, callback)</span>
+  }
+<span class="cstat-no" title="statement not covered" >  return undefined</span>
+}
+&nbsp;
+/**
+* Updates a model by giving it an ID, data to update, and a callback to fire when
+* the update is complete.
+*
+* @param {number} id The id of the model to update
+* @param {object} data The properties to update and their new value
+* @param {function} callback The callback to fire when the update is complete.
+*/
+Model.prototype.update = <span class="fstat-no" title="function not covered" >function(id, data, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  this.storage.save(data, callback, id)</span>
+}
+&nbsp;
+/**
+* Removes a model from storage
+*
+* @param {number} id The ID of the model to remove
+* @param {function} callback The callback to fire when the removal is complete.
+*/
+Model.prototype.remove = <span class="fstat-no" title="function not covered" >function(id, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  this.storage.remove(id, callback)</span>
+}
+&nbsp;
+/**
+* WARNING: Will remove ALL data from storage.
+*
+* @param {function} callback The callback to fire when the storage is wiped.
+*/
+Model.prototype.removeAll = <span class="fstat-no" title="function not covered" >function(callback) {</span>
+<span class="cstat-no" title="statement not covered" >  this.storage.drop(callback)</span>
+}
+&nbsp;
+/**
+* Returns a count of all todos
+*/
+Model.prototype.getCount = <span class="fstat-no" title="function not covered" >function(callback) {</span>
+  var todos = <span class="cstat-no" title="statement not covered" >{</span>
+    active: 0,
+    completed: 0,
+    total: 0
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.storage.findAll(<span class="fstat-no" title="function not covered" >function(data) {</span></span>
+<span class="cstat-no" title="statement not covered" >    data.forEach(<span class="fstat-no" title="function not covered" >function(todo) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (todo.completed) {</span>
+<span class="cstat-no" title="statement not covered" >        todos.completed++</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        todos.active++</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      todos.total++</span>
+    })
+<span class="cstat-no" title="statement not covered" >    callback(todos)</span>
+  })
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 18 2016 19:05:11 GMT+0400 (Russian Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
