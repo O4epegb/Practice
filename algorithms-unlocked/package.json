@@ -1,0 +1,15 @@
+{
+  "name": "algorithms-unlocked",
+  "version": "1.0.0",
+  "description": "",
+  "main": "binary-search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.13.1"
+  }
+}
