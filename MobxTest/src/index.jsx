@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {observable, action, useStrict} from 'mobx';
-import {observer} from 'mobx-react';
+import {observer, Provider} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
 useStrict(true);
@@ -9,63 +9,78 @@ useStrict(true);
 const store = observable({
     todos: [
         {
+            id: Math.random(),
             name: 'keke',
             done: false
         }
     ]
 })
 
-const addTodo = action(function(store, todo) {
+const addTodo = action(function addTodo(todo) {
     store.todos.push(todo);
 })
 
-const toggleTodo = action(function(store, targetTodo) {
+const toggleTodo = action(function toggleTodo(targetTodo) {
     store.todos = store.todos.map(todo => {
-      if (targetTodo === todo) {
-        todo.done = !todo.done;
-      }
-      return todo;
+        if (targetTodo === todo) {
+            todo.done = !todo.done;
+        }
+        return todo;
     })
 })
 
-@observer
-class TimerView extends Component {
+const Todo = observer(({toggleTodo, todo}) => {
+    return (
+        <li onClick={() => toggleTodo(todo)} style={{
+            'textDecoration': todo.done
+                ? 'line-through'
+                : 'none'
+        }}>
+            {todo.name}
+        </li>
+    );
+});
+
+@observer(['store'])
+class App extends Component {
     state = {
         text: ''
+    }
+
+    toggleTodo = (todo) => {
+        toggleTodo(todo);
+    }
+
+    addTodo = () => {
+        addTodo({
+            id: Math.random(),
+            name: this.state.text || 'untitled',
+            done: false
+        });
+        this.setState({text: ''})
     }
 
     render() {
         return (
             <div>
                 <button onClick={this.addTodo}>
-                    add
+                    Add todo
                 </button>
                 <input type="text" value={this.state.text} onChange={(e) => {
                     this.setState({text: e.target.value})
                 }}/>
-                {this.props.store.todos.map(todo =>
-                  <div onClick={() => this.toggleTodo(todo)}
-                       style={{'text-decoration': todo.done ? 'line-through' : 'none'}}>
-                    {todo.name}
-                  </div>
-                )}
+                <ul>
+                    {this.props.store.todos.map(todo => <Todo key={todo.id} toggleTodo={this.toggleTodo} todo={todo}/>)}
+                </ul>
                 <DevTools/>
             </div>
         );
     }
-
-    toggleTodo = (todo) => {
-      toggleTodo(this.props.store, todo);
-    }
-
-    addTodo = () => {
-        addTodo(this.props.store, {
-            name: this.state.text || 'untitled',
-            done: false
-        });
-        this.setState({text: ''})
-    }
 };
 
 ReactDOM.render(
-    <TimerView store={store}/>, document.getElementById('root'));
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+    document.getElementById('root')
+);
