@@ -1,5 +1,6 @@
 node_modules
 bower_components
+typings
 
 # Windows image file caches
 Thumbs.db
