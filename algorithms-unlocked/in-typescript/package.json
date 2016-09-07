@@ -1,0 +1,27 @@
+{
+    "name": "algorithms-unlocked",
+    "version": "1.0.0",
+    "description": "Algorithms from 'Algorithms Unlocked' book",
+    "main": "binary-search.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "jest-cli": "^15.1.1",
+        "lodash": "^4.13.1",
+        "typescript": "^1.8.10"
+    },
+    "jest": {
+        "scriptPreprocessor": "preprocessor.js",
+        "moduleFileExtensions": ["ts", "tsx", "js"],
+        "testPathDirs": [
+            "src/"
+        ],
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.ts$",
+        "testEnvironment": "node"
+    }
+}
