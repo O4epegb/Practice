@@ -1,4 +1,4 @@
-export default function recursiveBinarySearch(array, x, leftIndex?, rightIndex?) {
+export default function recursiveBinarySearch(array, x) {
     function iter(array, x, leftIndex, rightIndex) {
         const left = leftIndex;
         const right = rightIndex;
