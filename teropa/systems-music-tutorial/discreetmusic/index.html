@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Systems Audio</title>
-    <script src="https://tonejs.github.io/CDN/r7/Tone.js"></script>
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css">
+    <script defer src="https://tonejs.github.io/CDN/r7/Tone.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
+    <script defer src="app.js"></script>
 </head>
+
 <body>
+    <style>
+        .eq .slider-wrapper {
+            /* Float the wrappers so the sliders will render side by side */
+            float: left;
+        }
+
+        .eq .slider {
+            /* Put some horizontal space around each slider */
+            margin: auto 5px;
+            /* Set the slider heights */
+            height: 150px;
+        }
+        /* Make the frequency labels smaller and lighter */
+
+        .eq label {
+            color: #777;
+            display: block;
+            font-size: 0.7em;
+            text-align: center;
+        }
+    </style>
     hey
+    <div class="eq"></div>
 </body>
+
 </html>
