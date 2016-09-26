@@ -4,6 +4,7 @@
     "description": "Algorithms from 'Algorithms Unlocked' book",
     "main": "binary-search.js",
     "scripts": {
+        "prepare": "npm i",
         "test": "jest",
         "watch:test": "jest --watchAll"
     },
@@ -11,13 +12,17 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@types/jest": "^15.1.32",
         "jest-cli": "^15.1.1",
-        "lodash": "^4.13.1",
-        "typescript": "^1.8.10"
+        "typescript": "^2.0.3"
     },
     "jest": {
         "scriptPreprocessor": "preprocessor.js",
-        "moduleFileExtensions": ["ts", "tsx", "js"],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ],
         "testPathDirs": [
             "src/"
         ],

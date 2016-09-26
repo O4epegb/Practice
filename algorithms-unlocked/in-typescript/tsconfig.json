@@ -1,46 +1,46 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "jsx": "react",
-    "module": "commonjs"
-  },
-  "compileOnSave": false,
-  "filesGlob": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "!node_modules/**",
-    "typings/index.d.ts"
-  ],
-  "files": [
-    "./src/binary-search/binary-search.test.ts",
-    "./src/binary-search/binary-search.ts",
-    "./src/binary-search/recursive-binary-search.ts",
-    "./src/insertion-sort/insertion-sort.test.ts",
-    "./src/insertion-sort/insertion-sort.ts",
-    "./src/merge-sort/merge-sort.test.ts",
-    "./src/merge-sort/recursive-merge-sort.ts",
-    "./src/quicksort-sort/quick-sort.test.ts",
-    "./src/quicksort-sort/recursive-quick-sort.ts",
-    "./src/selection-sort/selection-sort.test.ts",
-    "./src/selection-sort/selection-sort.ts",
-    "typings/index.d.ts"
-  ],
-  "formatCodeOptions": {
-    "indentSize": 4,
-    "tabSize": 4,
-    "newLineCharacter": "\r\n",
-    "convertTabsToSpaces": true,
-    "insertSpaceAfterCommaDelimiter": true,
-    "insertSpaceAfterSemicolonInForStatements": true,
-    "insertSpaceBeforeAndAfterBinaryOperators": true,
-    "insertSpaceAfterKeywordsInControlFlowStatements": true,
-    "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-    "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-    "placeOpenBraceOnNewLineForFunctions": false,
-    "placeOpenBraceOnNewLineForControlBlocks": false
-  },
-  "atom": {
-    "rewriteTsconfig": true,
-    "formatOnSave": true
-  }
+    "compilerOptions": {
+        "target": "es5",
+        "jsx": "react",
+        "module": "commonjs",
+        "noEmit": true
+    },
+    "compileOnSave": false,
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./src/**/*.tsx",
+        "!node_modules/**",
+        "node_modules/@types/**/*.d.ts"
+    ],
+    "files": [
+        "./src/binary-search/binary-search.test.ts",
+        "./src/binary-search/binary-search.ts",
+        "./src/binary-search/recursive-binary-search.ts",
+        "./src/insertion-sort/insertion-sort.test.ts",
+        "./src/insertion-sort/insertion-sort.ts",
+        "./src/merge-sort/merge-sort.test.ts",
+        "./src/merge-sort/recursive-merge-sort.ts",
+        "./src/quicksort-sort/recursive-quick-sort.ts",
+        "./src/selection-sort/selection-sort.test.ts",
+        "./src/selection-sort/selection-sort.ts",
+        "node_modules/@types/jest/index.d.ts"
+    ],
+    "formatCodeOptions": {
+        "indentSize": 4,
+        "tabSize": 4,
+        "newLineCharacter": "\r\n",
+        "convertTabsToSpaces": true,
+        "insertSpaceAfterCommaDelimiter": true,
+        "insertSpaceAfterSemicolonInForStatements": true,
+        "insertSpaceBeforeAndAfterBinaryOperators": true,
+        "insertSpaceAfterKeywordsInControlFlowStatements": true,
+        "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+        "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+        "placeOpenBraceOnNewLineForFunctions": false,
+        "placeOpenBraceOnNewLineForControlBlocks": false
+    },
+    "atom": {
+        "rewriteTsconfig": true,
+        "formatOnSave": true
+    }
 }
