@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "jsx": "react",
+    "module": "commonjs"
+  },
+  "compileOnSave": false,
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "!node_modules/**",
+    "typings/index.d.ts"
+  ],
+  "files": [
+    "./src/actions.ts",
+    "./src/constants.ts",
+    "./src/index.ts",
+    "./src/inputPositions.ts",
+    "./src/models.ts",
+    "./src/players.ts",
+    "./src/shortcut.ts",
+    "./src/utils.ts",
+    "typings/index.d.ts"
+  ],
+  "formatCodeOptions": {
+    "indentSize": 4,
+    "tabSize": 4,
+    "newLineCharacter": "\r\n",
+    "convertTabsToSpaces": true,
+    "insertSpaceAfterCommaDelimiter": true,
+    "insertSpaceAfterSemicolonInForStatements": true,
+    "insertSpaceBeforeAndAfterBinaryOperators": true,
+    "insertSpaceAfterKeywordsInControlFlowStatements": true,
+    "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+    "placeOpenBraceOnNewLineForFunctions": false,
+    "placeOpenBraceOnNewLineForControlBlocks": false
+  },
+  "atom": {
+    "rewriteTsconfig": true,
+    "formatOnSave": true
+  }
+}
