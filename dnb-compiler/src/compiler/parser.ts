@@ -7,6 +7,7 @@ export function parser(tokens: I.Tokens): I.AST {
         body: []
     } as I.AST;
 
+    tokens = tokens.slice();
     // extract a token at a time as current_token. Loop until we are out of tokens.
     while (tokens.length > 0) {
         const current_token = tokens.shift();
@@ -50,8 +51,8 @@ export function parser(tokens: I.Tokens): I.AST {
                     // if current token is CallExpression of type Line,
                     // next 4 tokens should be position arguments
                     for (var i = 0; i < 4; i++) {
-                        var argument = tokens.shift();
-                        if (argument.type === 'number') {
+                        const argument = tokens.shift();
+                        if (argument && argument.type === 'number') {
                             // add argument information to expression object
                             expression.arguments.push(getNumberLiteral(argument.value));
                         } else {

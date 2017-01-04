@@ -16,7 +16,8 @@
         "src/**/*"
     ],
     "files": [
-        "node_modules/@types/jasmine/index.d.ts",
+        "node_modules/@types/codemirror/index.d.ts",
+        "node_modules/@types/react-codemirror/index.d.ts",
         "node_modules/@types/react-dom/index.d.ts",
         "node_modules/@types/react-dom/server.d.ts",
         "node_modules/@types/react/index.d.ts",
@@ -27,7 +28,9 @@
         "src/compiler/tokenizer.ts",
         "src/compiler/transformer.ts",
         "src/components/App.tsx",
-        "src/index.tsx"
+        "src/index.tsx",
+        "src/styles/index.styl",
+        "src/utils.ts"
     ],
     "compileOnSave": false,
     "formatCodeOptions": {

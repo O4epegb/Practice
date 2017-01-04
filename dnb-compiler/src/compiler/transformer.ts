@@ -5,8 +5,6 @@ export function transformer(ast: I.AST): I.SvgAST {
     var svg_ast = {
         tag: 'svg',
         attr: {
-            width: 100,
-            height: 100,
             viewBox: '0 0 100 100',
             xmlns: 'http://www.w3.org/2000/svg',
             version: '1.1'
@@ -16,10 +14,11 @@ export function transformer(ast: I.AST): I.SvgAST {
 
     let pen_color = 100; // default pen color is black
 
+    const astBody = ast.body.slice();
     // Extract a call expression at a time as `node`.
     // Loop until we are out of expressions in body.
-    while (ast.body.length > 0) {
-        const node = ast.body.shift();
+    while (astBody.length > 0) {
+        const node = astBody.shift();
         switch (node.name) {
             case 'Paper':
                 var paper_color = 100 - node.arguments[0].value;

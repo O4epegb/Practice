@@ -1,0 +1,72 @@
+.wrapper {
+    box-sizing border-box
+    max-width 1650px
+    min-width 420px
+    margin auto
+    padding 0px 20px
+}
+
+.header {
+    &__title {
+        text-align center
+    }
+}
+
+.preview {
+    display flex
+    align-items stretch
+    &__editor {
+        width 60%
+        & .CodeMirror {
+            height 100%
+            min-height 300px
+            font-size 16px
+        }
+    }
+    &__svg {
+        width 40%
+        max-width 500px
+        & svg {
+            display block
+        }
+    }
+}
+
+.message {
+    padding 10px
+    margin 10px 0px
+    font-size 18px
+    background-color palegreen
+    &_error {
+        background-color tomato
+    }
+}
+
+.compiler-code {
+    display flex
+    flex-wrap wrap
+    background-color #eeeeee
+    padding-bottom 2px
+    &__item {
+        width 25%
+        &-title {
+            padding 6px
+            font-weight 700
+        }
+        &-editor {
+            & .CodeMirror {
+                height 240px
+            }
+        }
+        @media (max-width 960px) {
+            & {
+                width 50%
+            }
+        }
+        @media (max-width 680px) {
+            & {
+                width 100%
+            }
+        }
+    }
+}

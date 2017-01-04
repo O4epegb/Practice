@@ -1,6 +1,8 @@
 var path = require("path");
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
 
 
 var config = {
@@ -22,19 +24,20 @@ var config = {
             ".styl"
         ]
     },
-    plugins: [new HtmlWebpackPlugin({title: 'My App'})],
+    plugins: [
+        new HtmlWebpackPlugin({title: 'Design By Numbers language compiler'})
+    ],
     module: {
-        loaders: [
-            {
+        loaders: [{
                 test: /\.tsx?$/,
                 loader: "ts-loader",
                 exclude: /node_modules/
             }, {
                 test: /\.css$/,
-                loaders: ['style', 'css']
+                loader: 'style-loader!css-loader?minimize!postcss-loader'
             }, {
                 test: /\.styl$/,
-                loaders: ['style', 'css', 'stylus']
+                loader: 'style-loader!css-loader?minimize!postcss-loader!stylus-loader'
             }
         ]
     },
@@ -42,6 +45,9 @@ var config = {
         compilerOptions: {
             noEmit: false
         }
+    },
+    postcss: function() {
+        return [precss, autoprefixer];
     }
 };
 
