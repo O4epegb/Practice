@@ -2,9 +2,10 @@ import { parser } from './parser';
 import { tokenizer } from './tokenizer';
 import { transformer } from './transformer';
 import { generator } from './generator';
+export * from './interfaces';
 
 
-const compiler = {
+export const compiler = {
     VERSION: '0.0.1',
     tokenizer,
     parser,

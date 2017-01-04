@@ -1,11 +1,11 @@
-import { Tokens } from './tokenizer';
+import * as I from './interfaces';
 
 
-export function parser(tokens: Tokens): AST {
+export function parser(tokens: I.Tokens): I.AST {
     const AST = {
         type: 'Drawing',
         body: []
-    } as AST;
+    } as I.AST;
 
     // extract a token at a time as current_token. Loop until we are out of tokens.
     while (tokens.length > 0) {
@@ -16,20 +16,13 @@ export function parser(tokens: Tokens): AST {
         if (current_token.type === 'word') {
             switch (current_token.value) {
                 case 'Paper':
-                    var expression = {
-                        type: 'CallExpression',
-                        name: 'Paper',
-                        arguments: []
-                    };
+                    var expression = getCallExpression('Paper');
                     // if current token is CallExpression of type Paper,
                     // next token should be color argument
                     var argument = tokens.shift();
                     if (argument.type === 'number') {
                         // add argument information to expression object
-                        expression.arguments.push({
-                            type: 'NumberLiteral',
-                            value: argument.value
-                        });
+                        expression.arguments.push(getNumberLiteral(argument.value));
                         // push the expression object to body of our AST
                         AST.body.push(expression);
                     } else {
@@ -38,20 +31,13 @@ export function parser(tokens: Tokens): AST {
                     break;
 
                 case 'Pen':
-                    var expression = {
-                        type: 'CallExpression',
-                        name: 'Pen',
-                        arguments: []
-                    };
+                    var expression = getCallExpression('Pen');
                     // if current token is CallExpression of type Pen,
                     // next token should be color argument
                     var argument = tokens.shift();
                     if (argument.type === 'number') {
                         // add argument information to expression object
-                        expression.arguments.push({
-                            type: 'NumberLiteral',
-                            value: argument.value
-                        });
+                        expression.arguments.push(getNumberLiteral(argument.value));
                         // push the expression object to body of our AST
                         AST.body.push(expression);
                     } else {
@@ -60,21 +46,14 @@ export function parser(tokens: Tokens): AST {
                     break;
 
                 case 'Line':
-                    var expression = {
-                        type: 'CallExpression',
-                        name: 'Line',
-                        arguments: []
-                    };
+                    var expression = getCallExpression('Line');
                     // if current token is CallExpression of type Line,
                     // next 4 tokens should be position arguments
                     for (var i = 0; i < 4; i++) {
                         var argument = tokens.shift();
                         if (argument.type === 'number') {
                             // add argument information to expression object
-                            expression.arguments.push({
-                                type: 'NumberLiteral',
-                                value: argument.value
-                            });
+                            expression.arguments.push(getNumberLiteral(argument.value));
                         } else {
                             throw 'Line command must be followed by 4 numbers.';
                         }
@@ -88,7 +67,17 @@ export function parser(tokens: Tokens): AST {
     return AST;
 }
 
-interface AST {
-    type: 'Drawing';
-    body: Array<any>;
+function getCallExpression(name: I.ASTNodeName): I.ASTNode {
+    return {
+        type: 'CallExpression',
+        name: name,
+        arguments: []
+    };
+}
+
+function getNumberLiteral(value: number): I.NumberLiteral {
+    return {
+        type: 'NumberLiteral',
+        value
+    };
 }

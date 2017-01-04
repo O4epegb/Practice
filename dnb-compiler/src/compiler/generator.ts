@@ -1,4 +1,7 @@
-export function generator(svg_ast) {
+import * as I from './interfaces';
+
+
+export function generator(svg_ast: I.SvgAST): string {
     // create attributes string out of attr object
     // { "width": 100, "height": 100 } becomes 'width="100" height="100"'
     function createAttrString(attr) {

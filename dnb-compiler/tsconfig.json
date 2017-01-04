@@ -4,8 +4,31 @@
         "jsx": "react",
         "module": "commonjs",
         "moduleResolution": "node",
-        "noEmit": true
+        "noEmit": true,
+        "importHelpers": true,
+        "lib": [
+            "dom",
+            "es2015"
+        ]
     },
+    "filesGlob": [
+        "node_modules/@types/**/*.d.ts",
+        "src/**/*"
+    ],
+    "files": [
+        "node_modules/@types/jasmine/index.d.ts",
+        "node_modules/@types/react-dom/index.d.ts",
+        "node_modules/@types/react-dom/server.d.ts",
+        "node_modules/@types/react/index.d.ts",
+        "src/compiler/generator.ts",
+        "src/compiler/index.ts",
+        "src/compiler/interfaces.ts",
+        "src/compiler/parser.ts",
+        "src/compiler/tokenizer.ts",
+        "src/compiler/transformer.ts",
+        "src/components/App.tsx",
+        "src/index.tsx"
+    ],
     "compileOnSave": false,
     "formatCodeOptions": {
         "indentSize": 4,

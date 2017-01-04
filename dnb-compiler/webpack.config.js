@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
     entry: {
-        "app": "./src/index.ts"
+        "app": "./src/index.tsx"
     },
     output: {
         path: path.resolve(__dirname, "build"),
