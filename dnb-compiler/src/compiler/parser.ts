@@ -14,14 +14,14 @@ export function parser(tokens: I.Tokens): I.AST {
 
         // Since number token does not do anything by it self,
         // we only analyze syntax when we find a word.
-        if (current_token.type === 'word') {
+        if (current_token && current_token.type === 'word') {
             switch (current_token.value) {
                 case 'Paper':
                     var expression = getCallExpression('Paper');
                     // if current token is CallExpression of type Paper,
                     // next token should be color argument
                     var argument = tokens.shift();
-                    if (argument.type === 'number') {
+                    if (argument && argument.type === 'number') {
                         // add argument information to expression object
                         expression.arguments.push(getNumberLiteral(argument.value));
                         // push the expression object to body of our AST
@@ -36,7 +36,7 @@ export function parser(tokens: I.Tokens): I.AST {
                     // if current token is CallExpression of type Pen,
                     // next token should be color argument
                     var argument = tokens.shift();
-                    if (argument.type === 'number') {
+                    if (argument && argument.type === 'number') {
                         // add argument information to expression object
                         expression.arguments.push(getNumberLiteral(argument.value));
                         // push the expression object to body of our AST

@@ -16,7 +16,7 @@
     display flex
     align-items stretch
     &__editor {
-        width 60%
+        flex-basis 60%
         & .CodeMirror {
             height 100%
             min-height 300px
@@ -24,10 +24,33 @@
         }
     }
     &__svg {
-        width 40%
+        flex-basis 40%
         max-width 500px
         & svg {
             display block
+        }
+    }
+    &__color-helper {
+        position relative
+        flex 0 0 40px
+        background linear-gradient(to top, white, black)
+        &:before,
+        &:after {
+            position absolute
+            padding 4px
+            left 0
+            right 0
+            text-align center
+        }
+        &:before {
+            content '100'
+            top 0
+            color white
+        }
+        &:after {
+            content '0'
+            bottom 0
+            color black
         }
     }
 }

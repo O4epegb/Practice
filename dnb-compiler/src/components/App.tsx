@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as CodeMirror from 'react-codemirror';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/xml/xml';
 import { compiler, Tokens, AST, SvgAST } from '../compiler';
 
 
@@ -20,7 +22,7 @@ export class App extends React.Component<{}, State> {
                     Pen 0
                     Line 50 15 85 80
                     Line 85 80 15 80
-                    Line 15 80 50 15`.split('\n').filter(Boolean).map(i => i.trim()).join('\n');
+                    Line 15 80 50 15s`.split('\n').filter(Boolean).map(i => i.trim()).join('\n');
         this.state = {
             dnbSourceCode: defaultDnbSource,
             ...this.getCompiledParts(defaultDnbSource)
@@ -47,7 +49,7 @@ export class App extends React.Component<{}, State> {
             this.setState(compiledParts);
             this.setState({ errorText: '' });
         } catch (e) {
-            this.setState({ errorText: e });
+            this.setState({ errorText: String(e) });
         }
     }
 
@@ -78,6 +80,7 @@ export class App extends React.Component<{}, State> {
                 </div>
                 <div className="preview">
                     <div className="preview__svg" dangerouslySetInnerHTML={{ __html: this.state.generatedSvgCode }} />
+                    <div className="preview__color-helper" />
                     <CodeMirror className="preview__editor" value={this.state.dnbSourceCode} onChange={this.onCodeChange} options={{ lineNumbers: true }} />
                 </div>
                 {this.state.errorText ?
@@ -89,16 +92,21 @@ export class App extends React.Component<{}, State> {
                     </div>
                 }
                 <div className="compiler-code">
-                    {compilerSources.map((item) => (
-                        <div key={item.title} className="compiler-code__item">
-                            <div className="compiler-code__item-title">
-                                {item.title}
+                    {compilerSources.map((item) => {
+                        const value = typeof item.value === 'string' ? item.value : JSON.stringify(item.value, null, 2);
+                        const mode = typeof item.value === 'string' ? { name: 'xml' } : { name: 'javascript', json: true };
+                        return (
+                            <div key={item.title} className="compiler-code__item">
+                                <div className="compiler-code__item-title">
+                                    {item.title}
+                                </div>
+                                <CodeMirror className="compiler-code__item-editor"
+                                    value={value}
+                                    {...{ preserveScrollPosition: true }}
+                                    options={{ lineNumbers: true, readOnly: true, mode }} />
                             </div>
-                            <CodeMirror className="compiler-code__item-editor"
-                                value={typeof item.value === 'string' ? item.value : JSON.stringify(item.value, null, 2)}
-                                options={{ lineNumbers: true, readOnly: true }} />
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         );
