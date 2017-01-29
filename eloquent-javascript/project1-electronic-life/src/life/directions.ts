@@ -11,3 +11,5 @@ export const directions = {
     'w': new Vector(-1, 0),
     'nw': new Vector(-1, -1)
 };
+
+export const directionNames = Object.keys(directions);

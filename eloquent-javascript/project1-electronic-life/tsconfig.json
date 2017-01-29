@@ -13,24 +13,26 @@
     },
     "filesGlob": [
         "node_modules/@types/**/*.d.ts",
-        "src/**/*"
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
     ],
     "files": [
         "node_modules/@types/react-dom/index.d.ts",
         "node_modules/@types/react-dom/server.d.ts",
         "node_modules/@types/react/index.d.ts",
-        "src/components/App.tsx",
-        "src/index.tsx",
-        "src/life/critter.ts",
-        "src/life/directions.ts",
-        "src/life/grid.ts",
-        "src/life/models.ts",
-        "src/life/utils.ts",
-        "src/life/vector.ts",
-        "src/life/view.ts",
-        "src/life/wall.ts",
-        "src/life/world.ts",
-        "src/styles/index.styl"
+        "./src/life/critter-wall-follower.ts",
+        "./src/life/critter.ts",
+        "./src/life/directions.ts",
+        "./src/life/grid.ts",
+        "./src/life/models.ts",
+        "./src/life/utils.ts",
+        "./src/life/vector.ts",
+        "./src/life/view.ts",
+        "./src/life/wall.ts",
+        "./src/life/world-object.ts",
+        "./src/life/world.ts",
+        "./src/components/App.tsx",
+        "./src/index.tsx"
     ],
     "compileOnSave": false,
     "formatCodeOptions": {

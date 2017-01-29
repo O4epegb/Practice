@@ -2,28 +2,31 @@ import { Grid } from './grid';
 import { Vector } from './vector';
 import { View } from './view';
 import { directions } from './directions';
+import { WorldMap, Legend } from './models';
 
 
 export function elementFromChar(legend, ch) {
-    if (ch == ' ')
+    if (ch == ' ') {
         return null;
-    var element = new legend[ch]();
+    }
+    const element = new legend[ch]();
     element.originChar = ch;
     return element;
 }
 
 export function charFromElement(element) {
-    if (element == null)
+    if (element == null) {
         return ' ';
-    else
+    } else {
         return element.originChar;
+    }
 }
 
 export class World {
     grid: Grid;
     legend;
 
-    constructor(map, legend) {
+    constructor(map: WorldMap, legend: Legend) {
         const grid = new Grid(map[0].length, map.length);
 
         map.forEach((line, y) => {
@@ -72,8 +75,9 @@ export class World {
     checkDestination(action, vector) {
         if (directions.hasOwnProperty(action.direction)) {
             var dest = vector.plus(directions[action.direction]);
-            if (this.grid.isInside(dest))
+            if (this.grid.isInside(dest)) {
                 return dest;
+            }
         }
     };
 }

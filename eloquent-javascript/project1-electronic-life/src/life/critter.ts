@@ -1,16 +1,16 @@
 import { randomElementFromArray } from './utils';
+import { directionNames } from './directions';
+import { WorldObject } from './models';
 
 
-const directionNames = 'n ne e se s sw w nw'.split(' ');
-
-export class BouncingCritter {
+export class BouncingCritter implements WorldObject {
     direction: string;
 
     constructor() {
         this.direction = randomElementFromArray(directionNames);
     }
 
-    act(view) {
+    act = (view) => {
         if (view.look(this.direction) != ' ')
             this.direction = view.find(' ') || 's';
         return {

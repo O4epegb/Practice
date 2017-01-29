@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "npm i",
     "build": "cross-env NODE_ENV=production webpack -p",
-    "start:dev": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server --hot --inline"
   },
   "keywords": [],
   "author": "",
