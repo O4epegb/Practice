@@ -6,4 +6,9 @@ export interface Legend {
 
 export class WorldObject {
     act: (view) => any;
+    originChar: string;
+
+    constructor(originChar: string) {
+        this.originChar = originChar;
+    }
 }

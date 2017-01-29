@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { World } from '../life/world';
-import { Wall } from '../life/wall';
-import { BouncingCritter } from '../life/critter';
-import { WallFollowerCritter } from '../life/critter-wall-follower';
+import { Wall, BouncingCritter, WallFollowerCritter } from '../life/world-objects';
 
 
 const plan = [

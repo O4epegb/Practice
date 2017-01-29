@@ -3,35 +3,19 @@ import { Vector } from './vector';
 import { View } from './view';
 import { directions } from './directions';
 import { WorldMap, Legend } from './models';
+import { worldObjectFromChar, originCharFromWorldObject } from './utils';
 
-
-export function elementFromChar(legend, ch) {
-    if (ch == ' ') {
-        return null;
-    }
-    const element = new legend[ch]();
-    element.originChar = ch;
-    return element;
-}
-
-export function charFromElement(element) {
-    if (element == null) {
-        return ' ';
-    } else {
-        return element.originChar;
-    }
-}
 
 export class World {
     grid: Grid;
-    legend;
+    legend: Legend;
 
     constructor(map: WorldMap, legend: Legend) {
         const grid = new Grid(map[0].length, map.length);
 
         map.forEach((line, y) => {
             for (var x = 0; x < line.length; x++) {
-                grid.set(new Vector(x, y), elementFromChar(legend, line[x]));
+                grid.set(new Vector(x, y), worldObjectFromChar(legend, line[x]));
             }
         });
 
@@ -39,20 +23,20 @@ export class World {
         this.legend = legend;
     }
 
-    toString() {
+    toString = () => {
         let output = '';
         for (let y = 0; y < this.grid.height; y++) {
             for (let x = 0; x < this.grid.width; x++) {
                 const element = this.grid.get(new Vector(x, y));
-                output += charFromElement(element);
+                output += originCharFromWorldObject(element);
             }
             output += '\n';
         }
         return output;
     }
 
-    turn() {
-        var acted = [];
+    turn = () => {
+        const acted = [];
         this.grid.forEach((critter, vector) => {
             if (critter.act && acted.indexOf(critter) == -1) {
                 acted.push(critter);
@@ -61,23 +45,23 @@ export class World {
         });
     }
 
-    letAct(critter, vector) {
-        var action = critter.act(new View(this, vector));
+    letAct = (critter, vector) => {
+        const action = critter.act(new View(this, vector));
         if (action && action.type == 'move') {
-            var dest = this.checkDestination(action, vector);
+            const dest = this.checkDestination(action, vector);
             if (dest && this.grid.get(dest) == null) {
                 this.grid.set(vector, null);
                 this.grid.set(dest, critter);
             }
         }
-    };
+    }
 
-    checkDestination(action, vector) {
+    checkDestination = (action, vector) => {
         if (directions.hasOwnProperty(action.direction)) {
-            var dest = vector.plus(directions[action.direction]);
+            const dest = vector.plus(directions[action.direction]);
             if (this.grid.isInside(dest)) {
                 return dest;
             }
         }
-    };
+    }
 }

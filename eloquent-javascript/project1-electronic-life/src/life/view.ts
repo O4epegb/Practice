@@ -1,7 +1,7 @@
 import { directions } from './directions';
-import { World, charFromElement } from './world';
+import { World, } from './world';
 import { Vector } from './vector';
-import { randomElementFromArray } from './utils';
+import { originCharFromWorldObject, randomElementFromArray } from './utils';
 
 
 export class View {
@@ -16,7 +16,7 @@ export class View {
     look(dir) {
         const target = this.vector.plus(directions[dir]);
         if (this.world.grid.isInside(target)) {
-            return charFromElement(this.world.grid.get(target));
+            return originCharFromWorldObject(this.world.grid.get(target));
         } else {
             return '#';
         }

@@ -1,12 +1,13 @@
-import { randomElementFromArray } from './utils';
-import { directionNames } from './directions';
-import { WorldObject } from './models';
+import { randomElementFromArray } from '../../utils';
+import { directionNames } from '../../directions';
+import { WorldObject } from '../../models';
 
 
-export class BouncingCritter implements WorldObject {
+export class BouncingCritter extends WorldObject {
     direction: string;
 
-    constructor() {
+    constructor(originChar: string) {
+        super(originChar);
         this.direction = randomElementFromArray(directionNames);
     }
 
