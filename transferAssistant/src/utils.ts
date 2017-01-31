@@ -22,6 +22,10 @@ export function moveAndClick({x, y}: Coord, double = false) {
     });
 }
 
+export function moveMouse({x, y}: Coord) {
+    robot.moveMouse(x, y);
+}
+
 export function typeString(str: string) {
     robot.typeStringDelayed(`${str}`, 8000);
 }
@@ -32,4 +36,19 @@ export function getPixelColor({x, y}: Coord) {
 
 export function getMouseCoords(): Coord {
     return robot.getMousePos();
+}
+
+export function waitForColor(color: string) {
+    return new Promise((resolve, reject) => {
+        function checkColor() {
+            const colorAtCoord = getPixelColor(getMouseCoords());
+            if (colorAtCoord !== color) {
+                console.log(`Looking for color "${color}" at cursor position`);
+                setTimeout(checkColor, 300);
+            } else {
+                resolve();
+            }
+        }
+        checkColor();
+    });
 }

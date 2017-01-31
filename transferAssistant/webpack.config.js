@@ -1,10 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+const ElectronConnectWebpackPlugin = require('electron-connect-webpack-plugin');
 
 
 const config = {
     entry: {
-        "app": "./src/index.ts"
+        "app": "./src/app.ts",
+        "index": "./src/index.ts"
     },
     output: {
         path: path.resolve(__dirname, "build"),
@@ -21,21 +23,26 @@ const config = {
             ".styl"
         ]
     },
-    plugins: [],
+    plugins: [new ElectronConnectWebpackPlugin({
+            path: path.join(__dirname, "./build/index.js"),
+            logLevel: 0
+        })],
     module: {
         loaders: [
             {
                 test: /\.tsx?$/,
                 loader: "ts-loader",
                 exclude: /node_modules/
-            },
-            {
+            }, {
                 test: /\.node$/,
                 loader: "node-loader"
             }
         ]
     },
-    target: 'electron'
+    target: 'electron',
+    node: {
+        __dirname: false
+    }
 };
 
 if (process.env.NODE_ENV === 'production') {

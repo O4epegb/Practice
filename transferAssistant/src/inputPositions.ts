@@ -1,20 +1,4 @@
-import { Coord } from './models';
-
-
-interface Inputs {
-    playerInput: Coord;
-    playerIcon: Coord;
-    priceInput: Coord;
-    searchButton: Coord;
-    popupCenterAndLeftButtons: Coord;
-    clearPlayerInput: Coord;
-    increaseBuyNowMinPrice: Coord;
-    firstPlayerCard: Coord;
-    buyNowButton: Coord;
-    backButton: Coord;
-}
-
-export const inputs: Inputs = {
+export const inputs = {
     playerInput: {
         x: 502,
         y: 439
@@ -33,7 +17,8 @@ export const inputs: Inputs = {
     },
     popupCenterAndLeftButtons: {
         x: 815,
-        y: 573
+        y: 573,
+        color: '545b64'
     },
     clearPlayerInput: {
         x: 642,
@@ -53,6 +38,7 @@ export const inputs: Inputs = {
     },
     backButton: {
         x: 520,
-        y: 550
+        y: 550,
+        color: '08090c'
     }
 };

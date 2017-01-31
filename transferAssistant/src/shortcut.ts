@@ -1,12 +1,12 @@
 import { globalShortcut } from 'electron';
-import * as debounce from 'lodash/debounce';
+import { debounce } from 'lodash';
 
 
 export function registerShortcut(shortcutName, cb) {
     let counter = 0;
     return new Promise((resolve, reject) => {
         const ret = globalShortcut.register(shortcutName, debounce(() => {
-            console.log(`Shortcut "${shortcutName}" is pressed ${++counter} time`);
+            console.log(`Shortcut "${shortcutName}" is pressed ${++counter} time(s) total`);
             cb(counter);
         }, 50));
 
@@ -21,10 +21,9 @@ export function registerShortcut(shortcutName, cb) {
 }
 
 export function unregisterShortcut(shortcutName) {
-    return new Promise((resolve, reject) => {
-        globalShortcut.unregister(shortcutName);
-        globalShortcut.unregisterAll();
+    globalShortcut.unregister(shortcutName);
+}
 
-        resolve();
-    });
+export function unregisterAllShortcuts() {
+    globalShortcut.unregisterAll();
 }
