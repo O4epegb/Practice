@@ -1,24 +1,26 @@
-import { app/*, BrowserWindow*/ } from 'electron';
-import * as utils from './utils';
-import { registerShortcut, unregisterShortcut, unregisterAllShortcuts } from './shortcut';
-import { shortcutNames } from './constants';
-import { inputs } from './inputPositions';
-import { players as allPlayers } from './players';
+import { app, BrowserWindow } from 'electron';
+import * as utils from '../utils';
+import { registerShortcut, unregisterShortcut, unregisterAllShortcuts } from '../shortcut';
+import { shortcutNames } from '../constants';
+import { inputs } from '../inputPositions';
+import { getPlayers } from '../players';
 
 
-app.on('ready', () => {
-    // var mainWindow = new BrowserWindow({
-    //     width: 600,
-    //     height: 300,
-    //     center: true,
-    //     title: "Electron Notification Example",
-    // });
-    // mainWindow.on('closed', function() {
-    //     mainWindow = null;
-    // });
-    // mainWindow.loadURL(`file://${__dirname}/index.html`);
+async function onAppStart() {
+    let players = await getPlayers();
+    let mainWindow = new BrowserWindow({
+        width: 1200,
+        height: 800,
+        center: true,
+        title: 'Electron Notification Example',
+    });
+    mainWindow.webContents.openDevTools();
+    mainWindow.on('closed', function() {
+        mainWindow = null;
+    });
+    mainWindow.loadURL(`file://${__dirname}/index.html`);
 
-    let players = allPlayers.filter(player => Number(player.price) <= 10000).map(player => (player.price = String(Number(player.price) * 0.8), player));
+    players = players.filter(player => Number(player.price) <= 10000).map(player => (player.price = String(Number(player.price) * 0.8), player));
     players = utils.randomSort(players);
     let lastPlayerPrice = '';
     let needToUpdateMinPrice = false;
@@ -109,7 +111,9 @@ app.on('ready', () => {
         const coords = utils.getMouseCoords();
         console.log(coords);
     });
-});
+}
+
+app.on('ready', onAppStart);
 
 app.on('will-quit', () => {
     Object.keys(shortcutNames).forEach(unregisterShortcut);

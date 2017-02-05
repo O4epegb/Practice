@@ -1,18 +1,17 @@
+import * as fs from 'fs';
+import * as csvparser from 'csv-parse';
 import { Player } from './models';
-import { playersData } from './players-data';
 
-
-export const players: Array<Player> = Object.keys(playersData).map((name) => {
-    const playerInfo = playersData[name];
-    if (playerInfo.length === 0) {
-        return;
-    }
-    const [shortPrice, alias] = playerInfo.split('/');
-    const price = String((parseFloat(shortPrice) || 0) * 1000);
-
-    return {
-        name,
-        alias,
-        price
-    };
-}).filter(Boolean);
+export function getPlayers() {
+    return new Promise<Array<Player>>((resolve, reject) => {
+        const playersString = fs.readFileSync('players.csv').toString();
+        csvparser(playersString, { columns: true }, (err, data) => {
+            if (!err) {
+                resolve(data);
+            } else {
+                console.log(err);
+                reject();
+            }
+        });
+    });
+}

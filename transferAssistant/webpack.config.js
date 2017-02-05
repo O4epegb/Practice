@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const ElectronConnectWebpackPlugin = require('electron-connect-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 const config = {
     entry: {
-        "app": "./src/app.ts",
-        "index": "./src/index.ts"
+        "frontend": "./src/frontend/index.tsx",
+        "backend": "./src/backend/index.ts"
     },
     output: {
         path: path.resolve(__dirname, "build"),
@@ -23,9 +24,11 @@ const config = {
             ".styl"
         ]
     },
-    plugins: [new ElectronConnectWebpackPlugin({
-            path: path.join(__dirname, "./build/index.js"),
-            logLevel: 0
+    plugins: [
+        new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template: 'src/index.html',
+          inject: false
         })],
     module: {
         loaders: [
@@ -45,8 +48,17 @@ const config = {
     }
 };
 
+if (process.env.ELECTRON_CONNECT === 'yes') {
+    config.plugins = config.plugins.concat(
+        new ElectronConnectWebpackPlugin({
+                path: path.join(__dirname, "./build/backend.js"),
+                logLevel: 0
+            })
+    );
+}
+
 if (process.env.NODE_ENV === 'production') {
-    config.plugins = [
+    config.plugins = config.plugins.concat([
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
@@ -58,7 +70,7 @@ if (process.env.NODE_ENV === 'production') {
                 warnings: false
             }
         })
-    ]
+    ]);
 }
 
 module.exports = config;
