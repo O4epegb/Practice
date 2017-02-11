@@ -81,120 +81,29 @@
 	    }
 	};
 	var electron_1 = __webpack_require__(1);
-	var utils = __webpack_require__(2);
-	var shortcut_1 = __webpack_require__(6);
-	var constants_1 = __webpack_require__(8);
-	var inputPositions_1 = __webpack_require__(9);
-	var players_1 = __webpack_require__(10);
+	var shortcut_1 = __webpack_require__(2);
+	var constants_1 = __webpack_require__(5);
 	function onAppStart() {
 	    return __awaiter(this, void 0, void 0, function () {
-	        function searchHandler() {
-	            if (playerCounter >= players.length) {
-	                needToUpdateMinPrice = true;
-	                players = utils.randomSort(players);
-	                playerCounter = 0;
-	            }
-	            else {
-	                needToUpdateMinPrice = false;
-	            }
-	            var currentPlayer = players[playerCounter];
-	            ++playerCounter;
-	            console.log("Checking player \"" + currentPlayer.name + "\" with minPrice = " + currentPlayer.price);
-	            utils.delay(0)
-	                .then(function () {
-	                utils.moveAndClick(inputPositions_1.inputs.clearPlayerInput);
-	                return utils.delay(100);
-	            }).then(function () {
-	                utils.moveAndClick(inputPositions_1.inputs.playerInput);
-	                return utils.delay(100);
-	            }).then(function () {
-	                utils.typeString(currentPlayer.alias);
-	                return utils.delay(1000);
-	            }).then(function () {
-	                utils.moveAndClick(inputPositions_1.inputs.playerIcon);
-	                return utils.delay(50);
-	            }).then(function () {
-	                utils.moveAndClick(inputPositions_1.inputs.priceInput, true);
-	                return utils.delay(100);
-	            }).then(function () {
-	                if (lastPlayerPrice !== currentPlayer.price) {
-	                    lastPlayerPrice = currentPlayer.price;
-	                    utils.typeString(currentPlayer.price);
-	                    return utils.delay(100);
-	                }
-	            }).then(function () {
-	                if (needToUpdateMinPrice) {
-	                    utils.moveAndClick(inputPositions_1.inputs.increaseBuyNowMinPrice);
-	                    return utils.delay(100);
-	                }
-	            }).then(function () {
-	                utils.moveAndClick(inputPositions_1.inputs.searchButton);
-	                return utils.delay(300);
-	            }).then(function () {
-	                var color = utils.getPixelColor(inputPositions_1.inputs.popupCenterAndLeftButtons);
-	                console.log('checking color', color, inputPositions_1.inputs.popupCenterAndLeftButtons.color);
-	                if (color === inputPositions_1.inputs.popupCenterAndLeftButtons.color) {
-	                    console.log('Not found!!');
-	                }
-	                var color2 = utils.getPixelColor(inputPositions_1.inputs.backButton);
-	                console.log('checking color', color2, inputPositions_1.inputs.backButton.color);
-	                if (color2 === inputPositions_1.inputs.backButton.color) {
-	                    console.log('Found!!');
-	                }
-	                utils.moveAndClick(inputPositions_1.inputs.popupCenterAndLeftButtons);
-	            }).catch(function (err) {
-	                console.log("Something went wrong.", err);
-	            });
-	        }
-	        var players, mainWindow, lastPlayerPrice, needToUpdateMinPrice, playerCounter;
+	        var mainWindow;
 	        return __generator(this, function (_a) {
-	            switch (_a.label) {
-	                case 0: return [4 /*yield*/, players_1.getPlayers()];
-	                case 1:
-	                    players = _a.sent();
-	                    mainWindow = new electron_1.BrowserWindow({
-	                        width: 1200,
-	                        height: 800,
-	                        center: true,
-	                        title: 'Electron Notification Example',
-	                    });
-	                    mainWindow.webContents.openDevTools();
-	                    mainWindow.on('closed', function () {
-	                        mainWindow = null;
-	                    });
-	                    mainWindow.loadURL("file://" + __dirname + "/index.html");
-	                    players = players.filter(function (player) { return Number(player.price) <= 10000; }).map(function (player) { return (player.price = String(Number(player.price) * 0.8), player); });
-	                    players = utils.randomSort(players);
-	                    lastPlayerPrice = '';
-	                    needToUpdateMinPrice = false;
-	                    playerCounter = 0;
-	                    shortcut_1.registerShortcut(constants_1.shortcutNames.three, searchHandler);
-	                    shortcut_1.registerShortcut(constants_1.shortcutNames.two, function () {
-	                        utils.moveAndClick(inputPositions_1.inputs.popupCenterAndLeftButtons);
-	                    });
-	                    shortcut_1.registerShortcut(constants_1.shortcutNames.one, function () {
-	                        utils.moveAndClick(inputPositions_1.inputs.firstPlayerCard).then(function () {
-	                            return utils.delay(500);
-	                        }).then(function () {
-	                            utils.moveAndClick(inputPositions_1.inputs.buyNowButton);
-	                        });
-	                    });
-	                    shortcut_1.registerShortcut(constants_1.shortcutNames.four, function () {
-	                        utils.moveAndClick(inputPositions_1.inputs.backButton);
-	                    });
-	                    shortcut_1.registerShortcut(constants_1.shortcutNames.five, function () {
-	                        var coords = utils.getMouseCoords();
-	                        console.log(utils.getPixelColor(coords));
-	                    });
-	                    shortcut_1.registerShortcut(constants_1.shortcutNames.six, function () {
-	                        // utils.waitForColor('00ff00').then(() => {
-	                        //     console.log('its here');
-	                        // });
-	                        var coords = utils.getMouseCoords();
-	                        console.log(coords);
-	                    });
-	                    return [2 /*return*/];
-	            }
+	            mainWindow = new electron_1.BrowserWindow({
+	                width: 1200,
+	                height: 800,
+	                center: true,
+	                title: 'Electron Notification Example',
+	            });
+	            mainWindow.webContents.openDevTools();
+	            mainWindow.on('closed', function () {
+	                mainWindow = null;
+	            });
+	            mainWindow.loadURL("file://" + __dirname + "/index.html");
+	            Object.keys(constants_1.shortcutNames)
+	                .map(function (name) { return constants_1.shortcutNames[name]; })
+	                .forEach(function (shortcutName) {
+	                shortcut_1.registerShortcut(shortcutName);
+	            });
+	            return [2 /*return*/];
 	        });
 	    });
 	}
@@ -216,143 +125,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var robot = __webpack_require__(3);
-	function delay(ms) {
-	    if (ms === void 0) { ms = 0; }
-	    return new Promise(function (resolve, reject) {
-	        setTimeout(function () {
-	            resolve();
-	        }, ms);
-	    });
-	}
-	exports.delay = delay;
-	function randomSort(arr) {
-	    return arr.slice().sort(function () { return Math.random() > 0.5 ? 1 : 0; });
-	}
-	exports.randomSort = randomSort;
-	function moveAndClick(_a, double) {
-	    var x = _a.x, y = _a.y;
-	    if (double === void 0) { double = false; }
-	    return new Promise(function (resolve, reject) {
-	        robot.moveMouse(x, y);
-	        robot.mouseClick('left', double);
-	        resolve();
-	    });
-	}
-	exports.moveAndClick = moveAndClick;
-	function moveMouse(_a) {
-	    var x = _a.x, y = _a.y;
-	    robot.moveMouse(x, y);
-	}
-	exports.moveMouse = moveMouse;
-	function typeString(str) {
-	    robot.typeStringDelayed("" + str, 8000);
-	}
-	exports.typeString = typeString;
-	function getPixelColor(_a) {
-	    var x = _a.x, y = _a.y;
-	    return robot.getPixelColor(x, y);
-	}
-	exports.getPixelColor = getPixelColor;
-	function getMouseCoords() {
-	    return robot.getMousePos();
-	}
-	exports.getMouseCoords = getMouseCoords;
-	function waitForColor(color) {
-	    return new Promise(function (resolve, reject) {
-	        function checkColor() {
-	            var colorAtCoord = getPixelColor(getMouseCoords());
-	            if (colorAtCoord !== color) {
-	                console.log("Looking for color \"" + color + "\" at cursor position");
-	                setTimeout(checkColor, 300);
-	            }
-	            else {
-	                resolve();
-	            }
-	        }
-	        checkColor();
-	    });
-	}
-	exports.waitForColor = waitForColor;
-
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var robotjs = __webpack_require__(4);
-
-	module.exports = robotjs;
-
-	module.exports.screen = {};
-
-	function bitmap(width, height, byteWidth, bitsPerPixel, bytesPerPixel, image) 
-	{
-	    this.width = width;
-	    this.height = height;
-	    this.byteWidth = byteWidth;
-	    this.bitsPerPixel = bitsPerPixel;
-	    this.bytesPerPixel = bytesPerPixel;
-	    this.image = image;
-
-	    this.colorAt = function(x, y)
-	    {
-	        return robotjs.getColor(this, x, y);
-	    };
-
-	}
-
-	module.exports.screen.capture = function(x, y, width, height)
-	{
-	    //If coords have been passed, use them.
-	    if (typeof x !== "undefined" && typeof y !== "undefined" && typeof width !== "undefined" && typeof height !== "undefined")
-	    {
-	        b = robotjs.captureScreen(x, y, width, height);
-	    }
-	    else 
-	    {
-	        b = robotjs.captureScreen();
-	    }
-
-	    return new bitmap(b.width, b.height, b.byteWidth, b.bitsPerPixel, b.bytesPerPixel, b.image);
-	};
-
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(module) {try {global.process.dlopen(module, "E:\\Projects\\Practice\\transferAssistant\\node_modules\\robotjs\\build\\Release\\robotjs.node"); } catch(e) {throw new Error('Cannot open ' + "E:\\Projects\\Practice\\transferAssistant\\node_modules\\robotjs\\build\\Release\\robotjs.node" + ': ' + e);}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)(module)))
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
 	var electron_1 = __webpack_require__(1);
-	var lodash_1 = __webpack_require__(7);
+	var lodash_1 = __webpack_require__(3);
 	function registerShortcut(shortcutName, cb) {
+	    if (cb === void 0) { cb = function (counter) { }; }
 	    var counter = 0;
 	    return new Promise(function (resolve, reject) {
 	        var ret = electron_1.globalShortcut.register(shortcutName, lodash_1.debounce(function () {
 	            console.log("Shortcut \"" + shortcutName + "\" is pressed " + ++counter + " time(s) total");
+	            electron_1.webContents.getAllWebContents()[0].send('shortcut-press', shortcutName);
 	            cb(counter);
 	        }, 50));
 	        if (!ret) {
@@ -363,6 +144,8 @@
 	            console.log("SUCCESS: Shortcut \"" + shortcutName + "\" is registered = " + electron_1.globalShortcut.isRegistered(shortcutName));
 	            resolve();
 	        }
+	    }).catch(function () {
+	        console.log("ERROR: Shortcut \"" + shortcutName + "\" registration failed");
 	    });
 	}
 	exports.registerShortcut = registerShortcut;
@@ -377,7 +160,7 @@
 
 
 /***/ },
-/* 7 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {/**
@@ -17465,10 +17248,26 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 8 */
+/* 4 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17482,621 +17281,6 @@
 	};
 	exports.playerIconBgColor = '2c313c';
 
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.inputs = {
-	    playerInput: {
-	        x: 502,
-	        y: 439
-	    },
-	    playerIcon: {
-	        x: 502,
-	        y: 469
-	    },
-	    priceInput: {
-	        x: 614,
-	        y: 677
-	    },
-	    searchButton: {
-	        x: 609,
-	        y: 744
-	    },
-	    popupCenterAndLeftButtons: {
-	        x: 815,
-	        y: 573,
-	        color: '545b64'
-	    },
-	    clearPlayerInput: {
-	        x: 642,
-	        y: 439
-	    },
-	    increaseBuyNowMinPrice: {
-	        x: 683,
-	        y: 638
-	    },
-	    firstPlayerCard: {
-	        x: 426,
-	        y: 638
-	    },
-	    buyNowButton: {
-	        x: 1105,
-	        y: 467
-	    },
-	    backButton: {
-	        x: 520,
-	        y: 550,
-	        color: '08090c'
-	    }
-	};
-
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var fs = __webpack_require__(11);
-	var csvparser = __webpack_require__(12);
-	function getPlayers() {
-	    return new Promise(function (resolve, reject) {
-	        var playersString = fs.readFileSync('players.csv').toString();
-	        csvparser(playersString, { columns: true }, function (err, data) {
-	            if (!err) {
-	                resolve(data);
-	            }
-	            else {
-	                console.log(err);
-	                reject();
-	            }
-	        });
-	    });
-	}
-	exports.getPlayers = getPlayers;
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	module.exports = require("fs");
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Generated by CoffeeScript 1.10.0
-	var Parser, StringDecoder, stream, util;
-
-	stream = __webpack_require__(13);
-
-	util = __webpack_require__(14);
-
-	StringDecoder = __webpack_require__(15).StringDecoder;
-
-	module.exports = function() {
-	  var callback, called, chunks, data, options, parser;
-	  if (arguments.length === 3) {
-	    data = arguments[0];
-	    options = arguments[1];
-	    callback = arguments[2];
-	    if (typeof callback !== 'function') {
-	      throw Error("Invalid callback argument: " + (JSON.stringify(callback)));
-	    }
-	    if (!(typeof data === 'string' || Buffer.isBuffer(arguments[0]))) {
-	      return callback(Error("Invalid data argument: " + (JSON.stringify(data))));
-	    }
-	  } else if (arguments.length === 2) {
-	    if (typeof arguments[0] === 'string' || Buffer.isBuffer(arguments[0])) {
-	      data = arguments[0];
-	    } else {
-	      options = arguments[0];
-	    }
-	    if (typeof arguments[1] === 'function') {
-	      callback = arguments[1];
-	    } else {
-	      options = arguments[1];
-	    }
-	  } else if (arguments.length === 1) {
-	    if (typeof arguments[0] === 'function') {
-	      callback = arguments[0];
-	    } else {
-	      options = arguments[0];
-	    }
-	  }
-	  if (options == null) {
-	    options = {};
-	  }
-	  parser = new Parser(options);
-	  if (data != null) {
-	    process.nextTick(function() {
-	      parser.write(data);
-	      return parser.end();
-	    });
-	  }
-	  if (callback) {
-	    called = false;
-	    chunks = options.objname ? {} : [];
-	    parser.on('readable', function() {
-	      var chunk, results;
-	      results = [];
-	      while (chunk = parser.read()) {
-	        if (options.objname) {
-	          results.push(chunks[chunk[0]] = chunk[1]);
-	        } else {
-	          results.push(chunks.push(chunk));
-	        }
-	      }
-	      return results;
-	    });
-	    parser.on('error', function(err) {
-	      called = true;
-	      return callback(err);
-	    });
-	    parser.on('end', function() {
-	      if (!called) {
-	        return callback(null, chunks);
-	      }
-	    });
-	  }
-	  return parser;
-	};
-
-	Parser = function(options) {
-	  var base, base1, base10, base11, base12, base13, base14, base15, base16, base2, base3, base4, base5, base6, base7, base8, base9, k, v;
-	  if (options == null) {
-	    options = {};
-	  }
-	  options.objectMode = true;
-	  this.options = {};
-	  for (k in options) {
-	    v = options[k];
-	    this.options[k] = v;
-	  }
-	  stream.Transform.call(this, this.options);
-	  if ((base = this.options).rowDelimiter == null) {
-	    base.rowDelimiter = null;
-	  }
-	  if (typeof this.options.rowDelimiter === 'string') {
-	    this.options.rowDelimiter = [this.options.rowDelimiter];
-	  }
-	  if ((base1 = this.options).delimiter == null) {
-	    base1.delimiter = ',';
-	  }
-	  if ((base2 = this.options).quote == null) {
-	    base2.quote = '"';
-	  }
-	  if ((base3 = this.options).escape == null) {
-	    base3.escape = '"';
-	  }
-	  if ((base4 = this.options).columns == null) {
-	    base4.columns = null;
-	  }
-	  if ((base5 = this.options).comment == null) {
-	    base5.comment = '';
-	  }
-	  if ((base6 = this.options).objname == null) {
-	    base6.objname = false;
-	  }
-	  if ((base7 = this.options).trim == null) {
-	    base7.trim = false;
-	  }
-	  if ((base8 = this.options).ltrim == null) {
-	    base8.ltrim = false;
-	  }
-	  if ((base9 = this.options).rtrim == null) {
-	    base9.rtrim = false;
-	  }
-	  if ((base10 = this.options).auto_parse == null) {
-	    base10.auto_parse = false;
-	  }
-	  if ((base11 = this.options).auto_parse_date == null) {
-	    base11.auto_parse_date = false;
-	  }
-	  if ((base12 = this.options).relax == null) {
-	    base12.relax = false;
-	  }
-	  if ((base13 = this.options).relax_column_count == null) {
-	    base13.relax_column_count = false;
-	  }
-	  if ((base14 = this.options).skip_empty_lines == null) {
-	    base14.skip_empty_lines = false;
-	  }
-	  if ((base15 = this.options).max_limit_on_data_read == null) {
-	    base15.max_limit_on_data_read = 128000;
-	  }
-	  if ((base16 = this.options).skip_lines_with_empty_values == null) {
-	    base16.skip_lines_with_empty_values = false;
-	  }
-	  this.lines = 0;
-	  this.count = 0;
-	  this.skipped_line_count = 0;
-	  this.empty_line_count = 0;
-	  this.is_int = /^(\-|\+)?([1-9]+[0-9]*)$/;
-	  this.is_float = function(value) {
-	    return (value - parseFloat(value) + 1) >= 0;
-	  };
-	  this._ = {};
-	  this._.decoder = new StringDecoder();
-	  this._.quoting = false;
-	  this._.commenting = false;
-	  this._.field = null;
-	  this._.nextChar = null;
-	  this._.closingQuote = 0;
-	  this._.line = [];
-	  this._.chunks = [];
-	  this._.rawBuf = '';
-	  this._.buf = '';
-	  if (this.options.rowDelimiter) {
-	    this._.rowDelimiterLength = Math.max.apply(Math, this.options.rowDelimiter.map(function(v) {
-	      return v.length;
-	    }));
-	  }
-	  return this;
-	};
-
-	util.inherits(Parser, stream.Transform);
-
-	module.exports.Parser = Parser;
-
-	Parser.prototype._transform = function(chunk, encoding, callback) {
-	  var err, error;
-	  if (chunk instanceof Buffer) {
-	    chunk = this._.decoder.write(chunk);
-	  }
-	  try {
-	    this.__write(chunk, false);
-	    return callback();
-	  } catch (error) {
-	    err = error;
-	    return this.emit('error', err);
-	  }
-	};
-
-	Parser.prototype._flush = function(callback) {
-	  var err, error;
-	  try {
-	    this.__write(this._.decoder.end(), true);
-	    if (this._.quoting) {
-	      this.emit('error', new Error("Quoted field not terminated at line " + (this.lines + 1)));
-	      return;
-	    }
-	    if (this._.line.length > 0) {
-	      this.__push(this._.line);
-	    }
-	    return callback();
-	  } catch (error) {
-	    err = error;
-	    return this.emit('error', err);
-	  }
-	};
-
-	Parser.prototype.__push = function(line) {
-	  var field, i, j, len, lineAsColumns, rawBuf, row;
-	  if (this.options.skip_lines_with_empty_values && line.join('').trim() === '') {
-	    return;
-	  }
-	  row = null;
-	  if (this.options.columns === true) {
-	    this.options.columns = line;
-	    rawBuf = '';
-	    return;
-	  } else if (typeof this.options.columns === 'function') {
-	    this.options.columns = this.options.columns(line);
-	    rawBuf = '';
-	    return;
-	  }
-	  if (!this._.line_length && line.length > 0) {
-	    this._.line_length = this.options.columns ? this.options.columns.length : line.length;
-	  }
-	  if (line.length === 1 && line[0] === '') {
-	    this.empty_line_count++;
-	  } else if (line.length !== this._.line_length) {
-	    if (this.options.relax_column_count) {
-	      this.skipped_line_count++;
-	    } else if (this.options.columns != null) {
-	      throw Error("Number of columns on line " + this.lines + " does not match header");
-	    } else {
-	      throw Error("Number of columns is inconsistent on line " + this.lines);
-	    }
-	  } else {
-	    this.count++;
-	  }
-	  if (this.options.columns != null) {
-	    lineAsColumns = {};
-	    for (i = j = 0, len = line.length; j < len; i = ++j) {
-	      field = line[i];
-	      if (this.options.columns[i] === false) {
-	        continue;
-	      }
-	      lineAsColumns[this.options.columns[i]] = field;
-	    }
-	    if (this.options.objname) {
-	      row = [lineAsColumns[this.options.objname], lineAsColumns];
-	    } else {
-	      row = lineAsColumns;
-	    }
-	  } else {
-	    row = line;
-	  }
-	  if (this.count < this.options.from) {
-	    return;
-	  }
-	  if (this.count > this.options.to) {
-	    return;
-	  }
-	  if (this.options.raw) {
-	    this.push({
-	      raw: this._.rawBuf,
-	      row: row
-	    });
-	    return this._.rawBuf = '';
-	  } else {
-	    return this.push(row);
-	  }
-	};
-
-	Parser.prototype.__write = function(chars, end) {
-	  var areNextCharsDelimiter, areNextCharsRowDelimiters, auto_parse, char, escapeIsQuote, i, isDelimiter, isEscape, isNextCharAComment, isQuote, isRowDelimiter, isRowDelimiterLength, is_float, is_int, l, ltrim, nextCharPos, ref, ref1, ref2, ref3, ref4, remainingBuffer, results, rowDelimiter, rtrim, wasCommenting;
-	  is_int = (function(_this) {
-	    return function(value) {
-	      if (typeof _this.is_int === 'function') {
-	        return _this.is_int(value);
-	      } else {
-	        return _this.is_int.test(value);
-	      }
-	    };
-	  })(this);
-	  is_float = (function(_this) {
-	    return function(value) {
-	      if (typeof _this.is_float === 'function') {
-	        return _this.is_float(value);
-	      } else {
-	        return _this.is_float.test(value);
-	      }
-	    };
-	  })(this);
-	  auto_parse = (function(_this) {
-	    return function(value) {
-	      var m;
-	      if (!_this.options.auto_parse) {
-	        return value;
-	      }
-	      if (is_int(value)) {
-	        value = parseInt(value);
-	      } else if (is_float(value)) {
-	        value = parseFloat(value);
-	      } else if (_this.options.auto_parse_date) {
-	        m = Date.parse(value);
-	        if (!isNaN(m)) {
-	          value = new Date(m);
-	        }
-	      }
-	      return value;
-	    };
-	  })(this);
-	  ltrim = this.options.trim || this.options.ltrim;
-	  rtrim = this.options.trim || this.options.rtrim;
-	  chars = this._.buf + chars;
-	  l = chars.length;
-	  i = 0;
-	  if (this.lines === 0 && 0xFEFF === chars.charCodeAt(0)) {
-	    i++;
-	  }
-	  while (i < l) {
-	    if (!end) {
-	      remainingBuffer = chars.substr(i, l - i);
-	      if ((!this.options.rowDelimiter && i + 3 > l) || (!this._.commenting && l - i < this.options.comment.length && this.options.comment.substr(0, l - i) === remainingBuffer) || (this.options.rowDelimiter && l - i < this._.rowDelimiterLength && this.options.rowDelimiter.some(function(rd) {
-	        return rd.substr(0, l - i) === remainingBuffer;
-	      })) || (this.options.rowDelimiter && this._.quoting && l - i < (this.options.quote.length + this._.rowDelimiterLength) && this.options.rowDelimiter.some((function(_this) {
-	        return function(rd) {
-	          return (_this.options.quote + rd).substr(0, l - i) === remainingBuffer;
-	        };
-	      })(this))) || (l - i <= this.options.delimiter.length && this.options.delimiter.substr(0, l - i) === remainingBuffer) || (l - i <= this.options.escape.length && this.options.escape.substr(0, l - i) === remainingBuffer)) {
-	        break;
-	      }
-	    }
-	    char = this._.nextChar ? this._.nextChar : chars.charAt(i);
-	    this._.nextChar = l > i + 1 ? chars.charAt(i + 1) : '';
-	    if (this.options.raw) {
-	      this._.rawBuf += char;
-	    }
-	    if (this.options.rowDelimiter == null) {
-	      nextCharPos = i;
-	      rowDelimiter = null;
-	      if (!this._.quoting && (char === '\n' || char === '\r')) {
-	        rowDelimiter = char;
-	        nextCharPos += 1;
-	      } else if (!(!this._.quoting && char === this.options.quote) && (this._.nextChar === '\n' || this._.nextChar === '\r')) {
-	        rowDelimiter = this._.nextChar;
-	        nextCharPos += 2;
-	        if (this.raw) {
-	          rawBuf += this._.nextChar;
-	        }
-	      }
-	      if (rowDelimiter) {
-	        if (rowDelimiter === '\r' && chars.charAt(nextCharPos) === '\n') {
-	          rowDelimiter += '\n';
-	        }
-	        this.options.rowDelimiter = [rowDelimiter];
-	        this._.rowDelimiterLength = rowDelimiter.length;
-	      }
-	    }
-	    if (!this._.commenting && char === this.options.escape) {
-	      escapeIsQuote = this.options.escape === this.options.quote;
-	      isEscape = this._.nextChar === this.options.escape;
-	      isQuote = this._.nextChar === this.options.quote;
-	      if (!(escapeIsQuote && (this._.field == null) && !this._.quoting) && (isEscape || isQuote)) {
-	        i++;
-	        char = this._.nextChar;
-	        this._.nextChar = chars.charAt(i + 1);
-	        if (this._.field == null) {
-	          this._.field = '';
-	        }
-	        this._.field += char;
-	        if (this.options.raw) {
-	          this._.rawBuf += char;
-	        }
-	        i++;
-	        continue;
-	      }
-	    }
-	    if (!this._.commenting && char === this.options.quote) {
-	      if (this._.quoting) {
-	        areNextCharsRowDelimiters = this.options.rowDelimiter && this.options.rowDelimiter.some(function(rd) {
-	          return chars.substr(i + 1, rd.length) === rd;
-	        });
-	        areNextCharsDelimiter = chars.substr(i + 1, this.options.delimiter.length) === this.options.delimiter;
-	        isNextCharAComment = this._.nextChar === this.options.comment;
-	        if (this._.nextChar && !areNextCharsRowDelimiters && !areNextCharsDelimiter && !isNextCharAComment) {
-	          if (this.options.relax) {
-	            this._.quoting = false;
-	            this._.field = "" + this.options.quote + this._.field;
-	          } else {
-	            throw Error("Invalid closing quote at line " + (this.lines + 1) + "; found " + (JSON.stringify(this._.nextChar)) + " instead of delimiter " + (JSON.stringify(this.options.delimiter)));
-	          }
-	        } else {
-	          this._.quoting = false;
-	          this._.closingQuote = this.options.quote.length;
-	          i++;
-	          if (end && i === l) {
-	            this._.line.push(auto_parse(this._.field || ''));
-	            this._.field = null;
-	          }
-	          continue;
-	        }
-	      } else if (!this._.field) {
-	        this._.quoting = true;
-	        i++;
-	        continue;
-	      } else if ((this._.field != null) && !this.options.relax) {
-	        throw Error("Invalid opening quote at line " + (this.lines + 1));
-	      }
-	    }
-	    isRowDelimiter = this.options.rowDelimiter && this.options.rowDelimiter.some(function(rd) {
-	      return chars.substr(i, rd.length) === rd;
-	    });
-	    if (isRowDelimiter) {
-	      isRowDelimiterLength = this.options.rowDelimiter.filter(function(rd) {
-	        return chars.substr(i, rd.length) === rd;
-	      })[0].length;
-	    }
-	    if (isRowDelimiter || (end && i === l - 1)) {
-	      this.lines++;
-	    }
-	    wasCommenting = false;
-	    if (!this._.commenting && !this._.quoting && this.options.comment && chars.substr(i, this.options.comment.length) === this.options.comment) {
-	      this._.commenting = true;
-	    } else if (this._.commenting && isRowDelimiter) {
-	      wasCommenting = true;
-	      this._.commenting = false;
-	    }
-	    isDelimiter = chars.substr(i, this.options.delimiter.length) === this.options.delimiter;
-	    if (!this._.commenting && !this._.quoting && (isDelimiter || isRowDelimiter)) {
-	      if (isRowDelimiter && this._.line.length === 0 && (this._.field == null)) {
-	        if (wasCommenting || this.options.skip_empty_lines) {
-	          i += isRowDelimiterLength;
-	          this._.nextChar = chars.charAt(i);
-	          continue;
-	        }
-	      }
-	      if (rtrim) {
-	        if (!this._.closingQuote) {
-	          this._.field = (ref = this._.field) != null ? ref.trimRight() : void 0;
-	        }
-	      }
-	      this._.line.push(auto_parse(this._.field || ''));
-	      this._.closingQuote = 0;
-	      this._.field = null;
-	      if (isDelimiter) {
-	        i += this.options.delimiter.length;
-	        this._.nextChar = chars.charAt(i);
-	        if (end && !this._.nextChar) {
-	          isRowDelimiter = true;
-	          this._.line.push('');
-	        }
-	      }
-	      if (isRowDelimiter) {
-	        this.__push(this._.line);
-	        this._.line = [];
-	        i += isRowDelimiterLength;
-	        this._.nextChar = chars.charAt(i);
-	        continue;
-	      }
-	    } else if (!this._.commenting && !this._.quoting && (char === ' ' || char === '\t')) {
-	      if (this._.field == null) {
-	        this._.field = '';
-	      }
-	      if (!(ltrim && !this._.field)) {
-	        this._.field += char;
-	      }
-	      i++;
-	    } else if (!this._.commenting) {
-	      if (this._.field == null) {
-	        this._.field = '';
-	      }
-	      this._.field += char;
-	      i++;
-	    } else {
-	      i++;
-	    }
-	    if (!this._.commenting && ((ref1 = this._.field) != null ? ref1.length : void 0) > this.options.max_limit_on_data_read) {
-	      throw Error("Delimiter not found in the file " + (JSON.stringify(this.options.delimiter)));
-	    }
-	    if (!this._.commenting && ((ref2 = this._.line) != null ? ref2.length : void 0) > this.options.max_limit_on_data_read) {
-	      throw Error("Row delimiter not found in the file " + (JSON.stringify(this.options.rowDelimiter)));
-	    }
-	  }
-	  if (end) {
-	    if (this._.field != null) {
-	      if (rtrim) {
-	        if (!this._.closingQuote) {
-	          this._.field = (ref3 = this._.field) != null ? ref3.trimRight() : void 0;
-	        }
-	      }
-	      this._.line.push(auto_parse(this._.field || ''));
-	      this._.field = null;
-	    }
-	    if (((ref4 = this._.field) != null ? ref4.length : void 0) > this.options.max_limit_on_data_read) {
-	      throw Error("Delimiter not found in the file " + (JSON.stringify(this.options.delimiter)));
-	    }
-	    if (l === 0) {
-	      this.lines++;
-	    }
-	    if (this._.line.length > this.options.max_limit_on_data_read) {
-	      throw Error("Row delimiter not found in the file " + (JSON.stringify(this.options.rowDelimiter)));
-	    }
-	  }
-	  this._.buf = '';
-	  results = [];
-	  while (i < l) {
-	    this._.buf += chars.charAt(i);
-	    results.push(i++);
-	  }
-	  return results;
-	};
-
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	module.exports = require("stream");
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-	module.exports = require("util");
-
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	module.exports = require("string_decoder");
 
 /***/ }
 /******/ ]);
