@@ -30,6 +30,7 @@
     "@types/electron": "^1.4.31",
     "@types/lodash": "^4.14.52",
     "@types/node": "^7.0.4",
+    "@types/node-notifier": "0.0.28",
     "@types/react": "^15.0.6",
     "@types/react-dom": "^0.14.22",
     "cross-env": "^3.1.3",

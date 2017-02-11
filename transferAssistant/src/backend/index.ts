@@ -3,7 +3,7 @@ import { registerShortcut, unregisterShortcut, unregisterAllShortcuts } from '..
 import { shortcutNames } from '../constants';
 
 
-async function onAppStart() {
+function onAppStart() {
     let mainWindow = new BrowserWindow({
         width: 1200,
         height: 800,

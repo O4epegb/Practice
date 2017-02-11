@@ -20,6 +20,16 @@ export const inputs = {
         y: 573,
         color: '545b64'
     },
+    popupWhiteLine: {
+        x: 713,
+        y: 574,
+        color: 'dededd'
+    },
+    playersListWhiteLine: {
+        x: 356,
+        y: 754,
+        color: 'e0e1dd'
+    },
     clearPlayerInput: {
         x: 642,
         y: 439
@@ -40,5 +50,10 @@ export const inputs = {
         x: 520,
         y: 550,
         color: '08090c'
+    },
+    searchNotFound: {
+        x: 653,
+        y: 744,
+        color: '5c4f07'
     }
 };
