@@ -26,9 +26,9 @@ export const inputs = {
         color: 'dededd'
     },
     playersListWhiteLine: {
-        x: 356,
-        y: 754,
-        color: 'e0e1dd'
+        x: 1301,
+        y: 765,
+        color: 'e3e4de'
     },
     clearPlayerInput: {
         x: 642,

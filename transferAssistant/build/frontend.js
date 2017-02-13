@@ -44,7 +44,6 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
 	var __extends = (this && this.__extends) || (function () {
 	    var extendStatics = Object.setPrototypeOf ||
 	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -66,10 +65,10 @@
 	var React = __webpack_require__(6);
 	var ReactDom = __webpack_require__(36);
 	var electron_1 = __webpack_require__(1);
-	var utils = __webpack_require__(208);
+	var utils = __webpack_require__(182);
 	var constants_1 = __webpack_require__(5);
-	var inputPositions_1 = __webpack_require__(211);
-	var players_1 = __webpack_require__(212);
+	var inputPositions_1 = __webpack_require__(185);
+	var players_1 = __webpack_require__(186);
 	var App = (function (_super) {
 	    __extends(App, _super);
 	    function App() {
@@ -77,7 +76,8 @@
 	        _this.filterFunction = function (player) {
 	            // return true;
 	            var price = Number(player.price);
-	            return price < 31000 && price > 4000;
+	            // return price < 11000 && price > 5000;
+	            return price < 100000 && price > 20000;
 	        };
 	        _this.changePlayerName = function (event, changedPlayer) {
 	            changedPlayer.name = event.target.value;
@@ -85,6 +85,10 @@
 	        };
 	        _this.changePlayerPrice = function (event, changedPlayer) {
 	            changedPlayer.price = event.target.value;
+	            _this.setState({ players: _this.state.players });
+	        };
+	        _this.changePlayerAlias = function (event, changedPlayer) {
+	            changedPlayer.alias = event.target.value;
 	            _this.setState({ players: _this.state.players });
 	        };
 	        _this.changeNewPlayerName = function (event) {
@@ -106,7 +110,12 @@
 	            var _a = _this.state.newPlayer, name = _a.name, alias = _a.alias, price = _a.price;
 	            if (name && alias && price) {
 	                _this.setState({
-	                    players: _this.state.players.concat([_this.state.newPlayer])
+	                    players: _this.state.players.concat([_this.state.newPlayer]),
+	                    newPlayer: {
+	                        name: '',
+	                        price: '',
+	                        alias: ''
+	                    }
 	                });
 	            }
 	        };
@@ -293,21 +302,22 @@
 	            return (React.createElement("div", null, "No players loaded."));
 	        }
 	        return (React.createElement("div", null,
-	            React.createElement("button", { type: "button", onClick: this.toggleAutoSearch },
-	                "AutoSearch ",
-	                this.state.shouldAutoSearch.toString()),
 	            React.createElement("button", { type: "button", onClick: this.savePlayers }, "Save"),
 	            React.createElement("button", { type: "button", onClick: this.reloadPlayersFromDb }, "Reload from DB"),
 	            React.createElement("button", { type: "button", onClick: this.randomizePlayers }, "Randomize"),
-	            React.createElement("div", null,
-	                React.createElement("input", { type: "text", value: this.state.newPlayer.name, onChange: function (event) { return _this.changeNewPlayerName(event); } }),
-	                React.createElement("input", { type: "text", value: this.state.newPlayer.price, onChange: function (event) { return _this.changeNewPlayerPrice(event); } }),
-	                React.createElement("input", { type: "text", value: this.state.newPlayer.alias, onChange: function (event) { return _this.changeNewPlayerAlias(event); } }),
+	            React.createElement("button", { type: "button", onClick: this.toggleAutoSearch },
+	                "AutoSearch ",
+	                this.state.shouldAutoSearch.toString()),
+	            React.createElement("div", { style: { margin: '20px 0' } },
+	                React.createElement("input", { type: "text", placeholder: "name", value: this.state.newPlayer.name, onChange: function (event) { return _this.changeNewPlayerName(event); } }),
+	                React.createElement("input", { type: "text", placeholder: "price", value: this.state.newPlayer.price, onChange: function (event) { return _this.changeNewPlayerPrice(event); } }),
+	                React.createElement("input", { type: "text", placeholder: "alias", value: this.state.newPlayer.alias, onChange: function (event) { return _this.changeNewPlayerAlias(event); } }),
 	                React.createElement("button", { type: "button", onClick: this.addPlayer }, "Add player")),
 	            this.state.players.map(function (player, index) {
 	                return (React.createElement("div", { key: player.name, style: { background: "" + (index === _this.state.currentPlayerIndex ? 'tomato' : 'white') } },
 	                    React.createElement("input", { type: "text", value: player.name, onChange: function (event) { return _this.changePlayerName(event, player); } }),
-	                    React.createElement("input", { type: "text", value: player.price, onChange: function (event) { return _this.changePlayerPrice(event, player); } }),
+	                    React.createElement("input", { type: "text", value: player.price, style: { width: '80px' }, onChange: function (event) { return _this.changePlayerPrice(event, player); } }),
+	                    React.createElement("input", { type: "text", value: player.alias, style: { width: '40px' }, onChange: function (event) { return _this.changePlayerAlias(event, player); } }),
 	                    React.createElement("button", { type: "button", onClick: function () { return _this.changeActiveIndex(index); } }, "Set active")));
 	            })));
 	    };
@@ -350,7 +360,6 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	"use strict";
 	exports.shortcutNames = {
 	    one: 'CommandOrControl+Shift+Alt+Q',
 	    two: 'CommandOrControl+Shift+Alt+W',
@@ -21534,47 +21543,10 @@
 	module.exports = ReactDOMInvalidARIAHook;
 
 /***/ },
-/* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */
-/***/ function(module, exports) {
-
-	module.exports = require("fs");
-
-/***/ },
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */
-/***/ function(module, exports) {
-
-	module.exports = require("util");
-
-/***/ },
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-	var robot = __webpack_require__(209);
+	var robot = __webpack_require__(183);
 	function notify(title, body) {
 	    new Notification(title, { body: body });
 	    log(title);
@@ -21651,10 +21623,10 @@
 
 
 /***/ },
-/* 209 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var robotjs = __webpack_require__(210);
+	var robotjs = __webpack_require__(184);
 
 	module.exports = robotjs;
 
@@ -21693,17 +21665,16 @@
 
 
 /***/ },
-/* 210 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {try {global.process.dlopen(module, "E:\\Projects\\Practice\\transferAssistant\\node_modules\\robotjs\\build\\Release\\robotjs.node"); } catch(e) {throw new Error('Cannot open ' + "E:\\Projects\\Practice\\transferAssistant\\node_modules\\robotjs\\build\\Release\\robotjs.node" + ': ' + e);}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 211 */
+/* 185 */
 /***/ function(module, exports) {
 
-	"use strict";
 	exports.inputs = {
 	    playerInput: {
 	        x: 502,
@@ -21732,9 +21703,9 @@
 	        color: 'dededd'
 	    },
 	    playersListWhiteLine: {
-	        x: 356,
-	        y: 754,
-	        color: 'e0e1dd'
+	        x: 1301,
+	        y: 765,
+	        color: 'e3e4de'
 	    },
 	    clearPlayerInput: {
 	        x: 642,
@@ -21766,13 +21737,12 @@
 
 
 /***/ },
-/* 212 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-	var fs = __webpack_require__(190);
-	var csvparser = __webpack_require__(213);
-	var csvstringify = __webpack_require__(216);
+	var fs = __webpack_require__(187);
+	var csvparser = __webpack_require__(188);
+	var csvstringify = __webpack_require__(192);
 	function getPlayers() {
 	    return new Promise(function (resolve, reject) {
 	        var playersString = fs.readFileSync('players.csv').toString();
@@ -21807,17 +21777,23 @@
 
 
 /***/ },
-/* 213 */
+/* 187 */
+/***/ function(module, exports) {
+
+	module.exports = require("fs");
+
+/***/ },
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Generated by CoffeeScript 1.10.0
 	var Parser, StringDecoder, stream, util;
 
-	stream = __webpack_require__(214);
+	stream = __webpack_require__(189);
 
-	util = __webpack_require__(198);
+	util = __webpack_require__(190);
 
-	StringDecoder = __webpack_require__(215).StringDecoder;
+	StringDecoder = __webpack_require__(191).StringDecoder;
 
 	module.exports = function() {
 	  var callback, called, chunks, data, options, parser;
@@ -22323,29 +22299,35 @@
 
 
 /***/ },
-/* 214 */
+/* 189 */
 /***/ function(module, exports) {
 
 	module.exports = require("stream");
 
 /***/ },
-/* 215 */
+/* 190 */
+/***/ function(module, exports) {
+
+	module.exports = require("util");
+
+/***/ },
+/* 191 */
 /***/ function(module, exports) {
 
 	module.exports = require("string_decoder");
 
 /***/ },
-/* 216 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Generated by CoffeeScript 1.10.0
 	var Stringifier, get, stream, util;
 
-	stream = __webpack_require__(214);
+	stream = __webpack_require__(189);
 
-	util = __webpack_require__(198);
+	util = __webpack_require__(190);
 
-	get = __webpack_require__(217);
+	get = __webpack_require__(193);
 
 	module.exports = function() {
 	  var callback, chunks, data, options, stringifier;
@@ -22650,7 +22632,7 @@
 
 
 /***/ },
-/* 217 */
+/* 193 */
 /***/ function(module, exports) {
 
 	/**

@@ -81,7 +81,8 @@ class App extends React.Component<{}, State> {
     filterFunction = (player: Player) => {
         // return true;
         const price = Number(player.price);
-        return price < 31000 && price > 4000;
+        // return price < 11000 && price > 5000;
+        return price < 100000 && price > 20000;
     }
 
     changePlayerName = (event: React.ChangeEvent<HTMLInputElement>, changedPlayer: Player) => {
@@ -91,6 +92,11 @@ class App extends React.Component<{}, State> {
 
     changePlayerPrice = (event: React.ChangeEvent<HTMLInputElement>, changedPlayer: Player) => {
         changedPlayer.price = event.target.value;
+        this.setState({ players: this.state.players });
+    }
+
+    changePlayerAlias = (event: React.ChangeEvent<HTMLInputElement>, changedPlayer: Player) => {
+        changedPlayer.alias = event.target.value;
         this.setState({ players: this.state.players });
     }
 
@@ -125,7 +131,12 @@ class App extends React.Component<{}, State> {
         const {name, alias, price} = this.state.newPlayer;
         if (name && alias && price) {
             this.setState({
-                players: [...this.state.players, this.state.newPlayer]
+                players: [...this.state.players, this.state.newPlayer],
+                newPlayer: {
+                    name: '',
+                    price: '',
+                    alias: ''
+                }
             });
         }
     }
@@ -274,9 +285,6 @@ class App extends React.Component<{}, State> {
         }
         return (
             <div>
-                <button type="button" onClick={this.toggleAutoSearch}>
-                    AutoSearch {this.state.shouldAutoSearch.toString()}
-                </button>
                 <button type="button" onClick={this.savePlayers}>
                     Save
                 </button>
@@ -286,10 +294,22 @@ class App extends React.Component<{}, State> {
                 <button type="button" onClick={this.randomizePlayers}>
                     Randomize
                 </button>
-                <div>
-                    <input type="text" value={this.state.newPlayer.name} onChange={(event) => this.changeNewPlayerName(event)} />
-                    <input type="text" value={this.state.newPlayer.price} onChange={(event) => this.changeNewPlayerPrice(event)} />
-                    <input type="text" value={this.state.newPlayer.alias} onChange={(event) => this.changeNewPlayerAlias(event)} />
+                <button type="button" onClick={this.toggleAutoSearch}>
+                    AutoSearch {this.state.shouldAutoSearch.toString()}
+                </button>
+                <div style={{ margin: '20px 0' }}>
+                    <input type="text"
+                        placeholder="name"
+                        value={this.state.newPlayer.name}
+                        onChange={(event) => this.changeNewPlayerName(event)} />
+                    <input type="text"
+                        placeholder="price"
+                        value={this.state.newPlayer.price}
+                        onChange={(event) => this.changeNewPlayerPrice(event)} />
+                    <input type="text"
+                        placeholder="alias"
+                        value={this.state.newPlayer.alias}
+                        onChange={(event) => this.changeNewPlayerAlias(event)} />
                     <button type="button" onClick={this.addPlayer}>
                         Add player
                     </button>
@@ -298,8 +318,17 @@ class App extends React.Component<{}, State> {
                     return (
                         <div key={player.name}
                             style={{ background: `${index === this.state.currentPlayerIndex ? 'tomato' : 'white'}` }}>
-                            <input type="text" value={player.name} onChange={(event) => this.changePlayerName(event, player)} />
-                            <input type="text" value={player.price} onChange={(event) => this.changePlayerPrice(event, player)} />
+                            <input type="text"
+                                value={player.name}
+                                onChange={(event) => this.changePlayerName(event, player)} />
+                            <input type="text"
+                                value={player.price}
+                                style={{ width: '80px' }}
+                                onChange={(event) => this.changePlayerPrice(event, player)} />
+                            <input type="text"
+                                value={player.alias}
+                                style={{ width: '40px' }}
+                                onChange={(event) => this.changePlayerAlias(event, player)} />
                             <button type="button" onClick={() => this.changeActiveIndex(index)}>
                                 Set active
                             </button>

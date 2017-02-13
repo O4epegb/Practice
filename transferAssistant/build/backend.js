@@ -44,7 +44,6 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
 	var electron_1 = __webpack_require__(1);
 	var shortcut_1 = __webpack_require__(2);
 	var constants_1 = __webpack_require__(5);
@@ -83,7 +82,6 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
 	var electron_1 = __webpack_require__(1);
 	var lodash_1 = __webpack_require__(3);
 	function registerShortcut(shortcutName, cb) {
@@ -17229,7 +17227,6 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	"use strict";
 	exports.shortcutNames = {
 	    one: 'CommandOrControl+Shift+Alt+Q',
 	    two: 'CommandOrControl+Shift+Alt+W',
