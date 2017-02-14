@@ -19,6 +19,8 @@ interface State {
     newPlayer?: Player;
     pricePercent?: number;
     shouldAutoSearch?: boolean;
+    priceFrom?: number;
+    priceTo?: number;
 }
 
 class App extends React.Component<{}, State> {
@@ -36,7 +38,9 @@ class App extends React.Component<{}, State> {
                 alias: ''
             },
             pricePercent: 0.80,
-            shouldAutoSearch: false
+            shouldAutoSearch: false,
+            priceFrom: 4000,
+            priceTo: 11000,
         };
     }
 
@@ -79,10 +83,8 @@ class App extends React.Component<{}, State> {
     }
 
     filterFunction = (player: Player) => {
-        // return true;
         const price = Number(player.price);
-        // return price < 11000 && price > 5000;
-        return price < 100000 && price > 20000;
+        return price < this.state.priceTo + 1 && price > this.state.priceFrom - 1;
     }
 
     changePlayerName = (event: React.ChangeEvent<HTMLInputElement>, changedPlayer: Player) => {
@@ -170,6 +172,20 @@ class App extends React.Component<{}, State> {
 
     changeActiveIndex = (index: number) => {
         this.setState({ currentPlayerIndex: index });
+    }
+
+    changeFilterFrom = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newPriceFrom = Number(event.target.value);
+        this.setState({ priceFrom: newPriceFrom }, () => {
+            this.reloadPlayersFromDb();
+        });
+    }
+
+    changeFilterTo = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newPriceTo = Number(event.target.value);
+        this.setState({ priceTo: newPriceTo }, () => {
+            this.reloadPlayersFromDb();
+        });
     }
 
     toggleAutoSearch = () => {
@@ -276,13 +292,6 @@ class App extends React.Component<{}, State> {
     }
 
     render() {
-        if (this.state.players.length === 0) {
-            return (
-                <div>
-                    No players loaded.
-                </div>
-            );
-        }
         return (
             <div>
                 <button type="button" onClick={this.savePlayers}>
@@ -314,27 +323,43 @@ class App extends React.Component<{}, State> {
                         Add player
                     </button>
                 </div>
-                {this.state.players.map((player, index) => {
-                    return (
-                        <div key={player.name}
-                            style={{ background: `${index === this.state.currentPlayerIndex ? 'tomato' : 'white'}` }}>
-                            <input type="text"
-                                value={player.name}
-                                onChange={(event) => this.changePlayerName(event, player)} />
-                            <input type="text"
-                                value={player.price}
-                                style={{ width: '80px' }}
-                                onChange={(event) => this.changePlayerPrice(event, player)} />
-                            <input type="text"
-                                value={player.alias}
-                                style={{ width: '40px' }}
-                                onChange={(event) => this.changePlayerAlias(event, player)} />
-                            <button type="button" onClick={() => this.changeActiveIndex(index)}>
-                                Set active
-                            </button>
-                        </div>
-                    );
-                })}
+                <div style={{ margin: '20px 0' }}>
+                    <input type="text"
+                        placeholder="price from"
+                        value={this.state.priceFrom}
+                        onChange={(event) => this.changeFilterFrom(event)} />
+                    <input type="text"
+                        placeholder="price to"
+                        value={this.state.priceTo}
+                        onChange={(event) => this.changeFilterTo(event)} />
+                </div>
+                {this.state.players.length > 0 ?
+                    this.state.players.map((player, index) => {
+                        return (
+                            <div key={player.name}
+                                style={{ background: `${index === this.state.currentPlayerIndex ? 'tomato' : 'white'}` }}>
+                                <input type="text"
+                                    value={player.name}
+                                    onChange={(event) => this.changePlayerName(event, player)} />
+                                <input type="text"
+                                    value={player.price}
+                                    style={{ width: '80px' }}
+                                    onChange={(event) => this.changePlayerPrice(event, player)} />
+                                <input type="text"
+                                    value={player.alias}
+                                    style={{ width: '40px' }}
+                                    onChange={(event) => this.changePlayerAlias(event, player)} />
+                                <button type="button" onClick={() => this.changeActiveIndex(index)}>
+                                    Set active
+                                </button>
+                            </div>
+                        );
+                    })
+                    :
+                    <div>
+                        No players loaded.
+                    </div>
+                }
             </div>
         );
     }

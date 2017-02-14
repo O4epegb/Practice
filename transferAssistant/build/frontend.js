@@ -74,10 +74,8 @@
 	    function App() {
 	        var _this = _super.call(this) || this;
 	        _this.filterFunction = function (player) {
-	            // return true;
 	            var price = Number(player.price);
-	            // return price < 11000 && price > 5000;
-	            return price < 100000 && price > 20000;
+	            return price < _this.state.priceTo + 1 && price > _this.state.priceFrom - 1;
 	        };
 	        _this.changePlayerName = function (event, changedPlayer) {
 	            changedPlayer.name = event.target.value;
@@ -145,6 +143,18 @@
 	        };
 	        _this.changeActiveIndex = function (index) {
 	            _this.setState({ currentPlayerIndex: index });
+	        };
+	        _this.changeFilterFrom = function (event) {
+	            var newPriceFrom = Number(event.target.value);
+	            _this.setState({ priceFrom: newPriceFrom }, function () {
+	                _this.reloadPlayersFromDb();
+	            });
+	        };
+	        _this.changeFilterTo = function (event) {
+	            var newPriceTo = Number(event.target.value);
+	            _this.setState({ priceTo: newPriceTo }, function () {
+	                _this.reloadPlayersFromDb();
+	            });
 	        };
 	        _this.toggleAutoSearch = function () {
 	            var autoSearchState = !_this.state.shouldAutoSearch;
@@ -255,7 +265,9 @@
 	                alias: ''
 	            },
 	            pricePercent: 0.80,
-	            shouldAutoSearch: false
+	            shouldAutoSearch: false,
+	            priceFrom: 4000,
+	            priceTo: 11000,
 	        };
 	        return _this;
 	    }
@@ -298,9 +310,6 @@
 	    };
 	    App.prototype.render = function () {
 	        var _this = this;
-	        if (this.state.players.length === 0) {
-	            return (React.createElement("div", null, "No players loaded."));
-	        }
 	        return (React.createElement("div", null,
 	            React.createElement("button", { type: "button", onClick: this.savePlayers }, "Save"),
 	            React.createElement("button", { type: "button", onClick: this.reloadPlayersFromDb }, "Reload from DB"),
@@ -313,13 +322,19 @@
 	                React.createElement("input", { type: "text", placeholder: "price", value: this.state.newPlayer.price, onChange: function (event) { return _this.changeNewPlayerPrice(event); } }),
 	                React.createElement("input", { type: "text", placeholder: "alias", value: this.state.newPlayer.alias, onChange: function (event) { return _this.changeNewPlayerAlias(event); } }),
 	                React.createElement("button", { type: "button", onClick: this.addPlayer }, "Add player")),
-	            this.state.players.map(function (player, index) {
-	                return (React.createElement("div", { key: player.name, style: { background: "" + (index === _this.state.currentPlayerIndex ? 'tomato' : 'white') } },
-	                    React.createElement("input", { type: "text", value: player.name, onChange: function (event) { return _this.changePlayerName(event, player); } }),
-	                    React.createElement("input", { type: "text", value: player.price, style: { width: '80px' }, onChange: function (event) { return _this.changePlayerPrice(event, player); } }),
-	                    React.createElement("input", { type: "text", value: player.alias, style: { width: '40px' }, onChange: function (event) { return _this.changePlayerAlias(event, player); } }),
-	                    React.createElement("button", { type: "button", onClick: function () { return _this.changeActiveIndex(index); } }, "Set active")));
-	            })));
+	            React.createElement("div", { style: { margin: '20px 0' } },
+	                React.createElement("input", { type: "text", placeholder: "price from", value: this.state.priceFrom, onChange: function (event) { return _this.changeFilterFrom(event); } }),
+	                React.createElement("input", { type: "text", placeholder: "price to", value: this.state.priceTo, onChange: function (event) { return _this.changeFilterTo(event); } })),
+	            this.state.players.length > 0 ?
+	                this.state.players.map(function (player, index) {
+	                    return (React.createElement("div", { key: player.name, style: { background: "" + (index === _this.state.currentPlayerIndex ? 'tomato' : 'white') } },
+	                        React.createElement("input", { type: "text", value: player.name, onChange: function (event) { return _this.changePlayerName(event, player); } }),
+	                        React.createElement("input", { type: "text", value: player.price, style: { width: '80px' }, onChange: function (event) { return _this.changePlayerPrice(event, player); } }),
+	                        React.createElement("input", { type: "text", value: player.alias, style: { width: '40px' }, onChange: function (event) { return _this.changePlayerAlias(event, player); } }),
+	                        React.createElement("button", { type: "button", onClick: function () { return _this.changeActiveIndex(index); } }, "Set active")));
+	                })
+	                :
+	                    React.createElement("div", null, "No players loaded.")));
 	    };
 	    return App;
 	}(React.Component));
