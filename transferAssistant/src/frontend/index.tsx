@@ -17,7 +17,8 @@ interface State {
     needToUpdateMinPrice?: boolean;
     currentPlayerIndex?: number;
     newPlayer?: Player;
-    pricePercent?: number;
+    priceMultiplier?: number;
+    priceDecrease?: number;
     shouldAutoSearch?: boolean;
     priceFrom?: number;
     priceTo?: number;
@@ -37,7 +38,8 @@ class App extends React.Component<{}, State> {
                 price: '',
                 alias: ''
             },
-            pricePercent: 0.80,
+            priceMultiplier: 0.8,
+            priceDecrease: 1500,
             shouldAutoSearch: false,
             priceFrom: 4000,
             priceTo: 11000,
@@ -188,6 +190,16 @@ class App extends React.Component<{}, State> {
         });
     }
 
+    changePriceMultiplier = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newMultiplier = Number(event.target.value);
+        this.setState({ priceMultiplier: newMultiplier });
+    }
+
+    changePriceDecrease = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newDecrease = Number(event.target.value);
+        this.setState({ priceDecrease: newDecrease });
+    }
+
     toggleAutoSearch = () => {
         const autoSearchState = !this.state.shouldAutoSearch;
         this.setState({ shouldAutoSearch: autoSearchState });
@@ -219,7 +231,10 @@ class App extends React.Component<{}, State> {
             needToUpdateMinPrice
         });
 
-        const price = String(Number(currentPlayer.price) * this.state.pricePercent);
+        const priceWithDiscount = (Number(currentPlayer.price) * this.state.priceMultiplier);
+        const discount = Number(currentPlayer.price) - priceWithDiscount;
+        const actualDiscount = discount < 1000 ? 1000 : discount > 5000 ? 5000 : discount;
+        const price = String(Number(currentPlayer.price) - actualDiscount);
 
         console.log(`Checking player "${currentPlayer.name}" with minPrice = ${price}`);
 
@@ -294,72 +309,93 @@ class App extends React.Component<{}, State> {
     render() {
         return (
             <div>
-                <button type="button" onClick={this.savePlayers}>
-                    Save
-                </button>
-                <button type="button" onClick={this.reloadPlayersFromDb}>
-                    Reload from DB
-                </button>
-                <button type="button" onClick={this.randomizePlayers}>
-                    Randomize
-                </button>
-                <button type="button" onClick={this.toggleAutoSearch}>
-                    AutoSearch {this.state.shouldAutoSearch.toString()}
-                </button>
-                <div style={{ margin: '20px 0' }}>
-                    <input type="text"
-                        placeholder="name"
-                        value={this.state.newPlayer.name}
-                        onChange={(event) => this.changeNewPlayerName(event)} />
-                    <input type="text"
-                        placeholder="price"
-                        value={this.state.newPlayer.price}
-                        onChange={(event) => this.changeNewPlayerPrice(event)} />
-                    <input type="text"
-                        placeholder="alias"
-                        value={this.state.newPlayer.alias}
-                        onChange={(event) => this.changeNewPlayerAlias(event)} />
-                    <button type="button" onClick={this.addPlayer}>
-                        Add player
+                <div style={{ position: 'fixed', background: '#fff' }}>
+                    <button type="button" onClick={this.savePlayers}>
+                        Save
                     </button>
-                </div>
-                <div style={{ margin: '20px 0' }}>
-                    <input type="text"
-                        placeholder="price from"
-                        value={this.state.priceFrom}
-                        onChange={(event) => this.changeFilterFrom(event)} />
-                    <input type="text"
-                        placeholder="price to"
-                        value={this.state.priceTo}
-                        onChange={(event) => this.changeFilterTo(event)} />
-                </div>
-                {this.state.players.length > 0 ?
-                    this.state.players.map((player, index) => {
-                        return (
-                            <div key={player.name}
-                                style={{ background: `${index === this.state.currentPlayerIndex ? 'tomato' : 'white'}` }}>
-                                <input type="text"
-                                    value={player.name}
-                                    onChange={(event) => this.changePlayerName(event, player)} />
-                                <input type="text"
-                                    value={player.price}
-                                    style={{ width: '80px' }}
-                                    onChange={(event) => this.changePlayerPrice(event, player)} />
-                                <input type="text"
-                                    value={player.alias}
-                                    style={{ width: '40px' }}
-                                    onChange={(event) => this.changePlayerAlias(event, player)} />
-                                <button type="button" onClick={() => this.changeActiveIndex(index)}>
-                                    Set active
-                                </button>
-                            </div>
-                        );
-                    })
-                    :
-                    <div>
-                        No players loaded.
+                    <button type="button" onClick={this.reloadPlayersFromDb}>
+                        Reload from DB
+                    </button>
+                    <button type="button" onClick={this.randomizePlayers}>
+                        Randomize
+                    </button>
+                    <button type="button" onClick={this.toggleAutoSearch}>
+                        AutoSearch {this.state.shouldAutoSearch.toString()}
+                    </button>
+                    <div style={{ margin: '20px 0' }}>
+                        <input type="text"
+                            placeholder="name"
+                            value={this.state.newPlayer.name}
+                            onChange={(event) => this.changeNewPlayerName(event)} />
+                        <input type="text"
+                            placeholder="price"
+                            value={this.state.newPlayer.price}
+                            onChange={(event) => this.changeNewPlayerPrice(event)} />
+                        <input type="text"
+                            placeholder="alias"
+                            value={this.state.newPlayer.alias}
+                            onChange={(event) => this.changeNewPlayerAlias(event)} />
+                        <button type="button" onClick={this.addPlayer}>
+                            Add player
+                        </button>
                     </div>
-                }
+                    <div style={{ margin: '20px 0' }}>
+                        <div>
+                            Price filter
+                        </div>
+                        <input type="text"
+                            placeholder="price from"
+                            value={this.state.priceFrom}
+                            onChange={(event) => this.changeFilterFrom(event)} />
+                        <input type="text"
+                            placeholder="price to"
+                            value={this.state.priceTo}
+                            onChange={(event) => this.changeFilterTo(event)} />
+                        <div>
+                            Price multiplier
+                        </div>
+                        <input type="text"
+                            placeholder="multiplier"
+                            value={this.state.priceMultiplier}
+                            onChange={(event) => this.changePriceMultiplier(event)} />
+                        <div>
+                            Price decrease
+                        </div>
+                        <input type="text"
+                            placeholder="decrease"
+                            value={this.state.priceDecrease}
+                            onChange={(event) => this.changePriceDecrease(event)} />
+                    </div>
+                </div>
+                <div style={{ paddingTop: '220px' }}>
+                    {this.state.players.length > 0 ?
+                        this.state.players.map((player, index) => {
+                            return (
+                                <div key={player.name}
+                                    style={{ background: `${index === this.state.currentPlayerIndex ? 'tomato' : 'white'}` }}>
+                                    <input type="text"
+                                        value={player.name}
+                                        onChange={(event) => this.changePlayerName(event, player)} />
+                                    <input type="text"
+                                        value={player.price}
+                                        style={{ width: '80px' }}
+                                        onChange={(event) => this.changePlayerPrice(event, player)} />
+                                    <input type="text"
+                                        value={player.alias}
+                                        style={{ width: '40px' }}
+                                        onChange={(event) => this.changePlayerAlias(event, player)} />
+                                    <button type="button" onClick={() => this.changeActiveIndex(index)}>
+                                        Set active
+                                    </button>
+                                </div>
+                            );
+                        })
+                        :
+                        <div>
+                            No players loaded.
+                        </div>
+                    }
+                </div>
             </div>
         );
     }

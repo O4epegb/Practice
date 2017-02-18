@@ -156,6 +156,14 @@
 	                _this.reloadPlayersFromDb();
 	            });
 	        };
+	        _this.changePriceMultiplier = function (event) {
+	            var newMultiplier = Number(event.target.value);
+	            _this.setState({ priceMultiplier: newMultiplier });
+	        };
+	        _this.changePriceDecrease = function (event) {
+	            var newDecrease = Number(event.target.value);
+	            _this.setState({ priceDecrease: newDecrease });
+	        };
 	        _this.toggleAutoSearch = function () {
 	            var autoSearchState = !_this.state.shouldAutoSearch;
 	            _this.setState({ shouldAutoSearch: autoSearchState });
@@ -184,7 +192,10 @@
 	                currentPlayerIndex: currentPlayerIndex + 1,
 	                needToUpdateMinPrice: needToUpdateMinPrice
 	            });
-	            var price = String(Number(currentPlayer.price) * _this.state.pricePercent);
+	            var priceWithDiscount = (Number(currentPlayer.price) * _this.state.priceMultiplier);
+	            var discount = Number(currentPlayer.price) - priceWithDiscount;
+	            var actualDiscount = discount < 1000 ? 1000 : discount > 5000 ? 5000 : discount;
+	            var price = String(Number(currentPlayer.price) - actualDiscount);
 	            console.log("Checking player \"" + currentPlayer.name + "\" with minPrice = " + price);
 	            utils.delay(0)
 	                .then(function () {
@@ -264,7 +275,8 @@
 	                price: '',
 	                alias: ''
 	            },
-	            pricePercent: 0.80,
+	            priceMultiplier: 0.8,
+	            priceDecrease: 1500,
 	            shouldAutoSearch: false,
 	            priceFrom: 4000,
 	            priceTo: 11000,
@@ -311,21 +323,27 @@
 	    App.prototype.render = function () {
 	        var _this = this;
 	        return (React.createElement("div", null,
-	            React.createElement("button", { type: "button", onClick: this.savePlayers }, "Save"),
-	            React.createElement("button", { type: "button", onClick: this.reloadPlayersFromDb }, "Reload from DB"),
-	            React.createElement("button", { type: "button", onClick: this.randomizePlayers }, "Randomize"),
-	            React.createElement("button", { type: "button", onClick: this.toggleAutoSearch },
-	                "AutoSearch ",
-	                this.state.shouldAutoSearch.toString()),
-	            React.createElement("div", { style: { margin: '20px 0' } },
-	                React.createElement("input", { type: "text", placeholder: "name", value: this.state.newPlayer.name, onChange: function (event) { return _this.changeNewPlayerName(event); } }),
-	                React.createElement("input", { type: "text", placeholder: "price", value: this.state.newPlayer.price, onChange: function (event) { return _this.changeNewPlayerPrice(event); } }),
-	                React.createElement("input", { type: "text", placeholder: "alias", value: this.state.newPlayer.alias, onChange: function (event) { return _this.changeNewPlayerAlias(event); } }),
-	                React.createElement("button", { type: "button", onClick: this.addPlayer }, "Add player")),
-	            React.createElement("div", { style: { margin: '20px 0' } },
-	                React.createElement("input", { type: "text", placeholder: "price from", value: this.state.priceFrom, onChange: function (event) { return _this.changeFilterFrom(event); } }),
-	                React.createElement("input", { type: "text", placeholder: "price to", value: this.state.priceTo, onChange: function (event) { return _this.changeFilterTo(event); } })),
-	            this.state.players.length > 0 ?
+	            React.createElement("div", { style: { position: 'fixed', background: '#fff' } },
+	                React.createElement("button", { type: "button", onClick: this.savePlayers }, "Save"),
+	                React.createElement("button", { type: "button", onClick: this.reloadPlayersFromDb }, "Reload from DB"),
+	                React.createElement("button", { type: "button", onClick: this.randomizePlayers }, "Randomize"),
+	                React.createElement("button", { type: "button", onClick: this.toggleAutoSearch },
+	                    "AutoSearch ",
+	                    this.state.shouldAutoSearch.toString()),
+	                React.createElement("div", { style: { margin: '20px 0' } },
+	                    React.createElement("input", { type: "text", placeholder: "name", value: this.state.newPlayer.name, onChange: function (event) { return _this.changeNewPlayerName(event); } }),
+	                    React.createElement("input", { type: "text", placeholder: "price", value: this.state.newPlayer.price, onChange: function (event) { return _this.changeNewPlayerPrice(event); } }),
+	                    React.createElement("input", { type: "text", placeholder: "alias", value: this.state.newPlayer.alias, onChange: function (event) { return _this.changeNewPlayerAlias(event); } }),
+	                    React.createElement("button", { type: "button", onClick: this.addPlayer }, "Add player")),
+	                React.createElement("div", { style: { margin: '20px 0' } },
+	                    React.createElement("div", null, "Price filter"),
+	                    React.createElement("input", { type: "text", placeholder: "price from", value: this.state.priceFrom, onChange: function (event) { return _this.changeFilterFrom(event); } }),
+	                    React.createElement("input", { type: "text", placeholder: "price to", value: this.state.priceTo, onChange: function (event) { return _this.changeFilterTo(event); } }),
+	                    React.createElement("div", null, "Price multiplier"),
+	                    React.createElement("input", { type: "text", placeholder: "multiplier", value: this.state.priceMultiplier, onChange: function (event) { return _this.changePriceMultiplier(event); } }),
+	                    React.createElement("div", null, "Price decrease"),
+	                    React.createElement("input", { type: "text", placeholder: "decrease", value: this.state.priceDecrease, onChange: function (event) { return _this.changePriceDecrease(event); } }))),
+	            React.createElement("div", { style: { paddingTop: '220px' } }, this.state.players.length > 0 ?
 	                this.state.players.map(function (player, index) {
 	                    return (React.createElement("div", { key: player.name, style: { background: "" + (index === _this.state.currentPlayerIndex ? 'tomato' : 'white') } },
 	                        React.createElement("input", { type: "text", value: player.name, onChange: function (event) { return _this.changePlayerName(event, player); } }),
@@ -334,7 +352,7 @@
 	                        React.createElement("button", { type: "button", onClick: function () { return _this.changeActiveIndex(index); } }, "Set active")));
 	                })
 	                :
-	                    React.createElement("div", null, "No players loaded.")));
+	                    React.createElement("div", null, "No players loaded."))));
 	    };
 	    return App;
 	}(React.Component));
