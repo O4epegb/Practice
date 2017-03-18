@@ -4,6 +4,10 @@ typings
 coverage
 elm-stuff
 .vscode
+build
+public
+dist
+
 
 # Windows image file caches
 Thumbs.db
