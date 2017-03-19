@@ -15,7 +15,6 @@ var config = {
     },
     resolve: {
         extensions: [
-            "",
             ".ts",
             ".tsx",
             ".js",
@@ -24,46 +23,64 @@ var config = {
             ".styl"
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({title: 'Electronic life'})
-    ],
+    plugins: [new HtmlWebpackPlugin({title: 'Electronic life'})],
     module: {
-        loaders: [{
+        rules: [
+            {
                 test: /\.tsx?$/,
                 loader: "ts-loader",
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                options: {
+                    compilerOptions: {
+                        noEmit: false
+                    }
+                }
             }, {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader?minimize!postcss-loader'
+                use: [
+                    {
+                        loader: 'style-loader'
+                    }, {
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true
+                        }
+                    }, {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [precss, autoprefixer]
+                        }
+                    }
+                ]
             }, {
                 test: /\.styl$/,
-                loader: 'style-loader!css-loader?minimize!postcss-loader!stylus-loader'
+                use: [
+                    {
+                        loader: 'style-loader'
+                    }, {
+                        loader: 'css-loader',
+                        options: {
+                            minimize: true
+                        }
+                    }, {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [precss, autoprefixer]
+                        }
+                    }, {
+                        loader: 'stylus-loader'
+                    }
+                ]
             }
         ]
-    },
-    ts: {
-        compilerOptions: {
-            noEmit: false
-        }
-    },
-    postcss: function() {
-        return [precss, autoprefixer];
     }
 };
 
 if (process.env.NODE_ENV === 'production') {
     config.plugins = [
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        })
+        new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify('production')}),
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.LoaderOptionsPlugin({minimize: true, context: __dirname})
     ]
 }
 
