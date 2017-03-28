@@ -1,0 +1,20 @@
+{
+  "name": "test-atom-plugin",
+  "main": "./lib/test-atom-plugin",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [],
+  "activationCommands": {
+    "atom-workspace": "test-atom-plugin:fetch"
+  },
+  "repository": "https://github.com/atom/test-atom-plugin",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "google": "^2.1.0",
+    "request": "^2.79.0"
+  }
+}
