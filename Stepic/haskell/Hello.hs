@@ -1,4 +1,4 @@
-import Data.Char
+import           Data.Char
 
 main = putStrLn "Hello, world!"
 
@@ -26,3 +26,18 @@ twoDigits2Int x y = if isDigit x && isDigit y then digitToInt x * 10 + digitToIn
 
 dist :: (Double, Double) -> (Double, Double) -> Double
 dist p1 p2 = sqrt $ (fst p2 - fst p1) ^ 2 + (snd p2 - snd p1) ^ 2
+
+factorial n = if n <= 0 then 1 else n * factorial (n - 1)
+
+factorial' 0 = 1
+factorial' n = n * factorial' (n - 1)
+
+factorial'' 0 = 1
+factorial'' n = if n < 0 then error "arg must be >= 0" else n * factorial'' (n - 1)
+
+factorial''' n | n == 0  = 1
+               | n > 0 = n * factorial''' (n - 1)
+               | otherwise = error "arg must be >= 0"
+
+doubleFact :: Integer -> Integer
+doubleFact n = if n <= 1 then 1 else n * doubleFact (n - 2)
