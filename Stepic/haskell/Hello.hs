@@ -41,3 +41,27 @@ factorial''' n | n == 0  = 1
 
 doubleFact :: Integer -> Integer
 doubleFact n = if n <= 1 then 1 else n * doubleFact (n - 2)
+
+fibonacci 0 = 0
+fibonacci 1 = 1
+fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)
+
+-- TODO fix, some syntax error
+-- fibonacci' 0 = 0
+-- fibonacci' 1 = 1
+-- fibonacci' n | n < 0 = fibonacci' (n + 2) - fibonacci' (n + 1)﻿
+--              | otherwise = fibonacci' (n - 1) + fibonacci' (n - 2)
+
+factorial5 n | n >= 0 = helper 1 n
+              | otherwise = error "arg must be >= 0"
+
+helper acc 0 = acc
+helper acc n = helper (n * acc) (n - 1)
+
+-- TODO not finished yet for negative numbers
+-- fibonacci2 :: Integer -> Integer
+-- fibonacci2 n = helper2 n 0 1
+--
+-- helper2 0 prev acc = prev
+-- helper2 n prev acc | n < 0 = helper2 (n + 1) (acc * (-1 ^ n)) (abs prev + acc)
+--                    | otherwise = helper2 (n - 1) acc (prev + acc)
