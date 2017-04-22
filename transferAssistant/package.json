@@ -1,7 +1,7 @@
 {
-  "name": "clicker",
+  "name": "fifa-transfer-assistant",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fifa web app transfer assistant",
   "main": "index.js",
   "scripts": {
     "rebuild": "npm rebuild --runtime=electron --target=1.4.15 --disturl=https://atom.io/download/atom-shell --abi=51",
@@ -28,7 +28,8 @@
     "@types/csv-parse": "^1.1.6",
     "@types/csv-stringify": "^1.0.0",
     "@types/electron": "^1.4.31",
-    "@types/lodash": "4.14.35",
+    "@types/es6-promise": "0.0.32",
+    "@types/lodash": "4.14.42",
     "@types/node": "^7.0.4",
     "@types/node-notifier": "0.0.28",
     "@types/react": "^15.0.6",
@@ -38,7 +39,7 @@
     "html-webpack-plugin": "^2.28.0",
     "node-loader": "^0.6.0",
     "ts-loader": "^2.0.0",
-    "typescript": "next",
+    "typescript": "^2.0.0",
     "webpack": "^1.14.0"
   }
 }
