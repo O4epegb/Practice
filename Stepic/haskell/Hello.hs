@@ -58,10 +58,13 @@ factorial5 n | n >= 0 = helper 1 n
 helper acc 0 = acc
 helper acc n = helper (n * acc) (n - 1)
 
--- TODO not finished yet for negative numbers
--- fibonacci2 :: Integer -> Integer
--- fibonacci2 n = helper2 n 0 1
---
--- helper2 0 prev acc = prev
--- helper2 n prev acc | n < 0 = helper2 (n + 1) (acc * (-1 ^ n)) (abs prev + acc)
---                    | otherwise = helper2 (n - 1) acc (prev + acc)
+fibonacci :: Integer -> Integer
+fibonacci n | n == 0 = 0
+            | n > 0 = posAux n 0 1
+            | n < 0 = negAux n 0 1
+
+posAux n itemA itemB = if n == 0 then itemA
+                        else posAux (n - 1) itemB (itemA + itemB)
+
+negAux n itemA itemB = if n == 0 then itemA
+                        else negAux (n + 1) itemB (itemA - itemB)
