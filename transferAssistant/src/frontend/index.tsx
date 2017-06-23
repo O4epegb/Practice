@@ -309,7 +309,7 @@ class App extends React.Component<{}, State> {
     render() {
         return (
             <div>
-                <div style={{ position: 'fixed', background: '#fff' }}>
+                <div style={{ position: 'fixed', background: '#fff', top: 0 }}>
                     <button type="button" onClick={this.savePlayers}>
                         Save
                     </button>
