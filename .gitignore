@@ -8,6 +8,8 @@ build
 public
 dist
 
+*.pyc
+
 
 # Windows image file caches
 Thumbs.db
