@@ -1,4 +1,7 @@
 import libtcodpy as libtcod
+import sys
+
+sys.dont_write_bytecode = True
 
 from entity import Entity
 from input_handlers import handle_keys
