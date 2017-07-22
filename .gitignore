@@ -9,6 +9,7 @@ public
 dist
 
 *.pyc
+__pycache__
 
 
 # Windows image file caches
