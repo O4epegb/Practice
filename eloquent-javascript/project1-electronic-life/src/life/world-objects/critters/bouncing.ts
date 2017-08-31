@@ -1,22 +1,23 @@
 import { randomElementFromArray } from '../../utils';
-import { directionNames } from '../../directions';
-import { WorldObject } from '../../models';
-
+import { directionNames, Directions } from '../../directions';
+import { WorldObject, Action } from '../../models';
+import { View } from '../../view';
 
 export class BouncingCritter extends WorldObject {
-    direction: string;
+    direction: Directions;
 
     constructor(originChar: string) {
         super(originChar);
         this.direction = randomElementFromArray(directionNames);
     }
 
-    act = (view) => {
-        if (view.look(this.direction) != ' ')
-            this.direction = view.find(' ') || 's';
+    act = (view: View): Action => {
+        if (view.look(this.direction) !== ' ') {
+            this.direction = view.find(' ') || Directions.South;
+        }
         return {
             type: 'move',
             direction: this.direction
         };
-    }
+    };
 }

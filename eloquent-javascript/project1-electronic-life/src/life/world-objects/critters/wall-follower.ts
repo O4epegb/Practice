@@ -1,17 +1,18 @@
-import { directionNames } from '../../directions';
-import { WorldObject } from '../../models';
+import { directionNames, Directions } from '../../directions';
+import { WorldObject, Action } from '../../models';
+import { View } from '../../view';
 
 
 export class WallFollowerCritter extends WorldObject {
-    direction: string;
+    direction: Directions;
 
     constructor(originChar: string) {
         super(originChar);
-        this.direction = 's';
+        this.direction = Directions.South;
     }
 
-    act = (view) => {
-        var start = this.direction;
+    act = (view: View): Action => {
+        let start = this.direction;
         if (view.look(dirPlus(this.direction, -3)) != ' ') {
             start = this.direction = dirPlus(this.direction, -2);
         }
@@ -25,7 +26,7 @@ export class WallFollowerCritter extends WorldObject {
     }
 }
 
-function dirPlus(dir, n) {
-    var index = directionNames.indexOf(dir);
+function dirPlus(direction: Directions, n: number): Directions {
+    const index = directionNames.indexOf(direction);
     return directionNames[(index + n + 8) % 8];
 }

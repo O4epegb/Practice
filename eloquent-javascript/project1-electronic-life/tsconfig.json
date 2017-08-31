@@ -5,36 +5,14 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "noEmit": true,
+        "noUnusedLocals": true,
         "importHelpers": true,
+        "strict": true,
         "lib": [
             "dom",
             "es2015"
         ]
     },
-    "filesGlob": [
-        "node_modules/@types/**/*.d.ts",
-        "./src/**/*.ts",
-        "./src/**/*.tsx"
-    ],
-    "files": [
-        "node_modules/@types/react-dom/index.d.ts",
-        "node_modules/@types/react-dom/server.d.ts",
-        "node_modules/@types/react/index.d.ts",
-        "./src/life/directions.ts",
-        "./src/life/grid.ts",
-        "./src/life/models.ts",
-        "./src/life/utils.ts",
-        "./src/life/vector.ts",
-        "./src/life/view.ts",
-        "./src/life/world-objects/critters/bouncing.ts",
-        "./src/life/world-objects/critters/index.ts",
-        "./src/life/world-objects/critters/wall-follower.ts",
-        "./src/life/world-objects/index.ts",
-        "./src/life/world-objects/wall.ts",
-        "./src/life/world.ts",
-        "./src/components/App.tsx",
-        "./src/index.tsx"
-    ],
     "compileOnSave": false,
     "formatCodeOptions": {
         "indentSize": 4,

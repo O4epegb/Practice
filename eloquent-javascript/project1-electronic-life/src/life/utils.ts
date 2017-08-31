@@ -5,12 +5,11 @@ export function randomElementFromArray<T>(array: Array<T>) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-export function worldObjectFromChar(legend: Legend, ch: string): WorldObject {
+export function worldObjectFromChar(legend: Legend, ch: string): WorldObject | null {
     if (ch == ' ') {
         return null;
     }
-    const element = new legend[ch](ch);
-    return element;
+    return new legend[ch](ch);
 }
 
 export function originCharFromWorldObject(element: WorldObject): string {

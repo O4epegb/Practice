@@ -1,10 +1,11 @@
 import { Vector } from './vector';
+import { WorldObject } from './models';
 
 
 export class Grid {
     width: number;
     height: number;
-    space: Array<any>;
+    space: Array<WorldObject>;
 
     constructor(width: number, height: number) {
         this.width = width;
@@ -25,7 +26,7 @@ export class Grid {
         this.space[vector.x + this.width * vector.y] = value;
     }
 
-    forEach(f) {
+    forEach(f: (worldObject: WorldObject, vector: Vector) => void) {
         for (let y = 0; y < this.height; y++) {
             for (let x = 0; x < this.width; x++) {
                 const value = this.space[x + y * this.width];

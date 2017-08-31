@@ -2,7 +2,7 @@ import { Grid } from './grid';
 import { Vector } from './vector';
 import { View } from './view';
 import { directions } from './directions';
-import { WorldMap, Legend } from './models';
+import { WorldMap, Legend, Action, WorldObject } from './models';
 import { worldObjectFromChar, originCharFromWorldObject } from './utils';
 
 
@@ -36,7 +36,7 @@ export class World {
     }
 
     turn = () => {
-        const acted = [];
+        const acted: Array<WorldObject> = [];
         this.grid.forEach((critter, vector) => {
             if (critter.act && acted.indexOf(critter) == -1) {
                 acted.push(critter);
@@ -45,7 +45,7 @@ export class World {
         });
     }
 
-    letAct = (critter, vector) => {
+    letAct = (critter: WorldObject, vector: Vector) => {
         const action = critter.act(new View(this, vector));
         if (action && action.type == 'move') {
             const dest = this.checkDestination(action, vector);
@@ -56,7 +56,7 @@ export class World {
         }
     }
 
-    checkDestination = (action, vector) => {
+    checkDestination = (action: Action, vector: Vector) => {
         if (directions.hasOwnProperty(action.direction)) {
             const dest = vector.plus(directions[action.direction]);
             if (this.grid.isInside(dest)) {

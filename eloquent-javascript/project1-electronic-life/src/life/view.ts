@@ -1,4 +1,4 @@
-import { directions } from './directions';
+import { directions, Directions } from './directions';
 import { World, } from './world';
 import { Vector } from './vector';
 import { originCharFromWorldObject, randomElementFromArray } from './utils';
@@ -13,8 +13,8 @@ export class View {
         this.vector = vector;
     }
 
-    look(dir) {
-        const target = this.vector.plus(directions[dir]);
+    look(direction: Directions) {
+        const target = this.vector.plus(directions[direction]);
         if (this.world.grid.isInside(target)) {
             return originCharFromWorldObject(this.world.grid.get(target));
         } else {
@@ -22,19 +22,19 @@ export class View {
         }
     }
 
-    findAll(ch) {
+    findAll(char: string): Array<Directions> {
         const found = [];
-        for (let dir in directions) {
-            if (this.look(dir) == ch) {
-                found.push(dir);
+        for (let direction in directions) {
+            if (this.look(direction as Directions) === char) {
+                found.push(direction as Directions);
             }
         }
         return found;
     }
 
-    find(ch) {
-        var found = this.findAll(ch);
-        if (found.length == 0) {
+    find(char: string) {
+        const found = this.findAll(char);
+        if (found.length === 0) {
             return null;
         }
         return randomElementFromArray(found);

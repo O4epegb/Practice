@@ -19,8 +19,8 @@ const plan = [
 ];
 
 interface State {
-    worldString?: string;
-    worldSpeed?: number;
+    worldString: string;
+    fps: number;
 }
 
 export class App extends React.Component<{}, State> {
@@ -30,7 +30,7 @@ export class App extends React.Component<{}, State> {
         super();
         this.state = {
             worldString: '',
-            worldSpeed: 300
+            fps: 5
         };
     }
 
@@ -43,7 +43,7 @@ export class App extends React.Component<{}, State> {
 
         const turn = () => {
             this.makeWorldTurn();
-            setTimeout(turn, this.state.worldSpeed);
+            setTimeout(turn, 1000 / this.state.fps);
         };
         turn();
     }
@@ -55,13 +55,13 @@ export class App extends React.Component<{}, State> {
         });
     }
 
-    increaseSpeed = () => {
-        const newSpeed = this.state.worldSpeed - 50;
-        this.setState({ worldSpeed: newSpeed >= 50 ? newSpeed : 50 });
+    increaseFps = () => {
+        this.setState({ fps: this.state.fps + 1 });
     }
 
-    decreaseSpeed = () => {
-        this.setState({ worldSpeed: this.state.worldSpeed + 50 });
+    decreaseFps = () => {
+        const newFps = this.state.fps - 1;
+        this.setState({ fps: newFps >= 1 ? newFps : 1 });
     }
 
     render() {
@@ -72,12 +72,12 @@ export class App extends React.Component<{}, State> {
                         {this.state.worldString}
                         <div className="world__controls">
                             <div>
-                                Speed
+                                Fps: {this.state.fps}
                             </div>
-                            <button type="button" onClick={this.decreaseSpeed}>
+                            <button type="button" onClick={this.decreaseFps}>
                                 Decrease
                             </button>
-                            <button type="button" onClick={this.increaseSpeed}>
+                            <button type="button" onClick={this.increaseFps}>
                                 Increase
                             </button>
                         </div>
