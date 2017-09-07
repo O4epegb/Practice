@@ -1,9 +1,8 @@
 import { directionNames, Directions } from '../../directions';
-import { WorldObject, Action } from '../../models';
+import { Critter, Action, ActionTypes } from '../../models';
 import { View } from '../../view';
 
-
-export class WallFollowerCritter extends WorldObject {
+export class WallFollowerCritter extends Critter {
     direction: Directions;
 
     constructor(originChar: string) {
@@ -13,17 +12,20 @@ export class WallFollowerCritter extends WorldObject {
 
     act = (view: View): Action => {
         let start = this.direction;
+
         if (view.look(dirPlus(this.direction, -3)) != ' ') {
             start = this.direction = dirPlus(this.direction, -2);
         }
+
         while (view.look(this.direction) != ' ') {
             this.direction = dirPlus(this.direction, 1);
             if (this.direction == start) {
                 break;
             }
         }
-        return { type: 'move', direction: this.direction };
-    }
+
+        return { type: ActionTypes.Move, direction: this.direction };
+    };
 }
 
 function dirPlus(direction: Directions, n: number): Directions {

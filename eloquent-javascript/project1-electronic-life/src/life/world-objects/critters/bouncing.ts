@@ -1,9 +1,9 @@
 import { randomElementFromArray } from '../../utils';
 import { directionNames, Directions } from '../../directions';
-import { WorldObject, Action } from '../../models';
+import { Critter, Action, ActionTypes } from '../../models';
 import { View } from '../../view';
 
-export class BouncingCritter extends WorldObject {
+export class BouncingCritter extends Critter {
     direction: Directions;
 
     constructor(originChar: string) {
@@ -15,8 +15,9 @@ export class BouncingCritter extends WorldObject {
         if (view.look(this.direction) !== ' ') {
             this.direction = view.find(' ') || Directions.South;
         }
+
         return {
-            type: 'move',
+            type: ActionTypes.Move,
             direction: this.direction
         };
     };

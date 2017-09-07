@@ -1,11 +1,10 @@
 import { Vector } from './vector';
-import { WorldObject } from './models';
-
+import { Critter } from './models';
 
 export class Grid {
     width: number;
     height: number;
-    space: Array<WorldObject>;
+    space: Array<Critter>;
 
     constructor(width: number, height: number) {
         this.width = width;
@@ -14,8 +13,12 @@ export class Grid {
     }
 
     isInside(vector: Vector) {
-        return vector.x >= 0 && vector.x < this.width &&
-            vector.y >= 0 && vector.y < this.height;
+        return (
+            vector.x >= 0 &&
+            vector.x < this.width &&
+            vector.y >= 0 &&
+            vector.y < this.height
+        );
     }
 
     get(vector: Vector) {
@@ -26,12 +29,11 @@ export class Grid {
         this.space[vector.x + this.width * vector.y] = value;
     }
 
-    forEach(f: (worldObject: WorldObject, vector: Vector) => void) {
+    forEach(f: (worldObject: Critter, vector: Vector) => void) {
         for (let y = 0; y < this.height; y++) {
             for (let x = 0; x < this.width; x++) {
                 const value = this.space[x + y * this.width];
-                if (value != null)
-                    f(value, new Vector(x, y));
+                if (value != null) f(value, new Vector(x, y));
             }
         }
     }

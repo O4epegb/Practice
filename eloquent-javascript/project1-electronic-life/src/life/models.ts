@@ -4,11 +4,10 @@ import { View } from './view';
 export type WorldMap = Array<string>;
 
 export interface Legend {
-    [key: string]: typeof WorldObject;
+    [key: string]: typeof Entity;
 }
 
-export class WorldObject {
-    act: (view: View) => Action;
+export class Entity {
     originChar: string;
 
     constructor(originChar: string) {
@@ -16,9 +15,22 @@ export class WorldObject {
     }
 }
 
-export interface Action {
-    type: ActionType;
-    direction: Directions;
+export class Critter extends Entity {
+    energy = 0;
+    act: (view: View) => Action;
 }
 
-type ActionType = 'move';
+export type WorldObject = Entity | Critter;
+
+export interface Action {
+    type: ActionTypes;
+    direction?: Directions;
+}
+
+export enum ActionTypes {
+    Eat = 'eat',
+    Move = 'move',
+    Reproduce = 'reproduce',
+    Grow = 'grow',
+    None = 'none'
+}

@@ -1,11 +1,13 @@
 import { Legend, WorldObject } from './models';
 
-
 export function randomElementFromArray<T>(array: Array<T>) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-export function worldObjectFromChar(legend: Legend, ch: string): WorldObject | null {
+export function worldObjectFromChar(
+    legend: Legend,
+    ch: string
+): WorldObject | null {
     if (ch == ' ') {
         return null;
     }

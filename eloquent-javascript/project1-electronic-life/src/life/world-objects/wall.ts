@@ -1,7 +1,6 @@
-import { WorldObject } from '../models';
+import { Entity } from '../models';
 
-
-export class Wall extends WorldObject {
+export class Wall extends Entity {
     constructor(originChar: string) {
         super(originChar);
     }

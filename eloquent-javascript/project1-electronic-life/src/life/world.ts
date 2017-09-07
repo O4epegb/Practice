@@ -2,9 +2,8 @@ import { Grid } from './grid';
 import { Vector } from './vector';
 import { View } from './view';
 import { directions } from './directions';
-import { WorldMap, Legend, Action, WorldObject } from './models';
+import { WorldMap, Legend, Action, Critter } from './models';
 import { worldObjectFromChar, originCharFromWorldObject } from './utils';
-
 
 export class World {
     grid: Grid;
@@ -15,7 +14,10 @@ export class World {
 
         map.forEach((line, y) => {
             for (var x = 0; x < line.length; x++) {
-                grid.set(new Vector(x, y), worldObjectFromChar(legend, line[x]));
+                grid.set(
+                    new Vector(x, y),
+                    worldObjectFromChar(legend, line[x])
+                );
             }
         });
 
@@ -33,19 +35,19 @@ export class World {
             output += '\n';
         }
         return output;
-    }
+    };
 
     turn = () => {
-        const acted: Array<WorldObject> = [];
+        const acted: Array<Critter> = [];
         this.grid.forEach((critter, vector) => {
-            if (critter.act && acted.indexOf(critter) == -1) {
+            if (critter.act && acted.indexOf(critter) === -1) {
                 acted.push(critter);
                 this.letAct(critter, vector);
             }
         });
-    }
+    };
 
-    letAct = (critter: WorldObject, vector: Vector) => {
+    letAct = (critter: Critter, vector: Vector) => {
         const action = critter.act(new View(this, vector));
         if (action && action.type == 'move') {
             const dest = this.checkDestination(action, vector);
@@ -54,14 +56,15 @@ export class World {
                 this.grid.set(dest, critter);
             }
         }
-    }
+    };
 
     checkDestination = (action: Action, vector: Vector) => {
-        if (directions.hasOwnProperty(action.direction)) {
+        if (action.direction && directions.hasOwnProperty(action.direction)) {
             const dest = vector.plus(directions[action.direction]);
             if (this.grid.isInside(dest)) {
                 return dest;
             }
         }
-    }
+        return null;
+    };
 }
