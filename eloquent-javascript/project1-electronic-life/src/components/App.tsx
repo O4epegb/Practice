@@ -9,7 +9,7 @@ import {
     PlantEater
 } from '../life/world-objects';
 
-const plan1 = [
+const defaultPlan = [
     '############################',
     '#      #    #      o      ##',
     '#                          #',
@@ -24,7 +24,7 @@ const plan1 = [
     '############################'
 ];
 
-const plan2 = [
+const lifelifeWorldPlan = [
     '############################',
     '#####                 ######',
     '##   ***                **##',
@@ -51,13 +51,13 @@ export class App extends React.Component<{}, State> {
     constructor() {
         super();
 
-        this.world1 = new World(plan1, {
+        this.world1 = new World(defaultPlan, {
             '#': Wall,
             o: BouncingCritter,
             '~': WallFollowerCritter
         });
 
-        this.world2 = new LifelikeWorld(plan2, {
+        this.world2 = new LifelikeWorld(lifelifeWorldPlan, {
             '#': Wall,
             O: PlantEater,
             '*': Plant

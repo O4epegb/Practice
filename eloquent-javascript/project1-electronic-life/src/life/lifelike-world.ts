@@ -35,7 +35,7 @@ function getActions() {
             vector: Vector,
             action: Action
         ) {
-            critter.energy += 0.5;
+            critter.energy = critter.energy + 0.5;
             return true;
         },
 
@@ -53,7 +53,7 @@ function getActions() {
             ) {
                 return false;
             }
-            critter.energy -= 1;
+            critter.energy = critter.energy - 1;
             world.grid.set(vector, null);
             world.grid.set(dest, critter);
             return true;
@@ -73,7 +73,7 @@ function getActions() {
             if (!atDest || atDest.energy == null) {
                 return false;
             }
-            critter.energy += atDest.energy;
+            critter.energy = critter.energy + atDest.energy;
             world.grid.set(dest, null);
             return true;
         },
@@ -95,7 +95,7 @@ function getActions() {
                 ) {
                     return false;
                 }
-                critter.energy -= 2 * baby.energy;
+                critter.energy = critter.energy - 2 * baby.energy;
                 world.grid.set(dest, baby);
                 return true;
             } else {

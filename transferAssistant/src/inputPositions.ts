@@ -1,59 +1,51 @@
 export const inputs = {
     playerInput: {
-        x: 502,
-        y: 439
+        x: 834,
+        y: 288
     },
     playerIcon: {
-        x: 502,
-        y: 469
+        x: 764,
+        y: 396
+    },
+    playerNotFoundIcon: {
+        x: 841,
+        y: 398,
+        color: '8c8da2'
     },
     priceInput: {
-        x: 614,
-        y: 677
+        x: 1032,
+        y: 800
     },
     searchButton: {
-        x: 609,
-        y: 744
+        x: 1137,
+        y: 954,
+        color: 'cf216a'
     },
-    popupCenterAndLeftButtons: {
-        x: 815,
-        y: 573,
-        color: '545b64'
-    },
-    popupWhiteLine: {
-        x: 713,
-        y: 574,
-        color: 'dededd'
-    },
-    playersListWhiteLine: {
-        x: 1301,
-        y: 765,
-        color: 'e3e4de'
+    modifySearchButton: {
+        x: 844,
+        y: 617,
+        color: 'cf216a'
     },
     clearPlayerInput: {
-        x: 642,
-        y: 439
-    },
-    increaseBuyNowMinPrice: {
-        x: 683,
-        y: 638
+        x: 1200,
+        y: 295
     },
     firstPlayerCard: {
-        x: 426,
-        y: 638
+        x: 609,
+        y: 238,
+        color: 'cbfd5b'
     },
-    buyNowButton: {
-        x: 1105,
-        y: 467
-    },
+    // buyNowButton: {
+    //     x: 1105,
+    //     y: 467
+    // },
     backButton: {
-        x: 520,
-        y: 550,
-        color: '08090c'
-    },
-    searchNotFound: {
-        x: 653,
-        y: 744,
-        color: '5c4f07'
+        x: 168,
+        y: 151
     }
+    // searchNotFound: {
+    //     x: 653,
+    //     y: 744,
+    //     color: '5c4f07'
+    // }
 };

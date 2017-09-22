@@ -5,6 +5,6 @@ export interface Coord {
 
 export interface Player {
     name: string;
-    alias: string;
     price: string;
+    rating: string;
 }

@@ -13,11 +13,11 @@ export class WallFollowerCritter extends Critter {
     act = (view: View): Action => {
         let start = this.direction;
 
-        if (view.look(dirPlus(this.direction, -3)) != ' ') {
+        if (view.look(dirPlus(this.direction, -3)) !== ' ') {
             start = this.direction = dirPlus(this.direction, -2);
         }
 
-        while (view.look(this.direction) != ' ') {
+        while (view.look(this.direction) !== ' ') {
             this.direction = dirPlus(this.direction, 1);
             if (this.direction == start) {
                 break;
