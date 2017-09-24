@@ -28,7 +28,7 @@ class App extends React.Component<{}, State> {
             allPlayers: [],
             players: [],
             lastPlayerPrice: '',
-            priceIncrease: 0;
+            priceIncrease: 0,
             currentPlayerIndex: 0,
             newPlayer: {
                 name: '',
@@ -235,6 +235,10 @@ class App extends React.Component<{}, State> {
         const actualDiscount = discount < 1000 ? 1000 : discount > 5000 ? 5000 : discount;
         const price = Number(currentPlayer.price) - actualDiscount + priceIncreaseNumber;
         const priceString = price < 500 ? currentPlayer.price : String(price.toFixed(0));
+
+        this.setState({
+            lastPlayerPrice: priceString
+        });
 
         console.log(`Checking player "${currentPlayer.name}" with minPrice = ${priceString}`);
 
