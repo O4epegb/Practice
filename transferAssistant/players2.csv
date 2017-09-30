@@ -1,106 +1,285 @@
-name,price,alias
-Patricio,1450,rui
-XabiAlonso,1700,xa
-Manolas,2500,kost
-Garay,2500,ez
-Sommer,2500,som
-Krych,2600,grz
-Reina,2800,rei
-Toprak,2800,om
-Carvalho,2800,carv
-Terry,2800,ter
-Bacca,3800,bac
-Jonas,4300,oli
-Bravo,4500,bra
-Howedes,7500,how
-ThiagoAlcantara,7500,alc
-Ramsey,7600,aa
-Alderweireld,7700,tob
-Isco,7700,is
-Hart,7800,joe
-Xhaka,8000,x
-Banega,8000,ev
-Aduriz,8000,ad
-Matic,8000,nem
-Azpilicueta,8000,az
-AndreGomes,8100,gom
-Pastore,8200,pas
-Koke,8300,res
-Turan,8500,tu
-Otamendi,8500,ot
-Gotze,8500,got
-Draxler,8500,dr
-Laporte,8500,ay
-Fahrmann,8500,fah
-Mata,8600,ju
-Hamsik,9000,ham
-Sokratis,9000,sok
-Mahrez,9000,mah
-Eriksen,9000,er
-Mandanda,9000,st
-Leno,9000,ber
-JaviMartinez,9500,agi
-Fabregas,10000,ces
-Navas,10000,na
-Veratti,11000,ver
-Ruffier,11000,ruf
-Cazorla,12000,caz
-Ribery,12750,ri
-Handanovic,14000,han
-DavidSilva,14000,ji
-Oblak,15500,ob
-Cech,16000,ce
-Kompany,16750,ko
-Barzagli,17000,bar
-Pjanic,17000,pj
-Miranda,18000,mir
-Pique,19000,piq
-FilipeLuis,19000,kas
-DaniAlves,20000,dan
-Payet,20000,pay
-Miki,20000,mk
-Buffon,21000,bu
-DiegoCosta,21000,cos
-Muller,22000,mu
-Coutinho,23000,cor
-Bonucci,23000,bon
-Busquets,23000,bus
-Hummels,23000,hum
-Koscielny,25000,kos
-Matuidi,25000,bl
-Gundogan,25000,gu
-Lloris,29000,ll
-Lahm,30000,ph
-DiMaria,31000,ang
-Rakitic,32000,iv
-Kroos,38000,kro
-Godin,39000,go
-Pepe,40000,pe
-Willian,40000,wil
-Iniesta,40000,in
-Higuain,43000,hi
-Ozil,45000,o
-Lacazette,45000,lac
-Alba,50000,alb
-Chiellini,52000,ch
-ThiagoSilva,55000,th
-Benzema,58000,ka
-Marcelo,65000,vie
-Courtois,67000,cou
-Marchisio,70000,cl
-James,75000,ja
-Modric,80000,mo
-Sanchez,90000,al
-Ramos,130000,ra
-DeGea,140000,ge
-Alaba,160000,ala
-Vidal,170000,vi
-Reus,180000,re
-Griezmann,210000,gr
-Hazard,220000,ha
-DeBruyne,220000,br
-Lewandowski,230000,le
-Boateng,250000,bo
-Neuer,250000,ne
-Aubameyang,320000,au
-Ibrahimovic,500000,ib
+name,price,rating
+Jérémy To,500,79
+Thiago Motta,500,81
+Andrej Kramarić,500,81
+Dante,600,81
+Konstantinos Mitroglou,700,81
+Mexer,700,79
+Jemerson,700,80
+Romain Thomas,700,80
+Carlos Bacca,800,82
+Salomon Kalou,900,80
+Youri Tielemans,900,80
+Luiz Gustavo,900,80
+Layvin Kurzawa,900,80
+Nabil Bentaleb,900,80
+Islam Slimani,1000,82
+Per Mertesacker,1000,81
+Franco Vázquez,1000,82
+Wesley Sneijder,1000,83
+Iborra,1000,82
+Ashley Williams,1000,82
+Stevan Jovetić,1000,81
+Raffael,1000,82
+Lars Bender,1000,82
+Roque Mesa,1000,82
+Valère Germain,1000,80
+Dejan Lovren,1000,81
+Adil Rami,1000,81
+Granit Xhaka,1000,82
+Florian Thauvin,1100,82
+Yoann Gourcuff,1200,79
+Marcelo Brozović,1200,81
+Patrice Evra,1300,81
+João Moutinho,1300,82
+Raphaël Guerreiro,1300,81
+Camacho,1300,81
+Max Kruse,1300,82
+Julian Weigl,1300,81
+Christian Benteke,1400,81
+Shinji Kagawa,1400,83
+Olivier Giroud,1500,82
+Adrien Rabiot,1500,80
+Suso,1500,82
+Sebastian Rudy,1500,81
+Willian Jose,1500,82
+Lucas Vázquez,1500,82
+Sven Bender,1700,80
+Hatem Ben Arfa,1700,81
+Mario Gómez,1700,82
+Lars Stindl,1800,82
+Mamadou Sakho,1800,81
+Ezequiel Garay,1800,83
+Rafael,2000,79
+Andreas Christensen,2000,81
+Éver Banega,2000,83
+Steven N'Zonzi,2000,83
+Falcao,2000,84
+Borja Valero,2000,83
+John Brooks,2000,80
+Kevin Kampl,2000,81
+Benedikt Höwedes,2000,83
+Grzegorz Krychowiak,2000,81
+Víctor Ruíz,2000,82
+Aaron Ramsey,2000,82
+Mario Götze,2000,81
+Thomas Meunier,2000,81
+Leighton Baines,2000,82
+Séamus Coleman,2200,81
+Morgan Schneiderlin,2300,83
+Javier Hernández,2300,82
+Lucas,2300,82
+Javier Pastore,2400,83
+Ricardo Rodríguez,2400,81
+Loïc Perrin,2400,83
+Stephan Lichtsteiner,2500,82
+Federico Fazio,2500,82
+Djibril Sidibé,2500,79
+Jack Wilshere,2500,81
+Aduriz,2500,84
+Javier Mascherano,2500,83
+Mario Mandžukić,2500,83
+Lucas Biglia,2500,83
+Raúl Albiol,2500,82
+Nicolás Gaitán,2500,83
+Bartra,2800,81
+Dimitri Payet,2900,84
+Eric Dier,2900,82
+Wilfried Zaha,2900,81
+Emil Forsberg,2900,83
+Iago Aspas,3000,83
+Francesco Acerbi,3000,82
+Stefan de Vrij,3000,83
+Gonzalo Castro,3000,82
+Nicolás Otamendi,3000,83
+Juanfran,3000,83
+Daniel Sturridge,3000,82
+Arda Turan,3000,82
+Xherdan Shaqiri,3000,82
+Gary Cahill,3000,84
+Bernardo Silva,3200,84
+Marquinhos,3200,83
+Davy Klaassen,3300,82
+Nani,3500,83
+Nabil Fekir,3500,82
+Mauro Icardi,3500,84
+Niklas Süle,3500,83
+Naldo,3500,82
+Gylfi Sigurðsson,3500,82
+Mario Balotelli,3500,82
+Riyad Mahrez,3500,83
+Malcom,3500,79
+Victor Wanyama,3500,82
+Memphis Depay,3500,80
+Edin Džeko,3500,84
+Bruno,3500,84
+Julian Draxler,3700,84
+Ömer Toprak,3700,83
+Joel Matip,3700,83
+Marko Arnautović,3700,82
+Kevin Vogt,3800,80
+Pedro,3800,84
+Santi Cazorla,3900,83
+Jorginho,4000,81
+Mateo Musacchio,4000,83
+Kamil Glik,4000,85
+Ross Barkley,4000,81
+Vitolo,4000,83
+Ciro Immobile,4000,82
+Manu Trigueros,4000,82
+Fabinho,4000,83
+Bruma,4200,81
+Kevin Mirallas,4200,81
+Davinson Sánchez,4300,81
+Keita Baldé Diao,4400,82
+Manuel Lanzini,4400,81
+Jonathan Tah,4500,82
+Morgan Sanson,4500,81
+Jean Michaël Seri,4600,82
+Wayne Rooney,4700,81
+Nathaniel Clyne,4800,82
+José Callejón,5000,83
+Shkodran Mustafi,5000,84
+José María Giménez,5000,83
+Juan Mata,5000,84
+Daniele De Rossi,5000,83
+Marcos Alonso,5200,81
+Jordan Henderson,5300,82
+Naby Keïta,5500,83
+Karim Bellarabi,5500,82
+Marcos Rojo,5500,82
+Saúl,5500,82
+Thomas Lemar,6000,83
+João Mário,6000,83
+Joshua Kimmich,6000,81
+Kevin Strootman,6000,84
+Aymeric Laporte,6000,84
+Danny Rose,6400,82
+Dani Alves,6500,84
+Ivan Perišić,7000,84
+Serge Aurier,7000,81
+Chris Smalling,7000,81
+Federico Bernardeschi,7500,82
+Beñat,7500,82
+Medhi Benatia,7500,84
+Andriy Yarmolenko,8000,81
+Carvajal,8500,84
+Giacomo Bonaventura,8500,83
+Adam Lallana,9000,83
+Fernandinho,9000,82
+Sami Khedira,9000,84
+Marco Verratti,10000,87
+Koke,10000,84
+Idrissa Gueye,10000,83
+Tiémoué Bakayoko,11000,82
+Raheem Sterling,11000,82
+Andrea Belotti,11000,83
+Nemanja Matić,11000,83
+Georginio Wijnaldum,11000,82
+Antonio Rüdiger,11000,82
+Andrea Barzagli,11000,85
+Kévin Gameiro,13000,83
+Kalidou Koulibaly,13000,84
+Héctor Bellerín,13000,81
+Miranda,13000,86
+Roberto Firmino,14000,83
+Yaya Touré,14000,83
+Ander Herrera,14000,84
+Javi Martinez,14000,86
+Vincent Kompany,14000,85
+Samuel Umtiti,14000,83
+Cesc Fàbregas,15000,86
+Morata,15000,84
+Juan Cuadrado,15000,82
+Jan Vertonghen,15000,85
+Laurent Koscielny,16000,84
+David Silva,17000,87
+Corentin Tolisso,17000,82
+Marco Asensio,18000,84
+Mohamed Salah,18000,83
+Heung Min Son,18000,82
+Kostas Manolas,20000,84
+Leroy Sané,20000,82
+Piqué,20000,87
+Leon Goretzka,20000,82
+Virgil van Dijk,20000,83
+Lorenzo Insigne,23000,85
+Douglas Costa,23000,82
+Alessandro Florenzi,24000,82
+Timo Werner,24000,82
+Alejandro Gómez,25000,84
+Diego Godín,25000,88
+Ángel Di María,25000,85
+Franck Ribéry,26000,86
+Yannick Carrasco,26000,85
+Moussa Dembélé,26000,82
+Ivan Rakitić,27000,87
+Filipe Luís,27000,85
+Willian,28000,84
+Iniesta,29000,87
+Edinson Cavani,30000,87
+Toby Alderweireld,32000,86
+Thomas Müller,34000,86
+Diego Costa,35000,86
+Coutinho,35000,86
+Sokratis,37000,86
+Mesut Özil,38000,88
+Henrikh Mkhitaryan,39000,85
+Leonardo Bonucci,39000,88
+Antonio Valencia,40000,83
+Alexis Sánchez,45000,89
+Anthony Martial,45000,82
+Radja Nainggolan,45000,86
+Alex Sandro,45000,86
+Miralem Pjanić,45000,85
+Dele Alli,45000,84
+David Luiz,45000,86
+Marco Reus,45000,86
+Paulo Dybala,45000,88
+Claudio Marchisio,45000,85
+Paul Pogba,45000,87
+Toni Kroos,45000,90
+Sergio Ramos,45000,90
+Gareth Bale,45000,89
+Luka Modrić,45000,89
+Antoine Griezmann,45000,88
+Blaise Matuidi,45000,85
+Kyle Walker,45000,83
+Zlatan Ibrahimović,45000,88
+Marcelo,45000,87
+Eden Hazard,45000,90
+Karim Benzema,45000,86
+Sergio Busquets,45000,86
+Isco,45000,86
+Casemiro,45000,85
+Mats Hummels,45000,88
+Raphaël Varane,45000,85
+Jordi Alba,45000,85
+Sergio Agüero,45000,89
+N'Golo Kanté,45000,87
+Kevin De Bruyne,45000,89
+Thiago Silva,45000,88
+Marek Hamšík,45000,87
+Dries Mertens,45000,86
+Romelu Lukaku,45000,86
+Thiago,45000,88
+Giorgio Chiellini,45000,89
+Harry Kane,45000,86
+Neymar,45000,92
+Alexandre Lacazette,45000,85
+Azpilicueta,45000,85
+James Rodríguez,45000,86
+Ousmane Dembélé,45000,83
+Arjen Robben,45000,88
+David Alaba,45000,86
+Pierre-Emerick Aubame,45000,88
+Arturo Vidal,45000,87
+Kylian Mbappé,45000,83
+Jérôme Boateng,45000,88
+Robert Lewandowski,45000,91
+İlkay Gündoğan,45000,85
+Christian Eriksen,45000,87
+Eric Bailly,45000,84
+Gonzalo Higuaín,45000,90
+Łukasz Piszczek,45000,83
+Sadio Mané,150000,84

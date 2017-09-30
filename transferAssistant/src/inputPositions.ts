@@ -8,23 +8,32 @@ export const inputs = {
         y: 396
     },
     playerNotFoundIcon: {
-        x: 841,
+        x: 848,
         y: 398,
-        color: '8c8da2'
+        color: '949193'
+    },
+    searchPlayerCard: {
+        x: 655,
+        y: 363,
+        color: 'dedfe4'
     },
     priceInput: {
         x: 1032,
         y: 800
     },
+    clearPriceInput: {
+        x: 1200,
+        y: 745
+    },
     searchButton: {
         x: 1137,
         y: 954,
-        color: 'cf216a'
+        color: 'cb2063'
     },
     modifySearchButton: {
-        x: 844,
-        y: 617,
-        color: 'cf216a'
+        x: 830,
+        y: 612,
+        color: 'cb2063'
     },
     clearPlayerInput: {
         x: 1200,
@@ -33,7 +42,7 @@ export const inputs = {
     firstPlayerCard: {
         x: 609,
         y: 238,
-        color: 'cbfd5b'
+        color: 'cefc49'
     },
     // buyNowButton: {
     //     x: 1105,

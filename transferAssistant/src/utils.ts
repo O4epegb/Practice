@@ -38,8 +38,9 @@ export function moveMouse({ x, y }: Coord) {
 }
 
 export function typeString(str: string) {
-    robot.typeString(`${(str as any).normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`);
-    // robot.typeStringDelayed(`${(str as any).normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`, 8000);
+    const string = `${(str as any).normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`;
+    robot.typeString(string);
+    // robot.typeStringDelayed(string, 8000);
 }
 
 export function getPixelColor({ x, y }: Coord) {
