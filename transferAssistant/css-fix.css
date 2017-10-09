@@ -1,11 +1,3 @@
-.searchPrices > *:nth-child(-n + 3) {
-    display: none !important;
-}
-
-.filters-scroller {
-    padding: 0 !important;
-}
-
 /*
 function cssEngine(rule) {
     const css = document.createElement('style'); 
@@ -14,13 +6,15 @@ function cssEngine(rule) {
     document.getElementsByTagName('head')[0].appendChild(css);
 }
 cssEngine(`
-.searchPrices > *:nth-child(-n + 3) {
+.searchPrices > *:nth-child(-n + 3),
+#ClickShield {
     display: none !important;
 }
 
 .filters-scroller {
     padding: 0 !important;
 }
+
 `)
 
 */

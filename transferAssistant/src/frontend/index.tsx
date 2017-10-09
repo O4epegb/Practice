@@ -2,10 +2,11 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { ipcRenderer } from 'electron';
 import * as u from '../utils';
-import { shortcutNames } from '../constants';
+import { shortcutNames, microDelay } from '../constants';
 import { inputs } from '../inputPositions';
 import { getPlayers, savePlayers } from '../players';
 import { Player } from '../models';
+import { reloadFutbinData } from '../reloadData';
 
 interface State {
     allPlayers: Array<Player>;
@@ -18,6 +19,8 @@ interface State {
     shouldAutoSearch: boolean;
     priceFrom: number;
     priceTo: number;
+    maxPrice: number;
+    futbinPagesToLoad: number;
 }
 
 class App extends React.Component<{}, State> {
@@ -36,8 +39,10 @@ class App extends React.Component<{}, State> {
             priceMultiplier: 0.8,
             priceDecrease: 1500,
             shouldAutoSearch: false,
-            priceFrom: 8000,
-            priceTo: 35000
+            priceFrom: 12000,
+            priceTo: 50000,
+            maxPrice: 200000,
+            futbinPagesToLoad: 10
         };
     }
 
@@ -47,18 +52,11 @@ class App extends React.Component<{}, State> {
         ipcRenderer.on('shortcut-press', (event, shortcutName) => {
             switch (shortcutName) {
                 case shortcutNames.one: {
-                    // utils
-                    //     .moveAndClick(inputs.firstPlayerCard)
-                    //     .then(() => {
-                    //         return utils.delay(500);
-                    //     })
-                    //     .then(() => {
-                    //         utils.moveAndClick(inputs.buyNowButton);
-                    //     });
+                    u.moveAndClick(inputs.buyNowButton);
                     break;
                 }
                 case shortcutNames.two: {
-                    // utils.moveAndClick(inputs.popupCenterAndLeftButtons);
+                    u.moveAndClick(inputs.buyNowButtonOk);
                     break;
                 }
                 case shortcutNames.three: {
@@ -102,47 +100,6 @@ class App extends React.Component<{}, State> {
         this.setState({ players: this.state.players });
     };
 
-    changeNewPlayerName = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            newPlayer: {
-                ...this.state.newPlayer,
-                name: event.target.value
-            }
-        });
-    };
-
-    changeNewPlayerPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            newPlayer: {
-                ...this.state.newPlayer,
-                price: event.target.value
-            }
-        });
-    };
-
-    changeNewPlayerRating = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            newPlayer: {
-                ...this.state.newPlayer,
-                rating: event.target.value
-            }
-        });
-    };
-
-    addPlayer = () => {
-        const { name, rating, price } = this.state.newPlayer;
-        if (name && rating && price) {
-            this.setState({
-                players: [...this.state.players, this.state.newPlayer],
-                newPlayer: {
-                    name: '',
-                    price: '',
-                    rating: ''
-                }
-            });
-        }
-    };
-
     savePlayers = () => {
         const players = this.state.allPlayers.slice().sort((a, b) => Number(a.price) - Number(b.price));
         savePlayers(players)
@@ -161,6 +118,12 @@ class App extends React.Component<{}, State> {
                 allPlayers: players,
                 players: players.filter(this.filterFunction)
             });
+        });
+    };
+
+    reloadFromFutbin = () => {
+        reloadFutbinData(this.state.futbinPagesToLoad).then(() => {
+            this.reloadPlayersFromDb();
         });
     };
 
@@ -189,14 +152,24 @@ class App extends React.Component<{}, State> {
         });
     };
 
-    changePriceMultiplier = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newMultiplier = Number(event.target.value);
+    changeFutbinPages = (event: React.FocusEvent<HTMLInputElement>) => {
+        const futbinPagesToLoad = Number((event.target as any).value);
+        this.setState({ futbinPagesToLoad });
+    };
+
+    changePriceMultiplier = (event: React.FocusEvent<HTMLInputElement>) => {
+        const newMultiplier = Number((event.target as any).value);
         this.setState({ priceMultiplier: newMultiplier });
     };
 
     changePriceDecrease = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newDecrease = Number(event.target.value);
         this.setState({ priceDecrease: newDecrease });
+    };
+
+    changeMaxPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newMaxPrice = Number(event.target.value);
+        this.setState({ maxPrice: newMaxPrice });
     };
 
     toggleAutoSearch = () => {
@@ -226,7 +199,7 @@ class App extends React.Component<{}, State> {
     };
 
     searchHandler = async () => {
-        let { players, priceIncrease, currentPlayerIndex } = this.state;
+        let { players, priceIncrease, currentPlayerIndex, maxPrice } = this.state;
 
         if (players.length === 0) {
             u.log('No players in DB');
@@ -248,21 +221,21 @@ class App extends React.Component<{}, State> {
         });
 
         const priceIncreaseNumber = priceIncrease * 100;
-        const priceWithDiscount = Number(currentPlayer.price) * this.state.priceMultiplier;
-        const discount = Number(currentPlayer.price) - priceWithDiscount;
-        const actualDiscount = discount < 1000 ? 1000 : discount > 5000 ? 5000 : discount;
-        const price = Number(currentPlayer.price) - actualDiscount + priceIncreaseNumber;
-        const priceString = price < 500 ? currentPlayer.price : String(price.toFixed(0));
-        // const priceString = String(Number(currentPlayer.price) + 3000);
+        const numericPrice = Number(currentPlayer.price);
+        const priceWithDiscount = numericPrice * this.state.priceMultiplier;
+        const discount = numericPrice - priceWithDiscount;
+        const actualDiscount = discount < 1000 ? numericPrice / 2 : discount;
+        const price = numericPrice - actualDiscount + priceIncreaseNumber;
+        const priceString = String(Math.min(maxPrice, price).toFixed(0));
 
         console.log(`Checking player "${currentPlayer.name}" with minPrice = ${priceString}`);
 
         try {
-            await u.delay(50);
+            await u.delay(microDelay);
             u.moveAndClick(inputs.clearPlayerInput);
-            await u.delay(50);
+            await u.delay(microDelay);
             u.moveAndClick(inputs.playerInput);
-            await u.delay(50);
+            await u.delay(microDelay);
             u.typeString(currentPlayer.name);
             await u.waitForColor(inputs.searchPlayerCard.color, inputs.searchPlayerCard);
             const playerNotFoundIconColor = u.getPixelColor(inputs.playerNotFoundIcon);
@@ -277,15 +250,20 @@ class App extends React.Component<{}, State> {
                 }
             }
             u.moveAndClick(inputs.playerIcon);
-            await u.delay(50);
+            await u.delay(microDelay);
             u.moveAndClick(inputs.clearPriceInput);
             u.moveAndClick(inputs.priceInput);
-            await u.delay(50);
+            await u.delay(microDelay);
             u.typeString(priceString);
             u.moveAndClick(inputs.searchButton);
             const wasFound = await this.checkPlayerFound();
             if (wasFound) {
-                u.notify(`FOUND! ${currentPlayer.name}`, `For less than ${priceString} gold`);
+                u.notify(
+                    `FOUND! ${currentPlayer.name} for less than ${priceString} gold`,
+                    `
+                    Player minimal price is ${currentPlayer.price} gold
+                `
+                );
             } else {
                 u.log(`Not found! ${currentPlayer.name}`, `For less than ${priceString} gold`);
                 u.moveAndClick(inputs.modifySearchButton);
@@ -304,7 +282,7 @@ class App extends React.Component<{}, State> {
 
         return (
             <div>
-                <div style={{ position: 'fixed', background: '#eeeeee', top: 0 }}>
+                <div style={{ position: 'fixed', background: '#eeeeee', top: 0, width: '100%' }}>
                     <button type="button" onClick={this.savePlayers}>
                         Save
                     </button>
@@ -318,27 +296,15 @@ class App extends React.Component<{}, State> {
                         AutoSearch is {shouldAutoSearch ? 'on' : 'off'}
                     </button>
                     <div style={{ margin: '20px 0' }}>
-                        <input
-                            type="text"
-                            placeholder="name"
-                            value={this.state.newPlayer.name}
-                            onChange={event => this.changeNewPlayerName(event)}
-                        />
-                        <input
-                            type="text"
-                            placeholder="price"
-                            value={this.state.newPlayer.price}
-                            onChange={event => this.changeNewPlayerPrice(event)}
-                        />
-                        <input
-                            type="text"
-                            placeholder="rating"
-                            value={this.state.newPlayer.rating}
-                            onChange={event => this.changeNewPlayerRating(event)}
-                        />
-                        <button type="button" onClick={this.addPlayer}>
-                            Add player
+                        <button type="button" onClick={this.reloadFromFutbin}>
+                            Reload from futbin
                         </button>
+                        <input
+                            type="text"
+                            placeholder="Futbin pages to load"
+                            defaultValue={String(this.state.futbinPagesToLoad)}
+                            onBlur={event => this.changeFutbinPages(event)}
+                        />
                     </div>
                     <div style={{ margin: '20px 0' }}>
                         <div>Price filter</div>
@@ -358,8 +324,8 @@ class App extends React.Component<{}, State> {
                         <input
                             type="text"
                             placeholder="multiplier"
-                            value={this.state.priceMultiplier}
-                            onChange={event => this.changePriceMultiplier(event)}
+                            defaultValue={String(this.state.priceMultiplier)}
+                            onBlur={event => this.changePriceMultiplier(event)}
                         />
                         <div>Price decrease</div>
                         <input
@@ -368,9 +334,16 @@ class App extends React.Component<{}, State> {
                             value={this.state.priceDecrease}
                             onChange={event => this.changePriceDecrease(event)}
                         />
+                        <div>Max price</div>
+                        <input
+                            type="text"
+                            placeholder="max price"
+                            value={this.state.maxPrice}
+                            onChange={event => this.changeMaxPrice(event)}
+                        />
                     </div>
                 </div>
-                <div style={{ paddingTop: '240px' }}>
+                <div style={{ paddingTop: '280px' }}>
                     {this.state.players.map((player, index) => {
                         return (
                             <div

@@ -31,8 +31,8 @@ export const inputs = {
         color: 'cb2063'
     },
     modifySearchButton: {
-        x: 830,
-        y: 612,
+        x: 991,
+        y: 615,
         color: 'cb2063'
     },
     clearPlayerInput: {
@@ -44,10 +44,14 @@ export const inputs = {
         y: 238,
         color: 'cefc49'
     },
-    // buyNowButton: {
-    //     x: 1105,
-    //     y: 467
-    // },
+    buyNowButton: {
+        x: 1380,
+        y: 727
+    },
+    buyNowButtonOk: {
+        x: 899,
+        y: 615
+    },
     backButton: {
         x: 168,
         y: 151

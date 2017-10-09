@@ -4,7 +4,9 @@ export const shortcutNames = {
     three: 'CommandOrControl+Shift+Alt+E',
     four: 'CommandOrControl+Shift+Alt+R',
     five: 'CommandOrControl+Shift+Alt+T',
-    six: 'CommandOrControl+Shift+Alt+Y',
+    six: 'CommandOrControl+Shift+Alt+Y'
 };
 
 export const playerIconBgColor = '2c313c';
+
+export const microDelay = 50;
