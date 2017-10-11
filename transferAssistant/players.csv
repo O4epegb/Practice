@@ -1,300 +1,150 @@
 name,rating,price,url
-C. Ronaldo dos Santos Aveiro,94,2480000,https://www.futbin.com/18/player/6/Cristiano%20Ronaldo
-Lionel Messi,93,1730000,https://www.futbin.com/18/player/12/Messi
-Neymar da Silva Santos Jr.,92,910000,https://www.futbin.com/18/player/20/Neymar
-Paul Pogba,87,725000,https://www.futbin.com/18/player/130/Pogba
-Luis Suárez,92,716000,https://www.futbin.com/18/player/19/Su%C3%A1rez
-Sergio Agüero,89,620000,https://www.futbin.com/18/player/73/Ag%C3%BCero
-Gareth Bale,89,620000,https://www.futbin.com/18/player/74/Bale
-Pierre-Emerick Aubameyang,88,468000,https://www.futbin.com/18/player/101/Aubameyang
-Eden Hazard,90,440000,https://www.futbin.com/18/player/59/Hazard
-Paulo Dybala,88,437000,https://www.futbin.com/18/player/105/Dybala
-Romelu Lukaku,86,430000,https://www.futbin.com/18/player/166/Lukaku
-Antoine Griezmann,88,415000,https://www.futbin.com/18/player/103/Griezmann
-Robert Lewandowski,91,414000,https://www.futbin.com/18/player/33/Lewandowski
-Kevin De Bruyne,89,380000,https://www.futbin.com/18/player/78/De%20Bruyne
-Sergio Ramos García,90,335000,https://www.futbin.com/18/player/55/Sergio%20Ramos
-N'Golo Kanté,87,309000,https://www.futbin.com/18/player/132/Kant%C3%A9
-Alexandre Lacazette,85,300000,https://www.futbin.com/18/player/201/Lacazette
-David De Gea Quintana,90,290000,https://www.futbin.com/18/player/61/De%20Gea
-Manuel Neuer,92,269000,https://www.futbin.com/18/player/18/Neuer
-Radja Nainggolan,86,265000,https://www.futbin.com/18/player/157/Nainggolan
-Kylian Mbappé,83,223000,https://www.futbin.com/18/player/325/Mbapp%C3%A9
-Arturo Vidal,87,210000,https://www.futbin.com/18/player/128/Vidal
-Alexis Sánchez,89,199000,https://www.futbin.com/18/player/76/S%C3%A1nchez
-Sadio Mané,84,185000,https://www.futbin.com/18/player/250/Man%C3%A9
-Marco Reus,86,184000,https://www.futbin.com/18/player/161/Reus
-Jérôme Boateng,88,177000,https://www.futbin.com/18/player/99/Boateng
-Giorgio Chiellini,89,159000,https://www.futbin.com/18/player/72/Chiellini
-Zlatan Ibrahimović,88,159000,https://www.futbin.com/18/player/93/Ibrahimovi%C4%87
-Dries Mertens,86,153000,https://www.futbin.com/18/player/155/Mertens
-James Rodríguez,86,145000,https://www.futbin.com/18/player/169/Rodr%C3%ADguez
-Arjen Robben,88,137000,https://www.futbin.com/18/player/92/Robben
-David Alaba,86,135000,https://www.futbin.com/18/player/167/Alaba
-Christian Eriksen,87,134000,https://www.futbin.com/18/player/129/Eriksen
-Alex Sandro Lobo Silva,86,125000,https://www.futbin.com/18/player/165/Alex%20Sandro
-David Luiz Moreira Marinho,86,123000,https://www.futbin.com/18/player/159/David%20Luiz
-Luka Modrić,89,117000,https://www.futbin.com/18/player/75/Modri%C4%87
-Gonzalo Higuaín,90,115000,https://www.futbin.com/18/player/57/Higua%C3%ADn
-Thibaut Courtois,89,108000,https://www.futbin.com/18/player/77/Courtois
-Kyle Walker,83,100000,https://www.futbin.com/18/player/292/Walker
-Harry Kane,86,99000,https://www.futbin.com/18/player/170/Kane
-Toni Kroos,90,97000,https://www.futbin.com/18/player/58/Kroos
-Hugo Lloris,88,90000,https://www.futbin.com/18/player/95/Lloris
-Thiago Emiliano da Silva,88,88500,https://www.futbin.com/18/player/94/Thiago%20Silva
-Marcelo Vieira da Silva,87,88000,https://www.futbin.com/18/player/126/Marcelo
-Thiago Alcântara,88,80000,https://www.futbin.com/18/player/102/Thiago
-Mats Hummels,88,75000,https://www.futbin.com/18/player/97/Hummels
-Marek Hamšík,87,74500,https://www.futbin.com/18/player/125/Ham%C5%A1%C3%ADk
-Francisco Román Alarcón Suárez,86,73000,https://www.futbin.com/18/player/168/Isco
-Anthony Martial,82,73000,https://www.futbin.com/18/player/416/Martial
-Ousmane Dembélé,83,71000,https://www.futbin.com/18/player/324/Demb%C3%A9l%C3%A9
-Gianluigi Buffon,89,70000,https://www.futbin.com/18/player/71/Buffon
-Leonardo Bonucci,88,68500,https://www.futbin.com/18/player/100/Bonucci
-Jordi Alba Ramos,85,68000,https://www.futbin.com/18/player/194/Jordi%20Alba
+C. Ronaldo dos Santos Aveiro,94,2400000,https://www.futbin.com/18/player/6/Cristiano%20Ronaldo
+Lionel Messi,93,1390000,https://www.futbin.com/18/player/12/Messi
+Luis Suárez,92,850000,https://www.futbin.com/18/player/19/Su%C3%A1rez
+Neymar da Silva Santos Jr.,92,810000,https://www.futbin.com/18/player/20/Neymar
+Paul Pogba,87,764000,https://www.futbin.com/18/player/130/Pogba
+Sergio Agüero,89,650000,https://www.futbin.com/18/player/73/Ag%C3%BCero
+Gareth Bale,89,649000,https://www.futbin.com/18/player/74/Bale
+Eden Hazard,90,489000,https://www.futbin.com/18/player/59/Hazard
+Robert Lewandowski,91,485000,https://www.futbin.com/18/player/33/Lewandowski
+Paulo Dybala,88,474000,https://www.futbin.com/18/player/105/Dybala
+Antoine Griezmann,88,450000,https://www.futbin.com/18/player/103/Griezmann
+Pierre-Emerick Aubameyang,88,450000,https://www.futbin.com/18/player/101/Aubameyang
+Kevin De Bruyne,89,420000,https://www.futbin.com/18/player/78/De%20Bruyne
+Romelu Lukaku,86,415000,https://www.futbin.com/18/player/166/Lukaku
+Sergio Ramos García,90,370000,https://www.futbin.com/18/player/55/Sergio%20Ramos
+N'Golo Kanté,87,330000,https://www.futbin.com/18/player/132/Kant%C3%A9
+Alexandre Lacazette,85,325000,https://www.futbin.com/18/player/201/Lacazette
+David De Gea Quintana,90,310000,https://www.futbin.com/18/player/61/De%20Gea
+Manuel Neuer,92,298000,https://www.futbin.com/18/player/18/Neuer
+Radja Nainggolan,86,277000,https://www.futbin.com/18/player/157/Nainggolan
+Arturo Vidal,87,238000,https://www.futbin.com/18/player/128/Vidal
+Sadio Mané,84,237000,https://www.futbin.com/18/player/250/Man%C3%A9
+Kylian Mbappé,83,218000,https://www.futbin.com/18/player/325/Mbapp%C3%A9
+Alexis Sánchez,89,210000,https://www.futbin.com/18/player/76/S%C3%A1nchez
+Jérôme Boateng,88,192000,https://www.futbin.com/18/player/99/Boateng
+Marco Reus,86,179000,https://www.futbin.com/18/player/161/Reus
+Dries Mertens,86,170000,https://www.futbin.com/18/player/155/Mertens
+Zlatan Ibrahimović,88,169000,https://www.futbin.com/18/player/93/Ibrahimovi%C4%87
+David Alaba,86,160000,https://www.futbin.com/18/player/167/Alaba
+Giorgio Chiellini,89,154000,https://www.futbin.com/18/player/72/Chiellini
+Luka Modrić,89,148000,https://www.futbin.com/18/player/75/Modri%C4%87
+Arjen Robben,88,147000,https://www.futbin.com/18/player/92/Robben
+Christian Eriksen,87,146000,https://www.futbin.com/18/player/129/Eriksen
+James Rodríguez,86,141000,https://www.futbin.com/18/player/169/Rodr%C3%ADguez
+Alex Sandro Lobo Silva,86,138000,https://www.futbin.com/18/player/165/Alex%20Sandro
+Gonzalo Higuaín,90,121000,https://www.futbin.com/18/player/57/Higua%C3%ADn
+David Luiz Moreira Marinho,86,118000,https://www.futbin.com/18/player/159/David%20Luiz
+Thibaut Courtois,89,110000,https://www.futbin.com/18/player/77/Courtois
+Toni Kroos,90,110000,https://www.futbin.com/18/player/58/Kroos
+Hugo Lloris,88,95000,https://www.futbin.com/18/player/95/Lloris
+Harry Kane,86,95000,https://www.futbin.com/18/player/170/Kane
+Marcelo Vieira da Silva,87,93000,https://www.futbin.com/18/player/126/Marcelo
+Thiago Emiliano da Silva,88,90500,https://www.futbin.com/18/player/94/Thiago%20Silva
+Anthony Martial,82,90000,https://www.futbin.com/18/player/416/Martial
+Francisco Román Alarcón Suárez,86,86000,https://www.futbin.com/18/player/168/Isco
+Thiago Alcântara,88,86000,https://www.futbin.com/18/player/102/Thiago
+Gianluigi Buffon,89,82000,https://www.futbin.com/18/player/71/Buffon
+Ousmane Dembélé,83,81000,https://www.futbin.com/18/player/324/Demb%C3%A9l%C3%A9
+Kyle Walker,83,80000,https://www.futbin.com/18/player/292/Walker
+Mats Hummels,88,80000,https://www.futbin.com/18/player/97/Hummels
+Marek Hamšík,87,78500,https://www.futbin.com/18/player/125/Ham%C5%A1%C3%ADk
+Jordi Alba Ramos,85,76000,https://www.futbin.com/18/player/194/Jordi%20Alba
+Raphaël Varane,85,72000,https://www.futbin.com/18/player/204/Varane
+César Azpilicueta Tanco,85,70000,https://www.futbin.com/18/player/192/Azpilicueta
+Eric Bailly,84,67500,https://www.futbin.com/18/player/255/Bailly
 Sergio Busquets Burgos,86,66500,https://www.futbin.com/18/player/163/Sergio%20Busquets
-Álvaro Borja Morata Martín,84,65000,https://www.futbin.com/18/player/246/Morata
-Raphaël Varane,85,63000,https://www.futbin.com/18/player/204/Varane
-Blaise Matuidi,85,61000,https://www.futbin.com/18/player/187/Matuidi
-Eric Bailly,84,61000,https://www.futbin.com/18/player/255/Bailly
-Karim Benzema,86,58000,https://www.futbin.com/18/player/152/Benzema
+Claudio Marchisio,85,66000,https://www.futbin.com/18/player/189/Marchisio
+Dele Alli,84,62500,https://www.futbin.com/18/player/251/Alli
+Karim Benzema,86,62000,https://www.futbin.com/18/player/152/Benzema
+Blaise Matuidi,85,60000,https://www.futbin.com/18/player/187/Matuidi
+Thomas Müller,86,59500,https://www.futbin.com/18/player/164/M%C3%BCller
+Antonio Valencia,83,58500,https://www.futbin.com/18/player/274/Valencia
 Carlos Henrique Venancio Casimiro,85,58000,https://www.futbin.com/18/player/203/Casemiro
-Dele Alli,84,57000,https://www.futbin.com/18/player/251/Alli
-Claudio Marchisio,85,57000,https://www.futbin.com/18/player/189/Marchisio
-César Azpilicueta Tanco,85,55000,https://www.futbin.com/18/player/192/Azpilicueta
-Thomas Müller,86,55000,https://www.futbin.com/18/player/164/M%C3%BCller
-Henrikh Mkhitaryan,85,55000,https://www.futbin.com/18/player/199/Mkhitaryan
-Gabriel Fernando de Jesus,81,55000,https://www.futbin.com/18/player/519/Gabriel%20Jesus
-Antonio Valencia,83,49000,https://www.futbin.com/18/player/274/Valencia
-Diego da Silva Costa,86,46000,https://www.futbin.com/18/player/158/Diego%20Costa
-Miralem Pjanić,85,42000,https://www.futbin.com/18/player/190/Pjani%C4%87
-Philippe Coutinho Correia,86,41500,https://www.futbin.com/18/player/162/Coutinho
-Corentin Tolisso,82,41500,https://www.futbin.com/18/player/425/Tolisso
-Mohamed Salah,83,41000,https://www.futbin.com/18/player/315/Salah
-Sokratis Papastathopoulos,86,39750,https://www.futbin.com/18/player/154/Sokratis
-Timo Werner,82,37000,https://www.futbin.com/18/player/418/Werner
-Leroy Sané,82,37000,https://www.futbin.com/18/player/427/San%C3%A9
-Toby Alderweireld,86,37000,https://www.futbin.com/18/player/160/Alderweireld
-Edinson Cavani,87,37000,https://www.futbin.com/18/player/127/Cavani
-Jan Oblak,88,36000,https://www.futbin.com/18/player/104/Oblak
-Mesut Özil,88,36000,https://www.futbin.com/18/player/96/%C3%96zil
-Willian Borges da Silva,84,35750,https://www.futbin.com/18/player/233/Willian
-Jamie Vardy,81,35250,https://www.futbin.com/18/player/504/Vardy
-Petr Čech,86,35000,https://www.futbin.com/18/player/148/%C4%8Cech
-Marcus Rashford,79,35000,https://www.futbin.com/18/player/827/Rashford
-Douglas Costa de Souza,82,35000,https://www.futbin.com/18/player/380/Douglas%20Costa
-Ángel Di María,85,34500,https://www.futbin.com/18/player/191/Di%20Mar%C3%ADa
-Alejandro Gómez,84,32500,https://www.futbin.com/18/player/222/G%C3%B3mez
-Leon Goretzka,82,31750,https://www.futbin.com/18/player/415/Goretzka
-Virgil van Dijk,83,31000,https://www.futbin.com/18/player/308/van%20Dijk
-Moussa Dembélé,82,31000,https://www.futbin.com/18/player/337/Demb%C3%A9l%C3%A9
-Andrés Iniesta Luján,87,30000,https://www.futbin.com/18/player/119/Iniesta
-Filipe Luís Kasmirski,85,29250,https://www.futbin.com/18/player/185/Filipe%20Lu%C3%ADs
-Alessandro Florenzi,82,29000,https://www.futbin.com/18/player/401/Florenzi
-Francesc Fàbregas i Soler,86,29000,https://www.futbin.com/18/player/151/Cesc%20F%C3%A0bregas
-Gerard Piqué Bernabeu,87,29000,https://www.futbin.com/18/player/121/Piqu%C3%A9
-Franck Ribéry,86,28500,https://www.futbin.com/18/player/150/Rib%C3%A9ry
-Samir Handanovič,87,28250,https://www.futbin.com/18/player/122/Handanovi%C4%8D
-Ander Herrera Agüera,84,28000,https://www.futbin.com/18/player/240/Ander%20Herrera
-Diego Godín,88,28000,https://www.futbin.com/18/player/98/God%C3%ADn
-David Josué Jimenez Silva,87,27500,https://www.futbin.com/18/player/123/David%20Silva
-Yannick Carrasco,85,27500,https://www.futbin.com/18/player/205/Carrasco
-Lorenzo Insigne,85,24500,https://www.futbin.com/18/player/202/Insigne
-Tiémoué Bakayoko,82,23250,https://www.futbin.com/18/player/426/Bakayoko
-Javier Martínez Aginaga,86,23000,https://www.futbin.com/18/player/156/Javi%20Martinez
-Laurent Koscielny,84,23000,https://www.futbin.com/18/player/225/Koscielny
-Roberto Firmino Barbosa de Oliveira,83,22000,https://www.futbin.com/18/player/307/Roberto%20Firmino
-Jan Vertonghen,85,22000,https://www.futbin.com/18/player/188/Vertonghen
-Yaya Touré,83,21500,https://www.futbin.com/18/player/260/Tour%C3%A9
-Heung Min Son,82,20250,https://www.futbin.com/18/player/392/Son
-Ederson Santana de Moraes,83,20000,https://www.futbin.com/18/player/317/Ederson
-Nélson Cabral Semedo,81,20000,https://www.futbin.com/18/player/518/N%C3%A9lson%20Semedo
-Serge Aurier,81,19750,https://www.futbin.com/18/player/485/Aurier
-Héctor Bellerín Moruno,81,18750,https://www.futbin.com/18/player/499/H%C3%A9ctor%20Beller%C3%ADn
-Kostas Manolas,84,18750,https://www.futbin.com/18/player/242/Manolas
-Vincent Kompany,85,18250,https://www.futbin.com/18/player/184/Kompany
-Marco Asensio Willemsen,84,18000,https://www.futbin.com/18/player/254/Marco%20Asensio
-João Miranda de Souza Filho,86,17000,https://www.futbin.com/18/player/153/Miranda
-Samuel Umtiti,83,16000,https://www.futbin.com/18/player/310/Umtiti
-Andriy Yarmolenko,81,16000,https://www.futbin.com/18/player/480/Yarmolenko
-Juan Cuadrado,82,15250,https://www.futbin.com/18/player/382/Cuadrado
-Danny Rose,82,14500,https://www.futbin.com/18/player/347/Rose
-Marc-André ter Stegen,85,14250,https://www.futbin.com/18/player/196/ter%20Stegen
-Marco Verratti,87,14000,https://www.futbin.com/18/player/131/Verratti
-Antonio Rüdiger,82,13750,https://www.futbin.com/18/player/406/R%C3%BCdiger
-Michail Antonio,80,13750,https://www.futbin.com/18/player/597/Antonio
-Andrea Belotti,83,13500,https://www.futbin.com/18/player/314/Belotti
-Georginio Wijnaldum,82,13000,https://www.futbin.com/18/player/358/Wijnaldum
-Kévin Gameiro,83,13000,https://www.futbin.com/18/player/277/Gameiro
-Keita Baldé Diao,82,13000,https://www.futbin.com/18/player/421/Bald%C3%A9%20Diao
-Adam Lallana,83,13000,https://www.futbin.com/18/player/284/Lallana
-Kalidou Koulibaly,84,12500,https://www.futbin.com/18/player/245/Koulibaly
-Raheem Sterling,82,12000,https://www.futbin.com/18/player/398/Sterling
-Andrea Barzagli,85,12000,https://www.futbin.com/18/player/183/Barzagli
-Jorge Resurrección,84,11750,https://www.futbin.com/18/player/243/Koke
-Nemanja Matić,83,11500,https://www.futbin.com/18/player/297/Mati%C4%87
-Idrissa Gueye,83,11000,https://www.futbin.com/18/player/300/Gueye
+Leonardo Bonucci,88,56000,https://www.futbin.com/18/player/100/Bonucci
+Philippe Coutinho Correia,86,50000,https://www.futbin.com/18/player/162/Coutinho
+Mesut Özil,88,50000,https://www.futbin.com/18/player/96/%C3%96zil
+Diego da Silva Costa,86,50000,https://www.futbin.com/18/player/158/Diego%20Costa
+Miralem Pjanić,85,47750,https://www.futbin.com/18/player/190/Pjani%C4%87
+Toby Alderweireld,86,47500,https://www.futbin.com/18/player/160/Alderweireld
+Álvaro Borja Morata Martín,84,46000,https://www.futbin.com/18/player/246/Morata
+Jan Oblak,88,44000,https://www.futbin.com/18/player/104/Oblak
+Timo Werner,82,43500,https://www.futbin.com/18/player/418/Werner
+Leon Goretzka,82,41750,https://www.futbin.com/18/player/415/Goretzka
+Sokratis Papastathopoulos,86,41500,https://www.futbin.com/18/player/154/Sokratis
+Willian Borges da Silva,84,41000,https://www.futbin.com/18/player/233/Willian
+İlkay Gündoğan,85,40000,https://www.futbin.com/18/player/193/G%C3%BCndo%C4%9Fan
+Virgil van Dijk,83,39750,https://www.futbin.com/18/player/308/van%20Dijk
+Alessandro Florenzi,82,39750,https://www.futbin.com/18/player/401/Florenzi
+Ivan Rakitić,87,39000,https://www.futbin.com/18/player/124/Rakiti%C4%87
+Ángel Di María,85,39000,https://www.futbin.com/18/player/191/Di%20Mar%C3%ADa
+Edinson Cavani,87,39000,https://www.futbin.com/18/player/127/Cavani
+Jamie Vardy,81,38000,https://www.futbin.com/18/player/504/Vardy
+Francesc Fàbregas i Soler,86,37750,https://www.futbin.com/18/player/151/Cesc%20F%C3%A0bregas
+Petr Čech,86,37500,https://www.futbin.com/18/player/148/%C4%8Cech
+Alejandro Gómez,84,37500,https://www.futbin.com/18/player/222/G%C3%B3mez
+Andrés Iniesta Luján,87,37000,https://www.futbin.com/18/player/119/Iniesta
+Mohamed Salah,83,37000,https://www.futbin.com/18/player/315/Salah
+Yannick Carrasco,85,35750,https://www.futbin.com/18/player/205/Carrasco
+David Josué Jimenez Silva,87,35000,https://www.futbin.com/18/player/123/David%20Silva
+Samir Handanovič,87,34000,https://www.futbin.com/18/player/122/Handanovi%C4%8D
+Ander Herrera Agüera,84,34000,https://www.futbin.com/18/player/240/Ander%20Herrera
+Javier Martínez Aginaga,86,33000,https://www.futbin.com/18/player/156/Javi%20Martinez
+Filipe Luís Kasmirski,85,33000,https://www.futbin.com/18/player/185/Filipe%20Lu%C3%ADs
+Franck Ribéry,86,32000,https://www.futbin.com/18/player/150/Rib%C3%A9ry
+Jan Vertonghen,85,31750,https://www.futbin.com/18/player/188/Vertonghen
+Diego Godín,88,30000,https://www.futbin.com/18/player/98/God%C3%ADn
+Yaya Touré,83,29500,https://www.futbin.com/18/player/260/Tour%C3%A9
+Lorenzo Insigne,85,29000,https://www.futbin.com/18/player/202/Insigne
+Gerard Piqué Bernabeu,87,28000,https://www.futbin.com/18/player/121/Piqu%C3%A9
+Douglas Costa de Souza,82,27750,https://www.futbin.com/18/player/380/Douglas%20Costa
+Vincent Kompany,85,26750,https://www.futbin.com/18/player/184/Kompany
+Laurent Koscielny,84,24500,https://www.futbin.com/18/player/225/Koscielny
+Roberto Firmino Barbosa de Oliveira,83,23000,https://www.futbin.com/18/player/307/Roberto%20Firmino
+Kostas Manolas,84,21750,https://www.futbin.com/18/player/242/Manolas
+Héctor Bellerín Moruno,81,20000,https://www.futbin.com/18/player/499/H%C3%A9ctor%20Beller%C3%ADn
+Serge Aurier,81,19500,https://www.futbin.com/18/player/485/Aurier
+Marco Asensio Willemsen,84,19500,https://www.futbin.com/18/player/254/Marco%20Asensio
+João Miranda de Souza Filho,86,19250,https://www.futbin.com/18/player/153/Miranda
+Samuel Umtiti,83,18000,https://www.futbin.com/18/player/310/Umtiti
+Juan Cuadrado,82,17500,https://www.futbin.com/18/player/382/Cuadrado
+Marc-André ter Stegen,85,17250,https://www.futbin.com/18/player/196/ter%20Stegen
+Adam Lallana,83,17000,https://www.futbin.com/18/player/284/Lallana
+Georginio Wijnaldum,82,17000,https://www.futbin.com/18/player/358/Wijnaldum
+Marco Verratti,87,16000,https://www.futbin.com/18/player/131/Verratti
+Andriy Yarmolenko,81,15250,https://www.futbin.com/18/player/480/Yarmolenko
+Danny Rose,82,15000,https://www.futbin.com/18/player/347/Rose
+Ederson Santana de Moraes,83,15000,https://www.futbin.com/18/player/317/Ederson
+Andrea Barzagli,85,14500,https://www.futbin.com/18/player/183/Barzagli
+Kalidou Koulibaly,84,14000,https://www.futbin.com/18/player/245/Koulibaly
+Nélson Cabral Semedo,81,14000,https://www.futbin.com/18/player/518/N%C3%A9lson%20Semedo
+Kévin Gameiro,83,13750,https://www.futbin.com/18/player/277/Gameiro
+Andrea Belotti,83,13250,https://www.futbin.com/18/player/314/Belotti
+Idrissa Gueye,83,12750,https://www.futbin.com/18/player/300/Gueye
+Jorge Resurrección,84,11000,https://www.futbin.com/18/player/243/Koke
+Nemanja Matić,83,11000,https://www.futbin.com/18/player/297/Mati%C4%87
+Kasper Schmeichel,83,10000,https://www.futbin.com/18/player/273/Schmeichel
+Daniel Carvajal Ramos,84,10000,https://www.futbin.com/18/player/249/Carvajal
 Thomas Lemar,83,9700,https://www.futbin.com/18/player/320/Lemar
-Daniel Wass,80,9600,https://www.futbin.com/18/player/560/Wass
-Kasper Schmeichel,83,9500,https://www.futbin.com/18/player/273/Schmeichel
 Sami Khedira,84,9500,https://www.futbin.com/18/player/232/Khedira
 Davinson Sánchez,81,9200,https://www.futbin.com/18/player/515/S%C3%A1nchez
-Daniel Carvajal Ramos,84,9100,https://www.futbin.com/18/player/249/Carvajal
-Keylor Navas,85,8900,https://www.futbin.com/18/player/200/Navas
-Renato Júnior Luz Sanches,76,8700,https://www.futbin.com/18/player/1475/Renato%20Sanches
-Gylfi Sigurðsson,82,8600,https://www.futbin.com/18/player/368/Sigur%C3%B0sson
+Daniel Wass,80,9100,https://www.futbin.com/18/player/560/Wass
+Keylor Navas,85,9000,https://www.futbin.com/18/player/200/Navas
+Renato Júnior Luz Sanches,76,9000,https://www.futbin.com/18/player/1475/Renato%20Sanches
+Juan Manuel Mata García,84,8400,https://www.futbin.com/18/player/229/Juan%20Mata
+Fernando Luiz Rosa,82,8300,https://www.futbin.com/18/player/330/Fernandinho
+Bernd Leno,85,8000,https://www.futbin.com/18/player/197/Leno
+Nathaniel Clyne,82,8000,https://www.futbin.com/18/player/379/Clyne
 Giacomo Bonaventura,83,8000,https://www.futbin.com/18/player/294/Bonaventura
-Federico Bernardeschi,82,8000,https://www.futbin.com/18/player/419/Bernardeschi
-Juan Manuel Mata García,84,7800,https://www.futbin.com/18/player/229/Juan%20Mata
+Chris Smalling,81,7800,https://www.futbin.com/18/player/469/Smalling
+José Paulo Bezerra M. Júnior,81,7800,https://www.futbin.com/18/player/462/Paulinho
 Ivan Perišić,84,7700,https://www.futbin.com/18/player/235/Peri%C5%A1i%C4%87
-Bernd Leno,85,7600,https://www.futbin.com/18/player/197/Leno
-Ahmed Musa,76,7500,https://www.futbin.com/18/player/1347/Musa
-José Paulo Bezerra M. Júnior,81,7400,https://www.futbin.com/18/player/462/Paulinho
-Fernando Luiz Rosa,82,7300,https://www.futbin.com/18/player/330/Fernandinho
-Nathaniel Clyne,82,7300,https://www.futbin.com/18/player/379/Clyne
-Chris Smalling,81,7200,https://www.futbin.com/18/player/469/Smalling
-Gerard Deulofeu Lázaro,82,7100,https://www.futbin.com/18/player/396/Deulofeu
-Medhi Benatia,84,7000,https://www.futbin.com/18/player/228/Benatia
-Daniel Alves da Silva,84,6900,https://www.futbin.com/18/player/223/Dani%20Alves
-Lucas Rodrigues M. Silva,82,6900,https://www.futbin.com/18/player/393/Lucas
-Képler Laveran Lima Ferreira,86,6800,https://www.futbin.com/18/player/149/Pepe
-Stéphane Ruffier,85,6500,https://www.futbin.com/18/player/186/Ruffier
-Emre Can,79,6500,https://www.futbin.com/18/player/795/Can
-Karim Bellarabi,82,6100,https://www.futbin.com/18/player/399/Bellarabi
-Aymeric Laporte,84,5800,https://www.futbin.com/18/player/252/Laporte
-Mateo Kovačić,82,5800,https://www.futbin.com/18/player/408/Kova%C4%8Di%C4%87
-Kevin Strootman,84,5800,https://www.futbin.com/18/player/239/Strootman
-Marcos Alonso Mendoza,81,5600,https://www.futbin.com/18/player/474/Marcos%20Alonso
-Jordan Henderson,82,5600,https://www.futbin.com/18/player/364/Henderson
-Danijel Subašić,85,5400,https://www.futbin.com/18/player/198/Suba%C5%A1i%C4%87
-Kingsley Coman,79,5400,https://www.futbin.com/18/player/810/Coman
-Wayne Rooney,81,5300,https://www.futbin.com/18/player/435/Rooney
-Kamil Glik,85,5300,https://www.futbin.com/18/player/195/Glik
-Pedro Rodríguez Ledesma,84,5100,https://www.futbin.com/18/player/238/Pedro
-Marcos Rojo,82,5000,https://www.futbin.com/18/player/394/Rojo
-Iñaki Williams Arthuer,81,4900,https://www.futbin.com/18/player/512/Williams
-Gary Cahill,84,4700,https://www.futbin.com/18/player/224/Cahill
-Marco Parolo,81,4600,https://www.futbin.com/18/player/458/Parolo
-Marcos Aoas Corrêa,83,4500,https://www.futbin.com/18/player/312/Marquinhos
-José María Giménez,83,4500,https://www.futbin.com/18/player/322/Gim%C3%A9nez
-Thomas Meunier,81,4500,https://www.futbin.com/18/player/497/Meunier
-Łukasz Piszczek,83,4500,https://www.futbin.com/18/player/276/Piszczek
-Ross Barkley,81,4500,https://www.futbin.com/18/player/489/Barkley
-João Mário Naval Costa Eduardo,83,4400,https://www.futbin.com/18/player/319/Jo%C3%A3o%20M%C3%A1rio
-João Pedro Cavaco Cancelo,79,4400,https://www.futbin.com/18/player/798/Jo%C3%A3o%20Cancelo
-Jonathan Viera Ramos,82,4200,https://www.futbin.com/18/player/389/Jonathan%20Viera
-Santiago Cazorla González,83,4000,https://www.futbin.com/18/player/267/Santi%20Cazorla
-Julian Draxler,84,4000,https://www.futbin.com/18/player/248/Draxler
-Jordan Lukaku,77,3800,https://www.futbin.com/18/player/1246/Lukaku
-José Ignacio Fernández Iglesias,81,3800,https://www.futbin.com/18/player/494/Nacho%20Fern%C3%A1ndez
-Dimitri Payet,84,3800,https://www.futbin.com/18/player/227/Payet
-Morgan Sanson,81,3700,https://www.futbin.com/18/player/506/Sanson
-Jonathan Tah,82,3700,https://www.futbin.com/18/player/420/Tah
-Fábio Henrique Tavares,83,3700,https://www.futbin.com/18/player/316/Fabinho
-Kevin Volland,80,3700,https://www.futbin.com/18/player/621/Volland
-Daniele De Rossi,83,3500,https://www.futbin.com/18/player/263/De%20Rossi
-Ronaldo Aparecido Rodrigues,82,3500,https://www.futbin.com/18/player/349/Naldo
-Gianluigi Donnarumma,82,3500,https://www.futbin.com/18/player/428/Donnarumma
-Naby Keïta,83,3500,https://www.futbin.com/18/player/323/Ke%C3%AFta
-Manuel Lanzini,81,3500,https://www.futbin.com/18/player/465/Lanzini
-Quincy Promes,82,3500,https://www.futbin.com/18/player/414/Promes
-Taison Barcellos Freda,82,3500,https://www.futbin.com/18/player/374/Taison
-Saúl Ñíguez Esclápez,82,3400,https://www.futbin.com/18/player/412/Sa%C3%BAl
-Felipe Anderson Pereira Gomes,81,3300,https://www.futbin.com/18/player/496/Felipe%20Anderson
-Bernardo Mota Carvalho e Silva,84,3300,https://www.futbin.com/18/player/253/Bernardo%20Silva
-Marlos Romero Bonfim,82,3200,https://www.futbin.com/18/player/373/Marlos
-Kevin Mirallas,81,3200,https://www.futbin.com/18/player/447/Mirallas
-Loïc Perrin,83,3200,https://www.futbin.com/18/player/271/Perrin
-Marouane Fellaini,79,3200,https://www.futbin.com/18/player/700/Fellaini
-Danilo Luiz da Silva,78,3200,https://www.futbin.com/18/player/957/Danilo
-Shkodran Mustafi,84,3100,https://www.futbin.com/18/player/241/Mustafi
-Marcel Schmelzer,80,3100,https://www.futbin.com/18/player/593/Schmelzer
-Stephan El Shaarawy,80,3000,https://www.futbin.com/18/player/598/El%20Shaarawy
-Ömer Toprak,83,3000,https://www.futbin.com/18/player/289/Toprak
-Davy Klaassen,82,3000,https://www.futbin.com/18/player/400/Klaassen
-Eric Dier,82,3000,https://www.futbin.com/18/player/395/Dier
-Mario Balotelli,82,3000,https://www.futbin.com/18/player/371/Balotelli
-Sergej Milinković-Savić,80,3000,https://www.futbin.com/18/player/653/Milinkovi%C4%87-Savi%C4%87
-Luis Miguel Afonso Fernandes,82,3000,https://www.futbin.com/18/player/388/Pizzi
-Adriano Correia Claro,78,3000,https://www.futbin.com/18/player/872/Adriano
-Sergio Asenjo Andrés,84,3000,https://www.futbin.com/18/player/230/Sergio%20Asenjo
-Franck Yannick Kessié,76,3000,https://www.futbin.com/18/player/1476/Kessi%C3%A9
-Bruno da Silva Peres,78,3000,https://www.futbin.com/18/player/1002/Bruno%20Peres
-Nicolás Otamendi,83,3000,https://www.futbin.com/18/player/298/Otamendi
-Francesco Acerbi,82,3000,https://www.futbin.com/18/player/391/Acerbi
-Kevin-Prince Boateng,80,3000,https://www.futbin.com/18/player/566/Boateng
-Timo Horn,84,2900,https://www.futbin.com/18/player/244/Horn
-Gelson Dany Batalha Martins,81,2900,https://www.futbin.com/18/player/517/Gelson%20Martins
-Allan Marques Loureiro,80,2900,https://www.futbin.com/18/player/620/Allan
-Rui Pedro dos Santos Patrício,83,2900,https://www.futbin.com/18/player/281/Rui%20Patr%C3%ADcio
-Jean Michaël Seri,82,2900,https://www.futbin.com/18/player/422/Seri
-Seydou Doumbia,79,2800,https://www.futbin.com/18/player/721/Doumbia
-Djibril Sidibé,79,2800,https://www.futbin.com/18/player/761/Sidib%C3%A9
-Mauro Icardi,84,2800,https://www.futbin.com/18/player/247/Icardi
-Memphis Depay,80,2800,https://www.futbin.com/18/player/624/Depay
-José Izquierdo,78,2800,https://www.futbin.com/18/player/1024/Izquierdo
-Jérémy Mathieu,80,2800,https://www.futbin.com/18/player/529/Mathieu
-Kevin Vogt,80,2800,https://www.futbin.com/18/player/603/Vogt
-José María Callejón Bueno,83,2800,https://www.futbin.com/18/player/288/Jos%C3%A9%20Callej%C3%B3n
-Niklas Süle,83,2800,https://www.futbin.com/18/player/318/S%C3%BCle
-João Filipe Moutinho,82,2800,https://www.futbin.com/18/player/338/Jo%C3%A3o%20Moutinho
-Frederico R. de Paula Santos,80,2700,https://www.futbin.com/18/player/639/Fred
-Riyad Mahrez,83,2700,https://www.futbin.com/18/player/309/Mahrez
-Victor Wanyama,82,2700,https://www.futbin.com/18/player/375/Wanyama
-Ralf Fährmann,84,2700,https://www.futbin.com/18/player/231/F%C3%A4hrmann
-Michael Keane,81,2700,https://www.futbin.com/18/player/502/Keane
-Davide Zappacosta,79,2700,https://www.futbin.com/18/player/816/Zappacosta
-Roberto Pereyra,80,2600,https://www.futbin.com/18/player/604/Pereyra
-Manuel H. Tavares Fernandes,80,2600,https://www.futbin.com/18/player/541/Manuel%20Fernandes
-Mariano Ferreira Filho,79,2600,https://www.futbin.com/18/player/713/Mariano
-Cédric Bakambu,81,2500,https://www.futbin.com/18/player/488/Bakambu
-Javier Pastore,83,2500,https://www.futbin.com/18/player/296/Pastore
-Joel Matip,83,2500,https://www.futbin.com/18/player/301/Matip
-Edin Džeko,84,2500,https://www.futbin.com/18/player/234/D%C5%BEeko
-José Sosa,78,2500,https://www.futbin.com/18/player/1048/Sosa
-Joshua Kimmich,81,2500,https://www.futbin.com/18/player/509/Kimmich
-Wylan Cyprien,79,2400,https://www.futbin.com/18/player/808/Cyprien
-Felipe Pardo,75,2400,https://www.futbin.com/18/player/1978/Pardo
-Radamel Falcao García Zarate,84,2400,https://www.futbin.com/18/player/226/Falcao
-Jack Butland,81,2400,https://www.futbin.com/18/player/498/Butland
-Rafael Alcântara,81,2300,https://www.futbin.com/18/player/495/Rafinha
-Joe Hart,82,2300,https://www.futbin.com/18/player/334/Hart
-Caner Erkin,76,2300,https://www.futbin.com/18/player/1557/Erkin
-Lucas Digne,79,2300,https://www.futbin.com/18/player/757/Digne
-Luis Muriel,80,2300,https://www.futbin.com/18/player/617/Muriel
-Christian Pulisic,78,2300,https://www.futbin.com/18/player/1043/Pulisic
-Malcom Filipe Silva de Oliveira,79,2300,https://www.futbin.com/18/player/820/Malcom
-Wissam Ben Yedder,81,2300,https://www.futbin.com/18/player/491/Ben%20Yedder
-Mateo Musacchio,83,2300,https://www.futbin.com/18/player/290/Musacchio
-Willian José da Silva,82,2300,https://www.futbin.com/18/player/387/Willian%20Jos%C3%A9
-Mario Gómez,82,2200,https://www.futbin.com/18/player/333/G%C3%B3mez
-Pablo Zabaleta,79,2200,https://www.futbin.com/18/player/666/Zabaleta
-Aritz Aduriz Zubeldia,84,2200,https://www.futbin.com/18/player/221/Aduriz
-André Schürrle,80,2200,https://www.futbin.com/18/player/606/Sch%C3%BCrrle
-Benedikt Höwedes,83,2200,https://www.futbin.com/18/player/283/H%C3%B6wedes
-Adil Rami,81,2200,https://www.futbin.com/18/player/455/Rami
-Theo Walcott,80,2100,https://www.futbin.com/18/player/548/Walcott
-Marko Arnautović,82,2100,https://www.futbin.com/18/player/365/Arnautovi%C4%87
-Morgan Schneiderlin,83,2100,https://www.futbin.com/18/player/279/Schneiderlin
-Wojciech Szczęsny,82,2100,https://www.futbin.com/18/player/369/Szcz%C4%99sny
-Cédric Ricardo Alves Soares,79,2100,https://www.futbin.com/18/player/764/C%C3%A9dric
-Juan Francisco Torres Belén,83,2100,https://www.futbin.com/18/player/269/Juanfran
-Ciro Immobile,82,2000,https://www.futbin.com/18/player/381/Immobile
-Nicolás Gaitán,83,2000,https://www.futbin.com/18/player/286/Gait%C3%A1n
-Luís Carlos Almeida da Cunha,83,2000,https://www.futbin.com/18/player/264/Nani
-Lars Stindl,82,2000,https://www.futbin.com/18/player/372/Stindl
-Marc Bartra Aregall,81,2000,https://www.futbin.com/18/player/486/Bartra
-José Luís Gayà Peña,79,2000,https://www.futbin.com/18/player/803/Gay%C3%A0
-Leighton Baines,82,2000,https://www.futbin.com/18/player/340/Baines
-David Abraham,79,2000,https://www.futbin.com/18/player/680/Abraham
-Lucas Biglia,83,2000,https://www.futbin.com/18/player/270/Biglia
-Danny Welbeck,80,2000,https://www.futbin.com/18/player/587/Welbeck
-Rafael Pereira da Silva,79,2000,https://www.futbin.com/18/player/727/Rafael
-Roman Bürki,84,2000,https://www.futbin.com/18/player/237/B%C3%BCrki
-Jonas Gonçalves Oliveira,83,2000,https://www.futbin.com/18/player/278/Jonas
-Benoît Costil,82,2000,https://www.futbin.com/18/player/336/Costil
-Samir Nasri,82,2000,https://www.futbin.com/18/player/343/Nasri
-Wendell Nascimento Borges,77,1900,https://www.futbin.com/18/player/1282/Wendell
-Piotr Zieliński,80,1900,https://www.futbin.com/18/player/643/Zieli%C5%84ski
-Stefan de Vrij,83,1900,https://www.futbin.com/18/player/303/de%20Vrij
-Nabil Fekir,82,1900,https://www.futbin.com/18/player/423/Fekir
+Keita Baldé Diao,82,7700,https://www.futbin.com/18/player/421/Bald%C3%A9%20Diao
+Ahmed Musa,76,7700,https://www.futbin.com/18/player/1347/Musa
+Gerard Deulofeu Lázaro,82,7300,https://www.futbin.com/18/player/396/Deulofeu
+Képler Laveran Lima Ferreira,86,7200,https://www.futbin.com/18/player/149/Pepe
+Medhi Benatia,84,7200,https://www.futbin.com/18/player/228/Benatia
+Stéphane Ruffier,85,7000,https://www.futbin.com/18/player/186/Ruffier
+Armindo Tué Na Bangna,81,7000,https://www.futbin.com/18/player/508/Bruma
+Gylfi Sigurðsson,82,7000,https://www.futbin.com/18/player/368/Sigur%C3%B0sson

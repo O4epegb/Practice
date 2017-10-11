@@ -344,14 +344,20 @@ class App extends React.Component<{}, State> {
                     </div>
                 </div>
                 <div style={{ paddingTop: '280px' }}>
+                    Total: {this.state.players.length}
                     {this.state.players.map((player, index) => {
                         return (
                             <div
                                 key={player.name}
                                 style={{
-                                    background: `${index === this.state.currentPlayerIndex ? 'tomato' : 'white'}`
+                                    background: `${index === this.state.currentPlayerIndex ? 'tomato' : 'white'}`,
+                                    margin: '2px 0',
+                                    padding: '2px 0'
                                 }}
                             >
+                                <span style={{ padding: '0 4px', display: 'inline-block', width: '25px' }}>
+                                    {index + 1}
+                                </span>
                                 <input
                                     type="text"
                                     defaultValue={player.name}
