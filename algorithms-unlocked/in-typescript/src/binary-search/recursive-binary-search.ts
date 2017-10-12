@@ -1,5 +1,10 @@
-export default function recursiveBinarySearch(array, x) {
-    function iter(array, x, leftIndex, rightIndex) {
+export default function recursiveBinarySearch(array: Array<number>, x: number) {
+    function iter(
+        array: Array<number>,
+        x: number,
+        leftIndex: number,
+        rightIndex: number
+    ): number {
         const left = leftIndex;
         const right = rightIndex;
         const middle = Math.floor((left + right) / 2);
@@ -10,7 +15,7 @@ export default function recursiveBinarySearch(array, x) {
             return middle;
         } else if (array[middle] > x) {
             return iter(array, x, left, middle - 1);
-        } else if (array[middle] < x) {
+        } else {
             return iter(array, x, middle + 1, right);
         }
     }

@@ -17,7 +17,11 @@ export default function selectionSort(array: Array<number>): Array<number> {
     return array;
 }
 
-function mutatedSwap(firstIndex: number, secondIndex: number, array: Array<number>) {
+function mutatedSwap(
+    firstIndex: number,
+    secondIndex: number,
+    array: Array<number>
+) {
     const temp = array[firstIndex];
     array[firstIndex] = array[secondIndex];
     array[secondIndex] = temp;
