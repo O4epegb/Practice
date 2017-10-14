@@ -3,9 +3,11 @@ import * as csvparser from 'csv-parse';
 import * as csvstringify from 'csv-stringify';
 import { Player } from './models';
 
+const dbFileName = 'db.csv';
+
 export function getPlayers() {
     return new Promise<Array<Player>>((resolve, reject) => {
-        const playersString = fs.readFileSync('players.csv').toString();
+        const playersString = fs.readFileSync(dbFileName).toString();
         csvparser(playersString, { columns: true }, (err, data) => {
             if (!err) {
                 resolve(data);
@@ -22,7 +24,7 @@ export function savePlayers(players: Array<Player>) {
         const columns = Object.keys(players[0]);
         csvstringify(players as any, { header: true, columns } as any, (err, output) => {
             if (!err) {
-                fs.writeFileSync('players.csv', output);
+                fs.writeFileSync(dbFileName, output);
                 resolve();
             } else {
                 console.log(err);
