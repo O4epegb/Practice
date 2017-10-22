@@ -5,7 +5,7 @@ import * as u from '../utils';
 import { shortcutNames, microDelay } from '../constants';
 import { inputs } from '../inputPositions';
 import { getPlayers, savePlayers } from '../players';
-import { Player } from '../models';
+import { Player, PlayerType } from '../models';
 import { reloadFutbinData } from '../reloadData';
 
 interface State {
@@ -13,7 +13,6 @@ interface State {
     players: Array<Player>;
     priceIncrease: number;
     currentPlayerIndex: number;
-    newPlayer: Player;
     priceMultiplier: number;
     priceDecrease: number;
     shouldAutoSearch: boolean;
@@ -21,9 +20,13 @@ interface State {
     priceTo: number;
     maxPrice: number;
     futbinPagesToLoad: number;
+    headerHeight: number;
+    activePlayerType: PlayerType;
 }
 
 class App extends React.Component<{}, State> {
+    headerNode: HTMLDivElement;
+
     constructor() {
         super();
         this.state = {
@@ -31,23 +34,22 @@ class App extends React.Component<{}, State> {
             players: [],
             priceIncrease: 0,
             currentPlayerIndex: 0,
-            newPlayer: {
-                name: '',
-                price: '',
-                rating: ''
-            },
-            priceMultiplier: 0.8,
+            priceMultiplier: 0.9,
             priceDecrease: 1500,
             shouldAutoSearch: false,
             priceFrom: 12000,
             priceTo: 50000,
             maxPrice: 200000,
-            futbinPagesToLoad: 10
+            futbinPagesToLoad: 5,
+            headerHeight: 0,
+            activePlayerType: PlayerType.Gold
         };
     }
 
     componentDidMount() {
         this.reloadPlayersFromDb();
+
+        this.setState({ headerHeight: this.headerNode.clientHeight });
 
         ipcRenderer.on('shortcut-press', (event, shortcutName) => {
             switch (shortcutName) {
@@ -80,11 +82,6 @@ class App extends React.Component<{}, State> {
         });
     }
 
-    filterFunction = (player: Player) => {
-        const price = Number(player.price);
-        return price < this.state.priceTo + 1 && price > this.state.priceFrom - 1;
-    };
-
     changePlayerName = (event: React.FocusEvent<HTMLInputElement>, changedPlayer: Player) => {
         changedPlayer.name = (event.target as any).value;
         this.setState({ players: this.state.players });
@@ -100,6 +97,12 @@ class App extends React.Component<{}, State> {
         this.setState({ players: this.state.players });
     };
 
+    changePlayerType = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        this.setState({ activePlayerType: event.target.value as PlayerType }, () => {
+            this.reloadPlayersFromDb();
+        });
+    };
+
     savePlayers = () => {
         const players = this.state.allPlayers.slice().sort((a, b) => Number(a.price) - Number(b.price));
         savePlayers(players)
@@ -113,16 +116,26 @@ class App extends React.Component<{}, State> {
 
     reloadPlayersFromDb = () => {
         getPlayers().then(players => {
+            console.log('Players reloaded from db');
             console.log(players);
-            this.setState({
-                allPlayers: players,
-                players: players.filter(this.filterFunction)
+            this.setState(({ activePlayerType }) => {
+                return {
+                    allPlayers: players,
+                    players: players.filter(player => {
+                        const price = Number(player.price);
+                        return (
+                            price <= this.state.priceTo &&
+                            price >= this.state.priceFrom &&
+                            player.type === activePlayerType
+                        );
+                    })
+                };
             });
         });
     };
 
     reloadFromFutbin = () => {
-        reloadFutbinData(this.state.futbinPagesToLoad).then(() => {
+        reloadFutbinData(this.state.futbinPagesToLoad, this.state.activePlayerType).then(() => {
             this.reloadPlayersFromDb();
         });
     };
@@ -226,7 +239,7 @@ class App extends React.Component<{}, State> {
         const discount = numericPrice - priceWithDiscount;
         const actualDiscount = discount < 1000 ? numericPrice / 2 : discount;
         const price = numericPrice - actualDiscount + priceIncreaseNumber;
-        const priceString = String(Math.min(maxPrice, price).toFixed(0));
+        const priceString = String(Math.min(maxPrice + priceIncreaseNumber, price).toFixed(0));
 
         console.log(`Checking player "${currentPlayer.name}" with minPrice = ${priceString}`);
 
@@ -282,7 +295,17 @@ class App extends React.Component<{}, State> {
 
         return (
             <div>
-                <div style={{ position: 'fixed', background: '#eeeeee', top: 0, width: '100%' }}>
+                <div
+                    ref={node => (this.headerNode = node)}
+                    style={{
+                        position: 'fixed',
+                        background: '#eeeeee',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        padding: '10px'
+                    }}
+                >
                     <button type="button" onClick={this.savePlayers}>
                         Save
                     </button>
@@ -306,7 +329,7 @@ class App extends React.Component<{}, State> {
                             onBlur={event => this.changeFutbinPages(event)}
                         />
                     </div>
-                    <div style={{ margin: '20px 0' }}>
+                    <div style={{ marginTop: '20px' }}>
                         <div>Price filter</div>
                         <input
                             type="text"
@@ -320,6 +343,16 @@ class App extends React.Component<{}, State> {
                             defaultValue={String(this.state.priceTo)}
                             onBlur={event => this.changeFilterTo(event)}
                         />
+                        <div>Player type</div>
+                        <select onChange={this.changePlayerType} defaultValue={this.state.activePlayerType}>
+                            {[PlayerType.Gold, PlayerType.Icon].map(item => {
+                                return (
+                                    <option key={item} value={item}>
+                                        {item}
+                                    </option>
+                                );
+                            })}
+                        </select>
                         <div>Price multiplier</div>
                         <input
                             type="text"
@@ -343,12 +376,12 @@ class App extends React.Component<{}, State> {
                         />
                     </div>
                 </div>
-                <div style={{ paddingTop: '280px' }}>
+                <div style={{ paddingTop: `${this.state.headerHeight}px` }}>
                     Total: {this.state.players.length}
                     {this.state.players.map((player, index) => {
                         return (
                             <div
-                                key={player.name}
+                                key={player.id}
                                 style={{
                                     background: `${index === this.state.currentPlayerIndex ? 'tomato' : 'white'}`,
                                     margin: '2px 0',
@@ -378,6 +411,12 @@ class App extends React.Component<{}, State> {
                                 <button type="button" onClick={() => this.changeActiveIndex(index)}>
                                     Set active
                                 </button>
+                                <span style={{ padding: '0 4px', display: 'inline-block', width: '25px' }}>
+                                    {player.id}
+                                </span>
+                                <span style={{ padding: '0 4px', display: 'inline-block', width: '25px' }}>
+                                    {player.rating}
+                                </span>
                             </div>
                         );
                     })}
