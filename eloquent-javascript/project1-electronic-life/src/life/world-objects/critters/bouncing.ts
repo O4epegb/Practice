@@ -5,6 +5,7 @@ import { View } from '../../view';
 
 export class BouncingCritter extends Critter {
     direction: Directions;
+    name = 'bouncing critter';
 
     constructor(originChar: string) {
         super(originChar);

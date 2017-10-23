@@ -37,4 +37,12 @@ export class Grid {
             }
         }
     }
+
+    map(f: (worldObject: Critter, vector: Vector) => Critter) {
+        const critters: Array<Critter> = [];
+        this.forEach((critter, vector) => {
+            critters.push(f(critter, vector));
+        });
+        return critters;
+    }
 }

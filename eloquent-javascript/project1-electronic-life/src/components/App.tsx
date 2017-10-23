@@ -45,6 +45,7 @@ interface State {
 }
 
 export class App extends React.Component<{}, State> {
+    gameLoop: number;
     world1: World;
     world2: LifelikeWorld;
 
@@ -65,20 +66,30 @@ export class App extends React.Component<{}, State> {
 
         this.state = {
             activeWorld: this.world1,
-            fps: 5
+            fps: 10
         };
     }
 
     componentDidMount() {
         const turn = () => {
+            this.gameLoop = window.setTimeout(turn, 1000 / this.state.fps);
             this.makeWorldTurn();
-            setTimeout(turn, 1000 / this.state.fps);
         };
         turn();
     }
 
     makeWorldTurn = () => {
-        this.state.activeWorld.turn();
+        const { activeWorld } = this.state;
+        activeWorld.turn();
+        const plantEaters = activeWorld
+            .getInfo()
+            .critters.filter(
+                critter => critter.act && !(critter instanceof Plant)
+            );
+        if (plantEaters.length === 0) {
+            clearTimeout(this.gameLoop);
+            console.log('GAME OVER, all critters have died');
+        }
         this.forceUpdate();
     };
 
@@ -87,9 +98,10 @@ export class App extends React.Component<{}, State> {
     };
 
     decreaseFps = () => {
-        const newFps = this.state.fps - 1;
-        this.setState({ fps: newFps >= 1 ? newFps : 1 });
+        this.setState({ fps: Math.max(this.state.fps - 1, 1) });
     };
+
+    getCrittersInfo() {}
 
     render() {
         return (
@@ -97,31 +109,31 @@ export class App extends React.Component<{}, State> {
                 <div className="world">
                     <pre className="world__content">
                         {this.state.activeWorld.toString()}
-                        <div className="world__controls">
-                            <div>Fps: {this.state.fps}</div>
-                            <button type="button" onClick={this.decreaseFps}>
-                                Decrease
-                            </button>
-                            <button type="button" onClick={this.increaseFps}>
-                                Increase
-                            </button>
-                            <div>Change world</div>
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    this.setState({ activeWorld: this.world1 })}
-                            >
-                                Default World
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    this.setState({ activeWorld: this.world2 })}
-                            >
-                                Lifelike World
-                            </button>
-                        </div>
                     </pre>
+                    <div className="world__controls">
+                        <div>Fps: {this.state.fps}</div>
+                        <button type="button" onClick={this.decreaseFps}>
+                            Decrease
+                        </button>
+                        <button type="button" onClick={this.increaseFps}>
+                            Increase
+                        </button>
+                        <div>Change world</div>
+                        <button
+                            type="button"
+                            onClick={() =>
+                                this.setState({ activeWorld: this.world1 })}
+                        >
+                            Default World
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() =>
+                                this.setState({ activeWorld: this.world2 })}
+                        >
+                            Lifelike World
+                        </button>
+                    </div>
                 </div>
             </div>
         );

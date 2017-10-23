@@ -67,4 +67,10 @@ export class World {
         }
         return null;
     };
+
+    getInfo() {
+        return {
+            critters: this.grid.map(critter => critter)
+        };
+    }
 }

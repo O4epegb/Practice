@@ -4,6 +4,7 @@ import { View } from '../../view';
 
 export class WallFollowerCritter extends Critter {
     direction: Directions;
+    name = 'wall follower';
 
     constructor(originChar: string) {
         super(originChar);

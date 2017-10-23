@@ -3,6 +3,7 @@ import { View } from '../view';
 
 export class Plant extends Critter {
     energy = 3 + Math.random() * 4;
+    name = 'plant';
 
     constructor(originChar: string) {
         super(originChar);

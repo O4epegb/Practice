@@ -3,6 +3,7 @@ import { View } from '../view';
 
 export class PlantEater extends Critter {
     energy = 20;
+    name = 'plant eater';
 
     constructor(originChar: string) {
         super(originChar);
