@@ -5,7 +5,7 @@ import * as u from '../utils';
 import { shortcutNames, microDelay } from '../constants';
 import { inputs } from '../inputPositions';
 import { getPlayers, savePlayers } from '../players';
-import { Player, PlayerType } from '../models';
+import { Player, PlayerType, Coord } from '../models';
 import { reloadFutbinData } from '../reloadData';
 
 interface State {
@@ -19,6 +19,7 @@ interface State {
     priceFrom: number;
     priceTo: number;
     maxPrice: number;
+    fixedPrice: number;
     futbinPagesToLoad: number;
     headerHeight: number;
     activePlayerType: PlayerType;
@@ -40,6 +41,7 @@ class App extends React.Component<{}, State> {
             priceFrom: 12000,
             priceTo: 50000,
             maxPrice: 200000,
+            fixedPrice: 200000,
             futbinPagesToLoad: 5,
             headerHeight: 0,
             activePlayerType: PlayerType.Gold
@@ -185,6 +187,11 @@ class App extends React.Component<{}, State> {
         this.setState({ maxPrice: newMaxPrice });
     };
 
+    changeFixedPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Number(event.target.value);
+        this.setState({ fixedPrice: value });
+    };
+
     toggleAutoSearch = () => {
         const autoSearchState = !this.state.shouldAutoSearch;
         this.setState({ shouldAutoSearch: autoSearchState });
@@ -211,6 +218,15 @@ class App extends React.Component<{}, State> {
         });
     };
 
+    getPlayerSearchItem(n: number): Coord {
+        console.log(n, 'ssss');
+        return {
+            1: inputs.playerSearchItem1,
+            2: inputs.playerSearchItem2,
+            3: inputs.playerSearchItem3
+        }[n];
+    }
+
     searchHandler = async () => {
         let { players, priceIncrease, currentPlayerIndex, maxPrice } = this.state;
 
@@ -220,7 +236,7 @@ class App extends React.Component<{}, State> {
         }
 
         if (currentPlayerIndex >= players.length) {
-            players = u.randomSort(players);
+            // players = u.randomSort(players);
             currentPlayerIndex = 0;
             this.setState({
                 currentPlayerIndex: 0,
@@ -262,7 +278,7 @@ class App extends React.Component<{}, State> {
                     throw Error(`Player ${currentPlayer.name} not found in the list`);
                 }
             }
-            u.moveAndClick(inputs.playerIcon);
+            u.moveAndClick(this.getPlayerSearchItem(currentPlayer.number));
             await u.delay(microDelay);
             u.moveAndClick(inputs.clearPriceInput);
             u.moveAndClick(inputs.priceInput);
@@ -373,6 +389,13 @@ class App extends React.Component<{}, State> {
                             placeholder="max price"
                             value={this.state.maxPrice}
                             onChange={event => this.changeMaxPrice(event)}
+                        />
+                        <div>Fixed price</div>
+                        <input
+                            type="text"
+                            placeholder="fixed price"
+                            value={this.state.fixedPrice}
+                            onChange={event => this.changeFixedPrice(event)}
                         />
                     </div>
                 </div>

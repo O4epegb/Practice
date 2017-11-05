@@ -13,10 +13,10 @@ const formatters = {
 const iconPageLimit = 4;
 
 function getUrl(page = 1, playerType: PlayerType) {
-    if (playerType === PlayerType.Gold) {
-        return `https://www.futbin.com/18/players?page=${page}&version=gold_rare&sort=pc_price`;
-    } else {
+    if (playerType === PlayerType.Icon) {
         return `https://www.futbin.com/18/players?page=${page}&version=icons`;
+    } else {
+        return `https://www.futbin.com/18/players?page=${page}&version=gold_rare&sort=pc_price`;
     }
 }
 
@@ -40,7 +40,8 @@ function getPromises(totalPages: number, playerType: PlayerType) {
                     rating,
                     price,
                     url,
-                    type: playerType
+                    type: playerType,
+                    number: 0
                 };
             });
 
@@ -51,8 +52,18 @@ function getPromises(totalPages: number, playerType: PlayerType) {
 
 export function reloadFutbinData(totalPages = 10, playerType: PlayerType) {
     return Promise.all(getPromises(totalPages, playerType)).then(data => {
+        const playerCount = {};
+
         const players = flatten(data).map(player => {
             const { price } = player;
+
+            if (playerCount[player.name]) {
+                playerCount[player.name] = playerCount[player.name] + 1;
+            } else {
+                playerCount[player.name] = 1;
+            }
+
+            player.number = playerCount[player.name];
 
             const formatter = /(K|M)/.exec(price);
             const numericPrice = parseFloat(price);
@@ -62,6 +73,6 @@ export function reloadFutbinData(totalPages = 10, playerType: PlayerType) {
             return player;
         });
 
-        return savePlayers(uniqBy(players, player => player.id));
+        return savePlayers(uniqBy(players, p => p.id));
     });
 }

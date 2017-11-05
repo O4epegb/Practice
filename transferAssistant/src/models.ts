@@ -9,6 +9,7 @@ export interface Player {
     price: string;
     rating: string;
     type: PlayerType;
+    number: number;
 }
 
 export enum PlayerType {
