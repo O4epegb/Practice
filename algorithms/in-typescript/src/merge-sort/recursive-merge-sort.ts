@@ -10,17 +10,20 @@ export default function mergeSort(array: Array<number>): Array<number> {
     }
 }
 
-function mergeSortedArrays(a: Array<number>, b: Array<number>): Array<number> {
+function mergeSortedArrays(
+    xs: Array<number>,
+    ys: Array<number>
+): Array<number> {
     const result = [];
     let i = 0;
     let j = 0;
 
-    while (i < a.length || j < b.length) {
-        if (b[j] === undefined || a[i] <= b[j]) {
-            result.push(a[i]);
+    while (i < xs.length || j < ys.length) {
+        if (ys[j] === undefined || xs[i] <= ys[j]) {
+            result.push(xs[i]);
             i++;
         } else {
-            result.push(b[j]);
+            result.push(ys[j]);
             j++;
         }
     }

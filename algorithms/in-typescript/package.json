@@ -11,10 +11,10 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@types/jest": "^21.1.2",
+        "@types/jest": "^21.1.5",
         "jest": "^21.2.1",
-        "ts-jest": "^21.1.2",
-        "typescript": "^2.5.3"
+        "ts-jest": "^21.1.4",
+        "typescript": "^2.6.1"
     },
     "jest": {
         "moduleFileExtensions": [
