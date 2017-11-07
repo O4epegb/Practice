@@ -227,6 +227,19 @@ class App extends React.Component<{}, State> {
         }[n];
     }
 
+    getPriceIncreaseNumber = (priceIncrease: number, price: number): number => {
+        // < 50k => 250
+        // 50k-100k => 500
+        // > 100k => 1000
+        if (price < 50000) {
+            return priceIncrease * 250;
+        } else if (price < 100000) {
+            return priceIncrease * 500;
+        } else {
+            return priceIncrease * 1000;
+        }
+    };
+
     searchHandler = async () => {
         let { players, priceIncrease, currentPlayerIndex, maxPrice } = this.state;
 
@@ -249,13 +262,13 @@ class App extends React.Component<{}, State> {
             currentPlayerIndex: currentPlayerIndex + 1
         });
 
-        const priceIncreaseNumber = priceIncrease * 100;
         const numericPrice = Number(currentPlayer.price);
         const priceWithDiscount = numericPrice * this.state.priceMultiplier;
         const discount = numericPrice - priceWithDiscount;
         const actualDiscount = discount < 1000 ? numericPrice / 2 : discount;
-        const price = numericPrice - actualDiscount + priceIncreaseNumber;
-        const priceString = String(Math.min(maxPrice + priceIncreaseNumber, price).toFixed(0));
+        const price = numericPrice - actualDiscount;
+        const finalPrice = Number(Math.min(maxPrice, price).toFixed(0));
+        const priceString = String(finalPrice + this.getPriceIncreaseNumber(priceIncrease, finalPrice));
 
         console.log(`Checking player "${currentPlayer.name}" with minPrice = ${priceString}`);
 

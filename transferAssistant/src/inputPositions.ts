@@ -52,7 +52,7 @@ export const inputs = {
     firstPlayerCard: {
         x: 609,
         y: 238,
-        color: 'cbfd5b'
+        color: 'cffe48'
     },
     buyNowButton: {
         x: 1375,
