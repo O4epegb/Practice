@@ -1,14 +1,22 @@
-export default function quickSort(array, left, right) {
-    if (array.length === 1) {
-        return;
-    } else {
-        const anchor = array[array.length - 1];
-        const anchorPoint = partition(array, left, right);
-        quickSort(array, left, anchorPoint - 1);
-        quickSort(array, anchorPoint + 1, right);
+export default function quickSort(array: Array<number>): Array<number> {
+    if (array.length < 2) {
+        return array;
     }
-}
 
-function partition(array, left, right): any {
+    const pivotIndex = Math.ceil(array.length / 2);
+    const pivot = array[pivotIndex];
 
+    const less: Array<number> = [];
+    const greater: Array<number> = [];
+
+    for (let index = 0; index < array.length; index++) {
+        if (index === pivotIndex) {
+            continue;
+        }
+
+        const element = array[index];
+        (element <= pivot ? less : greater).push(element);
+    }
+
+    return [...quickSort(less), pivot, ...quickSort(greater)];
 }
