@@ -1,16 +1,16 @@
+.vscode
+.idea
 node_modules
 bower_components
 typings
 coverage
 elm-stuff
-.vscode
 build
 public
 dist
 
 *.pyc
 __pycache__
-
 
 # Windows image file caches
 Thumbs.db

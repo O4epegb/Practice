@@ -1,38 +1,13 @@
 {
-  "rules": {
-    "class-name": true,
-    "comment-format": [true,
-      "check-space"
-    ],
-    "indent": [true,
-      "spaces"
-    ],
-    "one-line": [true,
-      "check-open-brace",
-      "check-whitespace"
-    ],
-    "quotemark": [true,
-      "single", "jsx-double"
-    ],
-    "semicolon": true,
-    "whitespace": [true,
-      "check-branch",
-      "check-operator",
-      "check-separator",
-      "check-type",
-      "check-module"
-    ],
-    "typedef-whitespace": [true, {
-      "call-signature": "nospace",
-      "index-signature": "nospace",
-      "parameter": "nospace",
-      "property-declaration": "nospace",
-      "variable-declaration": "nospace"
-    }],
-    "no-internal-module": true,
-    "no-trailing-whitespace": true,
-    "no-inferrable-types": true,
-    "no-unused-variable": true,
-    "no-debugger": true
-  }
+    "extends": "tslint:recommended",
+    "rules": {
+        "quotemark": [true, "single", "jsx-double"],
+        "ordered-imports": false,
+        "arrow-parens": [true, "ban-single-arg-parens"],
+        "max-line-length": false,
+        "array-type": false,
+        "trailing-comma": false,
+        "member-access": false,
+        "no-console": false
+    }
 }

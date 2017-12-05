@@ -1,8 +1,8 @@
 {
-    "name": "algorithms-unlocked",
+    "name": "algorithms-and-cs-stuff",
     "version": "1.0.0",
-    "description": "Algorithms from 'Algorithms Unlocked' book",
-    "main": "binary-search.js",
+    "description": "Some algorithms and other cs stuff",
+    "main": "",
     "scripts": {
         "test": "jest",
         "watch:test": "jest --watchAll"
@@ -11,10 +11,12 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@types/jest": "^21.1.5",
+        "@types/jest": "^21.1.8",
+        "@types/node": "^8.0.54",
         "jest": "^21.2.1",
-        "ts-jest": "^21.1.4",
-        "typescript": "^2.6.1"
+        "ts-jest": "^21.2.4",
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.2"
     },
     "jest": {
         "moduleFileExtensions": [
