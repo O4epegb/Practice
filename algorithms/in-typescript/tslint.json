@@ -8,6 +8,7 @@
         "array-type": false,
         "trailing-comma": false,
         "member-access": false,
-        "no-console": false
+        "no-console": false,
+        "no-empty": false
     }
 }

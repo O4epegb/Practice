@@ -38,6 +38,52 @@ export class Graph {
         return total.join('\n');
     }
 
-    // bfs(vertex)
-    // dfs(vertex)
+    traverseBFS(vertex: Vertex, cb = (vertexName: Vertex) => {}): void {
+        const queue = [vertex];
+        const visited: { [vertex: string]: boolean } = {
+            [vertex]: true
+        };
+
+        while (queue.length > 0) {
+            const currentVertex = queue.shift() as Vertex;
+            const vertexNeighbours = this.adjacencyList.get(currentVertex);
+
+            if (!vertexNeighbours) {
+                throw new Error('Vertex not found');
+            }
+
+            cb(currentVertex);
+
+            for (const neighbourVertex of vertexNeighbours) {
+                if (!visited[neighbourVertex]) {
+                    visited[neighbourVertex] = true;
+                    queue.push(neighbourVertex);
+                }
+            }
+        }
+    }
+
+    traverseDFS(startingVertex: Vertex, cb = (vertexName: Vertex) => {}): void {
+        const visited: { [vertex: string]: boolean } = {};
+
+        const iter = (vertex: Vertex) => {
+            const vertexNeighbours = this.adjacencyList.get(vertex);
+
+            if (!vertexNeighbours) {
+                throw new Error('Vertex not found');
+            }
+
+            visited[vertex] = true;
+
+            cb(vertex);
+
+            for (const neighbourVertex of vertexNeighbours) {
+                if (!visited[neighbourVertex]) {
+                    iter(neighbourVertex);
+                }
+            }
+        };
+
+        iter(startingVertex);
+    }
 }
