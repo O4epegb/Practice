@@ -5,25 +5,7 @@
         "noImplicitUseStrict": true,
         "target": "es5",
         "jsx": "react",
-        "module": "commonjs"
-    },
-    "compileOnSave": false,
-    "formatCodeOptions": {
-        "indentSize": 4,
-        "tabSize": 4,
-        "newLineCharacter": "\r\n",
-        "convertTabsToSpaces": true,
-        "insertSpaceAfterCommaDelimiter": true,
-        "insertSpaceAfterSemicolonInForStatements": true,
-        "insertSpaceBeforeAndAfterBinaryOperators": true,
-        "insertSpaceAfterKeywordsInControlFlowStatements": true,
-        "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-        "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-        "placeOpenBraceOnNewLineForFunctions": false,
-        "placeOpenBraceOnNewLineForControlBlocks": false
-    },
-    "atom": {
-        "rewriteTsconfig": true,
-        "formatOnSave": true
+        "module": "commonjs",
+        "lib": ["es2015", "dom"]
     }
 }

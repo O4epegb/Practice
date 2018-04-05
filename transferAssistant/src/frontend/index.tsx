@@ -28,8 +28,9 @@ interface State {
 class App extends React.Component<{}, State> {
     headerNode: HTMLDivElement;
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
         this.state = {
             allPlayers: [],
             players: [],
@@ -241,7 +242,8 @@ class App extends React.Component<{}, State> {
     };
 
     searchHandler = async () => {
-        let { players, priceIncrease, currentPlayerIndex, maxPrice } = this.state;
+        const { players, priceIncrease, maxPrice } = this.state;
+        let { currentPlayerIndex } = this.state;
 
         if (players.length === 0) {
             u.log('No players in DB');
