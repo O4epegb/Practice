@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dijkstra is working correctly 1`] = `
+Object {
+  "distance": 35,
+  "path": "0 -> 1 -> 4 -> 5",
+}
+`;
+
+exports[`Dijkstra is working correctly 2`] = `
+Object {
+  "distance": 8,
+  "path": "0 -> 1 -> 4 -> 5",
+}
+`;
